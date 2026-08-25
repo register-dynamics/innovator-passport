@@ -4,60 +4,42 @@
 
 <!-- Extends the layout from /app/views/layout.html -->
 {% extends 'layout.html' %}
-<!--
-  In /app/views/layout.html you can:
-    - change the header and footer
-    - add custom CSS and JavaScript
--->
 
-<!--
-  Use this to set the page name which will appear at the
-  start of the <title> tag, followed by the service name.
-  This is often not needed on the homepage, where only the
-  service name is needed. You can also reuse this variable
-  within the <h1>, where they are the same.
--->
-{% set pageName = "" %}
 
-<!-- For adding a breadcrumb or back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
-{% block beforeContent %}
-{% endblock %}
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+{% from "inset-text/macro.njk" import insetText %}
 
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+{% set dummyNhsNumber = "999 123 4567" %}
+
 {% block content %}
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+    <h1 class="nhsuk-heading-xl">Innovator Passport Service</h1>
+    <p>Use this service to download completed DTAC forms from medical device suppliers or request more up to date
+      information from the supplier </p>
+    <h2 class="nhsuk-heading-l"> Who can use this service</h2>
+    <p>Anyone procuring a medical device.</p>
 
-      <h1 class="nhsuk-heading-xl">
-        {{ serviceName }}
-      </h1>
+    <h2 class="nhsuk-heading-l">Before you start</h2>
+    <p>You will need:</p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Supplier name</li>
+      <li>Medical device code (optional)</li>
 
-      <p>Set the service name for your prototype by editing <strong>/app/config.js</strong>.</p>
+      {{ hint({
+      html: 'Every NHS approved medical device will have a unique code. If you do not have the code, you can search for
+      the product by name.'
+      }) }}
 
-      <p>
-        This is the index page for your prototype. You can find it at <strong>/app/views/index.html</strong>.
-      </p>
 
-      <hr>
+      {{ button({
+      text: "Start now",
+      href: "supplier-details"
+      }) }}
 
-      <h2 class="nhsuk-heading-l">
-        Get started
-      </h2>
-
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>
-          <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">NHS prototype kit guides</a> – including a tutorial
-        </li>
-        <li>
-          <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> – for code snippets and guidance on using NHS styles, components and patterns
-        </li>
-      </ul>
-
-    </div>
   </div>
+</div>
 {% endblock %}

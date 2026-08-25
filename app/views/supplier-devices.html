@@ -1,0 +1,230 @@
+{% extends 'layout.html' %}
+
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+{{ backLink({
+href: "supplier-details",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1>Select device from list</h1>
+
+    {% from "tables/macro.njk" import table %}
+{% from "pagination/macro.njk" import pagination %}
+
+{{ table({
+  caption: {
+    text: "Medical devices found for " + data.supplierName,
+    size: "m"
+  },
+  head: [
+    {
+      text: "Device Name",
+      href: "sortable-server-side",
+      width: "one-half",
+      sort: true
+    },
+    {
+      text: "Device ID",
+      href: "sortable-server-side-last-login-ascending",
+      width: "one-third",
+      align: "right",
+      classes: "nhsuk-u-nowrap",
+      sort: "descending"
+    },
+    {
+      text: "Last data submitted",
+      href: "sortable-server-side-last-login-ascending",
+      width: "one-third",
+      align: "right",
+      classes: "nhsuk-u-nowrap",
+      sort: "descending"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Big Needle"
+      },
+      {
+        text: 9 | randomDigit
+      },
+      {
+        text: "",
+        visuallyHiddenText: "data for Big Needle",
+        href: "device-data"
+      }
+    ],
+    [
+      {
+        text: "Stellan Park"
+      },
+      {
+        text: 9 | randomDigit
+      },
+    {<form action="/supplier-devices" method="post" novalidate>
+      {{ button({
+      text: "Confirm"
+      }) }}
+    </form>}
+    ],
+    [
+      {
+        text: "Tamsin Foley-Whitworth"
+      },
+      {
+        text: "14 June 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Tamsin Foley-Whitworth",
+        href: "#"
+      }
+    ],
+    [
+      {
+        text: "Uta Brennan"
+      },
+      {
+        text: "7 June 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Uta Brennan",
+        href: "#"
+      }
+    ],
+    [
+      {
+        text: "Val Cruz"
+      },
+      {
+        text: "1 June 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Val Cruz",
+        href: "#"
+      }
+    ],
+    [
+      {
+        text: "Wendell Shaw"
+      },
+      {
+        text: "25 May 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Wendell Shaw",
+        href: "#"
+      }
+    ],
+    [
+      {
+        text: "Xanthe Beaumont"
+      },
+      {
+        text: "19 May 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Xanthe Beaumont",
+        href: "#"
+      }
+    ],
+    [
+      {
+        text: "Yolanda Pierce"
+      },
+      {
+        text: "13 May 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Yolanda Pierce",
+        href: "#"
+      }
+    ],
+    [
+      {
+        text: "Zadie Munroe"
+      },
+      {
+        text: "7 May 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Zadie Munroe",
+        href: "#"
+      }
+    ],
+    [
+      {
+        text: "Reuben Tate"
+      },
+      {
+        text: "1 May 2026"
+      },
+      {
+        text: "Change",
+        visuallyHiddenText: "details for Reuben Tate",
+        href: "#"
+      }
+    ]
+  ]
+}) }}
+
+{{ pagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      href: "#",
+      current: true
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    },
+    {
+      number: 4,
+      href: "#"
+    },
+    {
+      number: 5,
+      href: "#"
+    },
+    {
+      number: 6,
+      href: "#"
+    }
+  ]
+}) }}
+
+
+    <form action="/form-handler" method="post" novalidate>
+      {{ button({
+      text: "Confirm"
+      }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}

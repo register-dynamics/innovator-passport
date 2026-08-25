@@ -2,7 +2,7 @@
 
 module.exports = {
   // Service name
-  serviceName: 'Service name goes here',
+  serviceName: 'Download supplier documents',
 
   // Port to run the prototype on locally
   port: 3000

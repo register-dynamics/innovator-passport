@@ -68,3 +68,5 @@ coverage
 
 # ESlint cache
 .cache
+notes.md
+dev_notes.md

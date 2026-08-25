@@ -6,6 +6,7 @@ module.exports = function(req, res, next) {
   // For example:
   //
   // res.locals.organisationName = 'NHS'
+  res.locals.dummySupplierName = "Totally Not Evil Doomsday Devices Inc"
 
   next()
 }

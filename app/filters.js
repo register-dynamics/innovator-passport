@@ -2,7 +2,7 @@
  * @param {Environment} env
  */
 module.exports = function (env) {
-  const filters = {}
+  const filters = {};
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -34,10 +34,20 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
+  filters.addLTD = function (name) {
+    return name.toUpperCase() + " LTD";
+  };
+
+  filters.randomDigit = function(len) {
+  return String(Math.floor(100000000 + Math.random() * len * 100000000));
+  };
+
+  filters.randomDate = funtion () {
+  };
 
   /* keep the following line to return your filters to the app  */
-  return filters
-}
+  return filters;
+};
 
 /**
  * @import { Environment } from 'nunjucks'

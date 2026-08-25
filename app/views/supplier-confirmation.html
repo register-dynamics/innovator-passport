@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+{{ backLink({
+href: "supplier-details",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1>Confirm this is the correct supplier</h1>
+    <p>If you do not see the correct supplier listed below, please go back and double check spelling.</p>
+
+    {{ summaryList({
+    rows: [
+    {
+    key: {
+    text: "Supplier Name"
+    },
+    value: {
+    text: data.supplierName | addLTD
+    }
+    },
+    {
+    key: {
+    text: "Company Number"
+    },
+    value: {
+    text: "314159"
+    }
+    },
+    {
+    key: {
+    text: "Registered office address"
+    },
+    value: {
+    text: "Innocuous active Volcano, Middle of nowhere, Right next to the Lidl"
+    }
+    }
+    ]
+    })
+    }}
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">
+        Previous company names
+      </caption>
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th scope="col" class="nhsuk-table__header">
+            Name
+          </th>
+          <th scope="col" class="nhsuk-table__header">
+            Period
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Nothing To See Here Ltd 
+          </td>
+          <td class="nhsuk-table__cell">15 Feb 1982 - 01 Jan 1985
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            All Good, Promise
+          </td>
+          <td class="nhsuk-table__cell">17 Feb 1916 - 15 Feb 1982 
+          </td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <form action="/supplier-devices" method="post" novalidate>
+      {{ button({
+      text: "Confirm"
+      }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}
