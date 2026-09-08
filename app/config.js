@@ -2,7 +2,7 @@
 
 module.exports = {
   // Service name
-  serviceName: 'Service name goes here',
+  serviceName: 'Innovator Passport Alpha',
 
   // Port to run the prototype on locally
   port: 3000

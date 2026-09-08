@@ -1,0 +1,48 @@
+From 29fc5e9883199b65c28bb8e5cb638cedb7f7bda5 Mon Sep 17 00:00:00 2001
+From: Simon Worthington <simon@register-dynamics.co.uk>
+Date: Wed, 24 Jun 2026 15:28:21 +0100
+Subject: [PATCH] Include all application code when run `npm ci`
+
+Because the gulpfile needs to be present.
+---
+ Dockerfile | 7 ++-----
+ fly.toml   | 2 +-
+ 2 files changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/Dockerfile b/Dockerfile
+index 20bc3f1..07f70ae 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -21,11 +21,8 @@ RUN apt-get update -qq && \
+     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
+ 
+ # Install node modules
+-COPY package-lock.json package.json ./
+-RUN npm ci --include=dev
+-
+-# Copy application code
+ COPY . .
++RUN npm ci --include=dev
+ 
+ # Build application
+ RUN npm run build
+@@ -41,5 +38,5 @@ FROM base
+ COPY --from=build /app /app
+ 
+ # Start the server by default, this can be overwritten at runtime
+-EXPOSE 3000
++EXPOSE 2000
+ CMD [ "npm", "run", "start" ]
+diff --git a/fly.toml b/fly.toml
+index 43340d1..1662317 100644
+--- a/fly.toml
++++ b/fly.toml
+@@ -9,7 +9,7 @@ primary_region = 'lhr'
+ [build]
+ 
+ [http_service]
+-  internal_port = 8080
++  internal_port = 2000
+   force_https = true
+   auto_stop_machines = 'stop'
+   auto_start_machines = true
