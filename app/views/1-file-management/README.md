@@ -12,4 +12,8 @@ Supplier:
 * company details are a placeholder
 
 Discussion points:
+* We will almost certainly need some sort of login system, right?
 * How do we control/configure what trusts/customers see?
+* Do we envision some sort of dashboard or hub? Would this be useful?
+* What sort of information might we expect to see here? How is this linked to Compass?
+
