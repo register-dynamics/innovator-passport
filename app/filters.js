@@ -2,7 +2,7 @@
  * @param {Environment} env
  */
 module.exports = function (env) {
-  const filters = {}
+  const filters = {};
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -34,10 +34,27 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
+  function generateRandomInt(max) {
+    return Math.floor(Math.random() * max) + 1;
+  }
+
+  function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  filters.randomDate = function () {
+    currentDate = new Date();
+    max_year = currentDate.getFullYear();
+    day = generateRandomInt(30);
+    month = generateRandomInt(12);
+    year = getRandomArbitrary((max_year - 2), max_year);
+    rdate = new Date(year, month, day);
+    return rdate.toString();
+  };
 
   /* keep the following line to return your filters to the app  */
-  return filters
-}
+  return filters;
+};
 
 /**
  * @import { Environment } from 'nunjucks'

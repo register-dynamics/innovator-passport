@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+{% from "inset-text/macro.njk" import insetText %}
+
+
+
+{% block beforeContent %}
+{{ breadcrumb({
+items: [
+{
+href: "#",
+text: "Home"
+},
+{
+href: "#",
+text: "NHS services"
+},
+{
+href: "#",
+text: "Online services"
+}
+]
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-xl">Passport your device</h1>
+        <p>Use this service to upload certifications and all required forms for your medical device.</p>
+        <p>Once your device has been passported, future customers can view or download any of the assurance information
+            from our secure centralised database. You will have full control over what they can and can't see.
+        </p>
+
+        <h2 class="nhs-heading-m">Login to your supplier account</h2>
+        <form action="./dashboard" method="post" novalidate>
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="emailAddress">
+                    Email address
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email-address" name="emailAddress" type="text">
+
+
+            </div>
+            <div class="nhsuk-form-group nhsuk-password-input nhsuk-u-width-two-thirds"
+                data-module="nhsuk-password-input">
+                <label class="nhsuk-label" for="password">
+                    Password
+                </label>
+                <div class="nhsuk-input-wrapper">
+                    <input class="nhsuk-input nhsuk-password-input__input nhsuk-js-password-input-input" id="password"
+                        name="password" type="password" spellcheck="false" autocomplete="current-password"
+                        autocapitalize="none">
+                    <button
+                        class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-password-input__toggle nhsuk-js-password-input-toggle"
+                        data-module="nhsuk-button" type="button" aria-label="Show password" aria-controls="example"
+                        hidden>
+                        Show
+                    </button>
+                </div>
+            </div>
+            <p>
+                <a href="">Forgot password?</a>
+            </p>
+            <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+                Continue
+            </button>
+        </form>
+        <h2>or</h2>
+        <button class="nhsuk-button nhsuk-button--secondary-solid" data-module="nhsuk-button" type="submit">
+            Create supplier account
+        </button>
+        <p>A supplier account allows you to save and track your progress.</p>
+
+    </div>
+</div>
+{% endblock %}

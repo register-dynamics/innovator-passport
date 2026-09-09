@@ -27,26 +27,36 @@
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+    <!-- Add your content here -->
+    <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
-      <h1 class="nhsuk-heading-xl">
-        {{ serviceName }}
-      </h1>
-      
+    <h1 class="nhsuk-heading-xl">
+      {{ serviceName }}
+    </h1>
 
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>
-          <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">NHS prototype kit guides</a> – including a tutorial
-        </li>
-        <li>
-          <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> – for code snippets and guidance on using NHS styles, components and patterns
-        </li>
-      </ul>
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">
+        Prototypes for suppliers and NHS trusts
+      </caption>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="row">
+            1 - Centralised file management
+          </th>
+          <td class="nhsuk-table__cell">
+            <a href="1-file-management/supplier/start">Supplier</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="1-file-management/trust/start">Trust</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    </div>
+
   </div>
+</div>
 {% endblock %}
