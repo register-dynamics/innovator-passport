@@ -1,0 +1,116 @@
+{% extends 'layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "start",
+text: "Back"
+}) }}
+{% endblock %}
+{% block content %}
+
+<h1>MediBeard Inc</h1>
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Company number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{"8" | randomID}}
+    </dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Registered office address
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      15 Follicle lane, Handlebar upon Goatee, BE4 RD1
+    </dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Devices registered
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      3
+    </dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Devices passported
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+        1
+    </dd>
+  </div>
+</dl>
+
+<p>Company info card here</p>
+<h2>Welcome, Gregory House</h2>
+<p>Here you can view your medical devices and their passport progress.</p>
+<table class="nhsuk-table nhsuk-table--compact">
+    <caption class="nhsuk-table__caption nhsuk-table__caption--m" id="vaccination-coverage-caption">
+        Medical devices
+    </caption>
+    <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header" scope="col">
+                Device name
+            </th>
+            <th class="nhsuk-table__header nhsuk-table__header--numeric" scope="col">
+                Device ID
+            </th>
+            <th class="nhsuk-table__header nhsuk-table__header--numeric data-sort-next=descending" scope="col">
+                Status
+            </th>
+        </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+                <a href="dashboard">Moustache health monitor</a>
+                </th>
+
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                {{9 | randomID}}
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--pink">
+                    In progress
+                </strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="nhsuk-table__cell">
+                <a href="">Radioactive beard trimmer</a>
+                </th>
+
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                {{9 | randomID}}
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--green">
+                    Passported
+                </strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="nhsuk-table__cell">
+                <a href="">Space grade beard wax</a>
+                </th>
+
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                {{9 | randomID}}
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--yellow">
+                    Pending review
+                </strong>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+  Passport new device
+</button>
+
+
+{% endblock %}

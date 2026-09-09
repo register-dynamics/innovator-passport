@@ -55,6 +55,10 @@ module.exports = function (env) {
 
   };
 
+  filters.randomID = function(length) {
+    return generateRandomInt(length * 10 **length)
+  }
+
   /* keep the following line to return your filters to the app  */
   return filters;
 };

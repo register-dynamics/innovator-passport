@@ -1,6 +1,13 @@
 {% extends 'layout.html' %}
-
+{% block beforeContent %}
+{{ backLink({
+href: "register-device",
+text: "Back"
+}) }}
+{% endblock %}
 {% block content %}
+
+<h1>Moustache health monitor</h1>
 <table class="nhsuk-table nhsuk-table--compact">
     <caption class="nhsuk-table__caption nhsuk-table__caption--m" id="vaccination-coverage-caption">
         File hub
@@ -35,6 +42,9 @@
             <td class="nhsuk-table__cell nhsuk-u-text-align-right">
                 Gregory House
             </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+               visible 
+            </td>
         </tr>
         <tr class="nhsuk-table__row">
             <td class="nhsuk-table__cell">
@@ -62,7 +72,7 @@
                 {{"" | randomDate}}
             </td>
             <td class="nhsuk-table__cell nhsuk-u-text-align-right">
-                Meredith Grey
+                Elliot Reed
             </td>
         </tr>
         <tr class="nhsuk-table__row">
