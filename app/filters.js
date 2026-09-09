@@ -35,21 +35,24 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
   function generateRandomInt(max) {
-    return Math.floor(Math.random() * max) + 1;
+    return Math.floor(Math.random() * max);
   }
 
   function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min) + min);
   }
 
   filters.randomDate = function () {
-    currentDate = new Date();
-    max_year = currentDate.getFullYear();
-    day = generateRandomInt(30);
-    month = generateRandomInt(12);
-    year = getRandomArbitrary((max_year - 2), max_year);
-    rdate = new Date(year, month, day);
-    return rdate.toString();
+    const currentDate = new Date();
+    const max_year = currentDate.getFullYear();
+    const day = generateRandomInt(30);
+    const month = generateRandomInt(12);
+    const year = getRandomArbitrary((max_year - 2), max_year);
+    const hours = generateRandomInt(24);
+    const mins = generateRandomInt(60);
+    rdate = new Date(year, month, day, hours, mins);
+    return rdate.toUTCString();
+
   };
 
   /* keep the following line to return your filters to the app  */
