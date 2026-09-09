@@ -9,38 +9,38 @@ text: "Back"
 
 <h1>MediBeard Inc</h1>
 <dl class="nhsuk-summary-list">
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Company number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      {{"8" | randomID}}
-    </dd>
-  </div>
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Registered office address
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      15 Follicle lane, Handlebar upon Goatee, BE4 RD1
-    </dd>
-  </div>
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Devices registered
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      3
-    </dd>
-  </div>
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Devices passported
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-        1
-    </dd>
-  </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Company number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            {{"8" | randomID}}
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Registered office address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            15 Follicle lane, Handlebar upon Goatee, BE4 RD1
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Devices registered
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            3
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Devices passported
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            1
+        </dd>
+    </div>
 </dl>
 
 <p>Company info card here</p>
@@ -108,9 +108,13 @@ text: "Back"
         </tr>
     </tbody>
 </table>
-<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
-  Passport new device
-</button>
+<form action="upload" method="post" novalidate>
+    <button class="nhsuk-button" data-module="nhsuk-button"
+        type="submit">
+        Passport new device
+    </button>
+</form>
+
 
 
 {% endblock %}

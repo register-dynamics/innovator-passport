@@ -43,7 +43,9 @@ text: "Back"
                 Gregory House
             </td>
             <td class="nhsuk-table__cell nhsuk-u-text-align-right">
-               visible 
+                <strong class="nhsuk-tag nhsuk-tag--green">
+                    visible
+                </strong>
             </td>
         </tr>
         <tr class="nhsuk-table__row">
@@ -58,6 +60,11 @@ text: "Back"
             </td>
             <td class="nhsuk-table__cell nhsuk-u-text-align-right">
                 Meredith Grey
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--grey">
+                    hidden
+                </strong>
             </td>
         </tr>
         </tr>
@@ -74,7 +81,32 @@ text: "Back"
             <td class="nhsuk-table__cell nhsuk-u-text-align-right">
                 Elliot Reed
             </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--green">
+                    visible
+                </strong>
+            </td>
         </tr>
+        <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+                <a href="">DTAC-Bristol-Trust-Extra-Questions</a>
+                </th>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                DTAC
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                {{"" | randomDate}}
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                Dana Scully
+            </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--green">
+                    visible
+                </strong>
+            </td>
+        </tr>
+
         <tr class="nhsuk-table__row">
             <td class="nhsuk-table__cell">
                 <a href="">fake-certificate.pdf</a>
@@ -88,9 +120,21 @@ text: "Back"
             <td class="nhsuk-table__cell nhsuk-u-text-align-right">
                 Dr Nick
             </td>
+            <td class="nhsuk-table__cell nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--grey">
+                    hidden
+                </strong>
+            </td>
         </tr>
 
     </tbody>
 </table>
+<form action="./upload" method="post" novalidate>
+    <button href="upload.html" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Upload new document
+    </button>
+</form>
+
+
 
 {% endblock %}

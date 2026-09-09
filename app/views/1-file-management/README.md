@@ -11,4 +11,5 @@ Assumptions:
 Supplier:
 * company details are a placeholder
 
-
+Discussion points:
+* How do we control/configure what trusts/customers see?
