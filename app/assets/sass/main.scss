@@ -2,3 +2,15 @@
 @import "nhsuk-frontend/dist/nhsuk";
 
 // Add your custom CSS/Sass styles below.
+.summary-card {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d8dde0;
+  color: #212b32;
+  box-shadow: 5px 5px 5px#d8dde0;
+  padding: 2em;
+  margin-bottom: 24px;
+}
