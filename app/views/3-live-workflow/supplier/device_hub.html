@@ -7,7 +7,7 @@ text: "Back"
 {% endblock %}
 {% block content %}
 
-<h1>MediBeard Inc</h1>
+<h1 class="nhsuk-heading-l" data-user-prop="companyName"></h1>
 <table class="nhsuk-table nhsuk-table--compact">
     <caption class="nhsuk-table__caption nhsuk-table__caption--m" id="vaccination-coverage-caption">
         File hub
@@ -155,4 +155,9 @@ text: "Back"
 
 
 
+{% endblock %}
+{% block bodyEnd %}
+{{ super() }}
+<script type="module" src="/assets/javascript/custom.js"></script>
+{% block pageScripts %}{% endblock %}
 {% endblock %}

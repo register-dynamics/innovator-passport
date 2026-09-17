@@ -32,57 +32,43 @@ text: "Online services"
         <h1 class="nhsuk-heading-xl">Supplier sales dashboard</h1>
         <p>You can view the status of all procurement processes for your medical devices.
         </p>
-        <input type="button" id="testButton" value="Generate a table" />
-        <div class="nhsuk-form-group">
-            <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                    <h1 class="nhsuk-fieldset__heading">
-                        Choose an example user
-                    </h1>
-                </legend>
-                <div class="nhsuk-hint" id="example-hints-hint">
-                    Select 1 option
-                </div>
-                <div class="nhsuk-radios" data-module="nhsuk-radios">
-                    <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="smallSupplier" name="smallSupplier" type="radio"
-                            value="email">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
-                            Small supplier - Does not manufacture their own devices
-                        </label>
-                    </div>
-                    <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio"
-                            value="phone">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
-                            Large supplier - manufactures their own devices
-                        </label>
-                    </div>
-                    <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-hints-3" name="exampleHints" type="radio"
-                            value="text">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
-                            Text message
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-
-        <svg class="nhsuk-icon nhsuk-icon--user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-            height="16" focusable="false" aria-hidden="true">
-            <path
-                d="M12 1a11 11 0 1 1 0 22 11 11 0 0 1 0-22Zm0 2a9 9 0 0 0-5 16.5V18a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v1.5A9 9 0 0 0 12 3Zm0 3a3.5 3.5 0 1 1-3.5 3.5A3.4 3.4 0 0 1 12 6Z" />
-        </svg>
-
-        <h2 class="nhs-heading-m">Login to your supplier account</h2>
         <form action="./device_hub" method="post" novalidate>
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint" id="user-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                        <h1 class="nhsuk-fieldset__heading">
+                            Choose an example user
+                        </h1>
+                    </legend>
+                    <div class="nhsuk-hint" id="example-hints-hint">
+                        Select 1 option
+                    </div>
+                    <div class="nhsuk-radios" data-module="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="smallSupplier" name="user" type="radio"
+                                value="smallSupplier">
+                            <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                                Small supplier - Does not manufacture their own devices
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="example-hints-2" name="user" type="radio"
+                                value="largeSupplier">
+                            <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                                Large supplier - manufactures their own devices
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <h2 class="nhs-heading-m">Login to your supplier account</h2>
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="emailAddress">
                     Email address
                 </label>
                 <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email-address" name="emailAddress" type="text"
-                    value="example@nhs.co.uk">
+                    value="" data-user-prop="users.default_role.email">
 
 
             </div>
@@ -94,7 +80,7 @@ text: "Online services"
                 <div class="nhsuk-input-wrapper">
                     <input class="nhsuk-input nhsuk-password-input__input nhsuk-js-password-input-input" id="password"
                         name="password" type="password" spellcheck="false" autocomplete="current-password"
-                        autocapitalize="none" value="pretendpassword">
+                        autocapitalize="none" value="" data-user-prop="users.default_role.password">
                     <button
                         class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-password-input__toggle nhsuk-js-password-input-toggle"
                         data-module="nhsuk-button" type="button" aria-label="Show password" aria-controls="example"
@@ -120,7 +106,7 @@ text: "Online services"
 </div>
 {% endblock %}
 {% block bodyEnd %}
-  {{ super() }}
-  <script type="module" src="/assets/javascript/custom.js"></script>
-  {% block pageScripts %}{% endblock %}
+{{ super() }}
+<script type="module" src="/assets/javascript/custom.js"></script>
+{% block pageScripts %}{% endblock %}
 {% endblock %}
