@@ -14,3 +14,30 @@
   padding: 2em;
   margin-bottom: 24px;
 }
+
+.urgent-inset {
+  box-sizing: border-box;
+  border-left: 8px solid #d5281b;
+  background-color: #f4d7d7;
+  padding: 2em;
+  margin-bottom: 2em;
+}
+
+.urgent-inset p {
+  margin-bottom: 0;
+}
+
+.urgent-link {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  border: 1px solid #e59a9a;
+  padding: 24px;
+}
+
+.urgent-link h4 {
+  padding: 0px;
+  margin: 0px;
+}
+.urgent-inset .inset-title {
+  margin-bottom:24px;
+}

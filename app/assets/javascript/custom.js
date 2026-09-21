@@ -1,26 +1,38 @@
 const userData = {
   smallSupplier: {
-    companyName: "Clumpton upon Avon Devices Ltd",
+    companyName: "Clumpton upon Avon Medical Devices Ltd",
+    activeSales: "2",
+    clarificationRequests:"3",
+    additionalInfo:"7",
     users: {
       //index by roles
       default_role: {
-        name: "John Small",
-        email: "john.small@small.net",
-        password: "whatever"
+        name: "Amelia Eccleston",
+        email: "A.Eccleston@clumpmed.co.uk",
+        password: "whatever",
+        tasksAssigned:"5"
       },
       manager_role: {},
     },
   },
   largeSupplier: {
     companyName: "MEGAMED CORP",
+    activeSales: "12",
+    clarificationRequests:"11",
+    additionalInfo:"4",
     users: {
       default_role: {
-        name: "Jane Big",
-        email: "jane.big@huge.com",
-        password: "whatever"
+        name: "Janice Rock",
+        email: "J.rock@megamed.com",
+        password: "whatever",
+        tasksAssigned:"2"
       },
     },
   },
+};
+
+const trustData = {
+
 };
 
 //Helper to retrieve value from nested paths like 'users.default_role.email'
@@ -33,9 +45,6 @@ function updateCurrentUser(e) {
   let selectedKey = e.target.value;
   let selectedUserObj = userData[selectedKey];
   sessionStorage.setItem("currentUser", JSON.stringify(selectedUserObj));
-  console.log(
-    `updateCurrentUser called: ${sessionStorage.getItem("currentUser")}`,
-  );
 
   updatePage("[data-user-prop]", "currentUser");
 }
@@ -44,7 +53,6 @@ function updatePage(dataAttr, storedKey) {
   //storing a JSON blob as a string
   const storedString = sessionStorage.getItem(storedKey);
   if (!storedString) return;
-  console.log(`stored string is ${storedString}`);
   //convert back to JSON
   const obj = JSON.parse(storedString);
 
@@ -56,9 +64,7 @@ function updatePage(dataAttr, storedKey) {
     const prop = dataProp.getAttribute(cleanAttributeName);
     const propPath = dataProp.getAttribute(cleanAttributeName);
     const val = getNestedValue(obj, propPath);
-    console.log(`prop is ${prop}`);
-    console.log(`obj is ${obj}`)
-    console.log(`obj[prop is ${obj[prop]}]`)
+
     if (val) {
       if (dataProp.tagName === "INPUT") {
         dataProp.value = val;

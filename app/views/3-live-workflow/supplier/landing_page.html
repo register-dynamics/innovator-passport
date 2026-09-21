@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "./start",
+text: "Back"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="nhsuk-width-container-fluid">
+  <span class="nhsuk-caption-l" data-user-prop="companyName"></span>
+  <h1 class="nhsuk-heading-xl">Supplier sales dashboard</h1>
+  <div class="urgent-inset">
+    <div class="nhsuk-grid-row">
+      <p class="nhs-body-l inset-title">The following items must be resolved before sales processes can proceed</p>
+    </div>
+    <div class="urgent-link">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+          <span class="nhsuk-caption-s">NHS Clumpton and Eggley Trust</span>
+          <h4 class="nhs-heading-s"><a class="nhsuk-link" href="">DTAC - 3. Clinical Safety</a></h4>
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          <strong class="nhsuk-tag nhsuk-tag--yellow">Clarification Needed
+          </strong>
+        </div>
+      </div>
+    </div>
+    <div class="urgent-link">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+          <span class="nhsuk-caption-s">NHS Clumpton and Eggley Trust</span>
+          <h4 class="nhs-heading-s"><a class="nhsuk-link" href="">Cyber Essentials</a></h4>
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          <strong class="nhsuk-tag nhsuk-tag--red"> Document needed
+          </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-card nhsuk-card--clickable nhsuk-card--primary">
+    <div class="nhsuk-card__content">
+      <h2 class="nhsuk-card__heading nhsuk-heading-m">
+        <a class="nhsuk-card__link" href="#">Pre-contract</a>
+      </h2>
+      <p class="nhsuk-card__description">View the status of all active sales processes for your medical devices.
+        <svg class="nhsuk-icon nhsuk-icon--chevron-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          width="16" height="16" focusable="false" aria-hidden="true">
+          <path
+            d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-.3 5.8a1 1 0 1 0-1.5 1.4l2.9 2.8-2.9 2.8a1 1 0 0 0 1.5 1.4l3.5-3.5c.4-.4.4-1 0-1.4Z" />
+        </svg>
+    </div>
+  </div>
+  <div class="nhsuk-card nhsuk-card--clickable nhsuk-card--primary">
+    <div class="nhsuk-card__content">
+      <h2 class="nhsuk-card__heading nhsuk-heading-m">
+        <a class="nhsuk-card__link" href="#">Ongoing contracts</a>
+      </h2>
+      <p class="nhsuk-card__description">View the status of your current contracts and check renewal dates.
+        <svg class="nhsuk-icon nhsuk-icon--chevron-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          width="16" height="16" focusable="false" aria-hidden="true">
+          <path
+            d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-.3 5.8a1 1 0 1 0-1.5 1.4l2.9 2.8-2.9 2.8a1 1 0 0 0 1.5 1.4l3.5-3.5c.4-.4.4-1 0-1.4Z" />
+        </svg>
+    </div>
+  </div>
+  <div class="nhsuk-card nhsuk-card--clickable nhsuk-card--primary">
+    <div class="nhsuk-card__content">
+      <h2 class="nhsuk-card__heading nhsuk-heading-m">
+        <a class="nhsuk-card__link" href="#">Device Hub</a>
+      </h2>
+      <p class="nhsuk-card__description">See all of your devices listed for procurement and check their assurance
+        documentation and innovator passport status.
+        <svg class="nhsuk-icon nhsuk-icon--chevron-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          width="16" height="16" focusable="false" aria-hidden="true">
+          <path
+            d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-.3 5.8a1 1 0 1 0-1.5 1.4l2.9 2.8-2.9 2.8a1 1 0 0 0 1.5 1.4l3.5-3.5c.4-.4.4-1 0-1.4Z" />
+        </svg>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+{% endblock %}
+{% block bodyEnd %}
+{{ super() }}
+<script type="module" src="/assets/javascript/custom.js"></script>
+{% block pageScripts %}{% endblock %}
+{% endblock %}
