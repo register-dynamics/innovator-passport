@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "./start",
+text: "Back"
+}) }}
+{% endblock %}
+{% block content %}
+
+<main class="nhsuk-main-wrapper">
+    <span class="nhsuk-caption-l">Moustache health monitor</span>
+    <h1 class="nhsuk-heading-xl">Upload file</h1>
+    <p class="nhsuk-body-l nhsuk-u-secondary-text-colour">It might be worth trying to encourage (or force) users to tag
+        their files before uploading
+        them to the filehub so that they are easier to find.</p>
+
+    <p class="nhsuk-body-l">You can edit or amend the file details at any point and any changes will be tracked.
+    </p>
+
+    <h1 class="nhsuk-heading-l">Tags</h1>
+    <p>Tagging your file makes it easier for others to find it. </p>
+    <form id="tag-form">
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="select-tag">
+                Select at least one tag
+            </label>
+            <select class="nhsuk-select nhsuk-u-width-one-half" id="select-tag" name="selectTag">
+                <option value="None" selected="selected">-- select below --</option>
+                <option value="DTAC" selected>DTAC</option>
+                <option value="PAQ" selected>PAQ</option>
+                <option value="DPIA">DPIA</option>
+                <option value="Cyber Essentials">Cyber Essentials</option>
+                <option value="DCB129">DCB0129</option>
+            </select>
+        </div>
+        <button class="nhsuk-button nhsuk-button--small" data-module="nhsuk-button" type="submit">
+            Add tag
+        </button>
+        <button class="nhsuk-button nhsuk-button--small nhsuk-button--secondary" id="clear-button"
+            data-module="nhsuk-button" type="button">
+            Clear tags
+        </button>
+    </form>
+    <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+            <div class="nhsuk-card nhsuk-u-padding-5" style="display:none" id="tag-list">
+            </div>
+        </div>
+    </div>
+    <h1 class="nhsuk-heading-l">Status</h1>
+    <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+            <div class="nhsuk-radios nhsuk-radios--small" data-module="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="filter" name="filter" type="radio" value="draft">
+                    <label class="nhsuk-label nhsuk-radios__label" for="filter">
+                        Draft
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="filter-2" name="filter" type="radio" value="yearly">
+                    <label class="nhsuk-label nhsuk-radios__label" for="filter-2">
+                        For Review
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="filter-2" name="filter" type="radio" value="yearly">
+                    <label class="nhsuk-label nhsuk-radios__label" for="filter-2">
+                        Completed
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <h1 class="nhsuk-heading-l">Linked trusts</h1>
+    <p>If this document is intended for one or more speficic trusts, search for them below, link them to the document and they will be notified. 
+    </p>
+    <div class="nhsuk-form-group nhsuk-search-input">
+        <div class="nhsuk-input-wrapper nhsuk-search-input__wrapper">
+            <input class="nhsuk-input nhsuk-search-input__input nhsuk-u-width-two-thirds" id="nhsTrust" name="nhsTrust"
+                type="search" value="Worthington and Greater Bryce North" aria-describedby="example-hint"
+                autocomplete="off">
+            <button class="nhsuk-button nhsuk-button--icon nhsuk-button--small nhsuk-search-input__button"
+                data-module="nhsuk-button" type="button" aria-label="Search" id="search-button">
+                <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="16" height="16" focusable="false" aria-hidden="true">
+                    <path
+                        d="m20.7 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 10.6a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="search-result-list" id="listed-trusts" style="display:none">
+    </div>
+    <div id="search-results" style="display:none" class="nhsuk-inset-text">
+        <p>found 2 matches</p>
+        <div class="nhsuk-grid-row search-result">
+            <div class="nhsuk-grid-column-two-thirds">
+                <p class="search-result-name"><a>Worthington and Greater Bryce North Trust</a></p>
+            </div>
+            <div class="nhsuk-grid-column-one-third">
+                <div class="nhsuk-button-group nhsuk-button-group--small">
+                    <button class="nhsuk-button nhsuk-button--small search-result-button" data-module="nhsuk-button" type="button" value="">
+                        Link trust
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="nhsuk-grid-row search-result">
+            <div class="nhsuk-grid-column-two-thirds">
+                <p class="search-result-name"><a>Gibbonshire County trust</a></p>
+            </div>
+            <div class="nhsuk-grid-column-one-third">
+                <div class="nhsuk-button-group nhsuk-button-group--small">
+                    <button class="nhsuk-button nhsuk-button--small search-result-button" data-module="nhsuk-button" type="button" search-result-button value="">
+                        Link trust
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+{% block bodyEnd %}
+{{ super() }}
+<script type="module" src="/assets/javascript/custom.js"></script>
+{% block pageScripts %}{% endblock %}
+{% endblock %}
