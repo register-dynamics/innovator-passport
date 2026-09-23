@@ -1,3 +1,5 @@
+//Dummy Data
+
 const userData = {
   smallSupplier: {
     companyName: "Clumpton upon Avon Medical Devices Ltd",
@@ -34,11 +36,12 @@ const userData = {
 const trustData = {};
 
 const dummyTrustNames = [
-  "Worthington and Greater Bryce North Trust",
+  "Worthington and Greater Bryce North",
   "Ashford Foundations trust",
   "County Jason Trust",
 ];
 
+//custom data attributes
 //Helper to retrieve value from nested paths like 'users.default_role.email'
 function getNestedValue(obj, path) {
   if (!path) return undefined;
@@ -131,32 +134,105 @@ function renderTags() {
     tagListContainer.appendChild(tagElement);
   });
 }
+//GENERIC FUNCTIONS
+function renderSearchResults(resultsArray, targetId, buttonText) {
+  const searchResultsElement = document.getElementById(targetId);
+  if (!resultsArray || resultsArray.length === 0) {
+    searchResultsElement.innerHTML = "";
+    searchResultsElement.style.display = "none";
+    return;
+  }
+  searchResultsElement.innerHTML = "";
+  searchResultsElement.style.display = "block";
+  searchResultsElement.className= "nhsuk-inset-text";
 
-function addSearchResultToList(e) {
-  const selectedItems =
-    JSON.parse(sessionStorage.getItem("selectedItems")) || [];
-  const selectedItem = e.target.value;
-  if (selectedItems.includes(selectedItem)) {
-    console.log("duplicate item. Ignoring...");
+  const resultNum = resultsArray.length;
+  const resultMessage = `found ${resultNum} match${resultNum === 1 ? "" : "es"}`;
+  const matchesMessage = document.createElement("label");
+  matchesMessage.textContent = resultMessage;
+  matchesMessage.className = "nhsuk-label nhsuk-label--m";
+  searchResultsElement.appendChild(matchesMessage);
+
+  for (let resultText of resultsArray) {
+    console.log("inside the loop...");
+    const resultElem = createSearchResultwithButton(
+      resultText,
+      buttonText,
+      linkTrust,
+    );
+    searchResultsElement.appendChild(resultElem);
+  }
+}
+
+//GENERATE CUSTOM HTML
+function createSearchResultwithButton(
+  resultText,
+  buttonText,
+  buttonEventListener,
+) {
+  const mainContainer = document.createElement("div");
+  mainContainer.className = "nhsuk-grid-row";
+  mainContainer.id = resultText;
+  const resultCol = document.createElement("div");
+  resultCol.className = "nhsuk-grid-column-two-thirds";
+  const buttonCol = document.createElement("div");
+  buttonCol.className = "nhsuk-grid-column-one-third";
+  const resultName = document.createElement("p");
+  resultName.className = "nhsuk-body-l";
+  resultName.textContent = resultText;
+  const button = document.createElement("button");
+  button.className = "nhsuk-button nhsuk-button--small";
+  button.textContent = buttonText;
+  button.value = resultText;
+  button.addEventListener("click", buttonEventListener);
+
+  //assemble the HTML
+  mainContainer.appendChild(resultCol);
+  mainContainer.appendChild(buttonCol);
+  resultCol.appendChild(resultName);
+  buttonCol.appendChild(button);
+  return mainContainer;
+}
+
+//SEARCHING FOR TRUSTS
+function searchTrusts(e) {
+  console.log("searchTrusts called...");
+  e.preventDefault();
+  const searchTerm = e.target.searchInput.value;
+  if (dummyTrustNames.includes(searchTerm)) {
+    console.log("trust found...");
+    renderSearchResults([searchTerm], "search-results", "Link Trust");
+  } else {
+  }
+}
+
+function linkTrust(event) {
+  console.log(`linkTrust fired...`);
+  const trusts = JSON.parse(sessionStorage.getItem("selectedTrusts")) || [];
+  const selectedItem = event.target.value;
+  if (trusts.includes(selectedItem)) {
     return;
   } else {
-    selectedItems.push(selectedItem);
-    sessionStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-    console.log("item added to selectedItems");
+    const resultElem = document.getElementById("search-results");
+    resultElem.style.display = "none";
+    trusts.push(selectedItem);
+    sessionStorage.setItem("selectedTrusts", JSON.stringify(trusts));
+    console.log("item added to selectedTrusts");
     renderSelectedTrusts();
   }
 }
+
 function renderSelectedTrusts() {
-  const selectedTrusts =
-    JSON.parse(sessionStorage.getItem("selectedItems")) || [];
-  const itemList = document.querySelector(".search-result-list");
-  if (!selectedTrusts.length) {
+  console.log(`renderSelectedTrusts called...`);
+  const trusts = JSON.parse(sessionStorage.getItem("selectedTrusts")) || [];
+  const itemList = document.getElementById("listed-trusts");
+  if (!trusts.length) {
     itemList.innerHTML = "";
     return;
   } else {
     itemList.innerHTML = "";
     itemList.style.display = "block";
-    for (const item of selectedTrusts) {
+    for (const item of trusts) {
       const rowDiv = document.createElement("div");
       rowDiv.className = "nhsuk-grid-row";
       const colDiv1 = document.createElement("div");
@@ -184,48 +260,30 @@ function renderSelectedTrusts() {
 
 function removeSelectedTrust(e) {
   const selectedTrust = e.target.value;
-  let selectedTrusts = JSON.parse(sessionStorage.getItem("selectedItems"));
-  if (!selectedTrusts) {
+  let trusts = JSON.parse(sessionStorage.getItem("selectedTrusts"));
+  if (!trusts) {
     return;
   }
-  if (selectedTrusts.includes(selectedTrust)) {
+  if (trusts.includes(selectedTrust)) {
     console.log(`${selectedTrust} is in storage`);
-    const index = selectedTrusts.indexOf(selectedTrust);
+    const index = trusts.indexOf(selectedTrust);
     if (index > -1) {
-      selectedTrusts.splice(index, 1);
-      sessionStorage.setItem("selectedItems", JSON.stringify(selectedTrusts));
+      trusts.splice(index, 1);
+      sessionStorage.setItem("selectedTrusts", JSON.stringify(trusts));
       renderSelectedTrusts();
     }
   }
 }
 
-function renderSearchResults() {
-  let results = document.getElementById("search-results");
-  results.style.display = "block";
-}
-
-function addSearchResultEventListeners() {
-  //Obviously in reality we'd fetch the search results from a database and then run the logic
-  const resultElements = document.querySelectorAll(".search-result");
-  console.log(`resultElements = ${resultElements}`);
-  resultElements.forEach((resultElement) => {
-    const resultButton = resultElement.querySelector(".search-result-button");
-    const name = resultElement.querySelector(".search-result-name");
-    resultButton.value = name.textContent;
-    resultButton.addEventListener("click", addSearchResultToList);
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM LOADED...");
 
-  addSearchResultEventListeners();
   const userFieldset = document.getElementById("user-fieldset");
   const selectTag = document.getElementById("select-tag");
   const tagForm = document.getElementById("tag-form");
   const tagList = document.getElementById("tag-list");
   const clearButton = document.getElementById("clear-button");
-  const searchButton = document.getElementById("search-button");
+  const searchTrustsButton = document.getElementById("search-trusts");
 
   if (userFieldset) {
     userFieldset.addEventListener("change", updateCurrentUser);
@@ -242,8 +300,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (clearButton) {
     clearButton.addEventListener("click", clearTags);
   }
-  if (searchButton) {
-    searchButton.addEventListener("click", renderSearchResults);
+  if (searchTrustsButton) {
+    searchTrustsButton.addEventListener("submit", searchTrusts);
   }
 
   updatePage("[data-user-prop]", "currentUser");

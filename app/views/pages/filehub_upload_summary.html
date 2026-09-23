@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "../index",
+text: "Back"
+}) }}
+{% endblock %}
+{% block content %}
+
+<main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+            <div class="nhsuk-error-summary" data-module="nhsuk-error-summary">
+                <div role="alert">
+                    <h2 class="nhsuk-error-summary__heading">
+                        Action needed
+                    </h2>
+                    <div class="nhsuk-error-summary__body">
+                        <p>
+                            There is already a file labelled as <strong>DTAC</strong> linked to <strong>Crumpton and Eggley Trust</strong>.
+                        </p>
+
+                        <p>Replace file will not remove the file from the sytem, but mark it as current.</p>
+                        </details>
+                        <div class="nhsuk-button-group">
+                            <button class="nhsuk-button nhsuk-button--small" data-module="nhsuk-button" type="submit">
+                                Replace
+                            </button>
+
+                            <button class="nhsuk-button--small nhsuk-button--secondary" data-module="nhsuk-button":
+                                type="submit">
+                                Back
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 class="nhsuk-heading-m">File upload summary</h2>
+
+            <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Site location
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        St George's Pharmacy<br>
+                        46 St George's Rd<br>
+                        Elephant and Castle<br>
+                        London<br>
+                        SE1 6ET
+                    </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Date and time
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        Thursday 15 June at 9:10am
+                    </dd>
+                </div>
+            </dl>
+
+            <p>
+                <a href="#">Tell us about your experience using this service</a>
+            </p>
+
+        </div>
+    </div>
+</main>
+</div>
+
+{% endblock %}
+{% block bodyEnd %}
+{{ super() }}
+<script type="module" src="/assets/javascript/custom.js"></script>
+{% block pageScripts %}{% endblock %}
+{% endblock %}

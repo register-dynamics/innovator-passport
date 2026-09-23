@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block beforeContent %}
 {{ backLink({
-href: "./start",
+href: "../index",
 text: "Back"
 }) }}
 {% endblock %}
@@ -47,8 +47,12 @@ text: "Back"
             </div>
         </div>
     </div>
-    <h1 class="nhsuk-heading-l">Status</h1>
     <div class="nhsuk-form-group">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+                Status
+            </h1>
+        </legend>
         <fieldset class="nhsuk-fieldset">
             <div class="nhsuk-radios nhsuk-radios--small" data-module="nhsuk-radios">
                 <div class="nhsuk-radios__item">
@@ -72,53 +76,85 @@ text: "Back"
             </div>
         </fieldset>
     </div>
-    <h1 class="nhsuk-heading-l">Linked trusts</h1>
-    <p>If this document is intended for one or more speficic trusts, search for them below, link them to the document and they will be notified. 
-    </p>
-    <div class="nhsuk-form-group nhsuk-search-input">
-        <div class="nhsuk-input-wrapper nhsuk-search-input__wrapper">
-            <input class="nhsuk-input nhsuk-search-input__input nhsuk-u-width-two-thirds" id="nhsTrust" name="nhsTrust"
-                type="search" value="Worthington and Greater Bryce North" aria-describedby="example-hint"
-                autocomplete="off">
-            <button class="nhsuk-button nhsuk-button--icon nhsuk-button--small nhsuk-search-input__button"
-                data-module="nhsuk-button" type="button" aria-label="Search" id="search-button">
-                <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                    width="16" height="16" focusable="false" aria-hidden="true">
-                    <path
-                        d="m20.7 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 10.6a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" />
-                </svg>
-            </button>
-        </div>
+    <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                    Visibility
+                </h1>
+            </legend>
+            <div class="nhsuk-radios--small" data-module="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="private" name="private" type="radio" value="mobile"
+                        aria-describedby="example-hints-item-hint">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                        Private
+                    </label>
+                    <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-item-hint">
+                        Only visible to you
+                    </div>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="internal" name="internal" type="radio" value="landline"
+                        aria-describedby="example-hints-2-item-hint">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                        Internal
+                    </label>
+                    <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                        Visible to authorised users, including linked trusts (see below)
+                    </div>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="public" name="public" type="radio" value="landline"
+                        aria-describedby="example-hints-2-item-hint">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                        Public <strong>(recommended)</strong>
+                    </label>
+                    <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                        Visible to all NHS trusts
+                    </div>
+                </div>
+            </div>
+        </fieldset>
     </div>
+    <h1 class="nhsuk-heading-l">Linked trusts (optional)</h1>
+    <p>If this document is intended for one or more speficic trusts, search for them below, link them to the document
+        and they will be notified.
+    </p>
+    <form id="search-trusts">
+        <div class="nhsuk-form-group nhsuk-search-input">
+            <div class="nhsuk-input-wrapper nhsuk-search-input__wrapper">
+                <input class="nhsuk-input nhsuk-search-input__input nhsuk-u-width-two-thirds" id="searchInput"
+                    name="searchInput" type="search" value="Worthington and Greater Bryce North"
+                    aria-describedby="example-hint" autocomplete="off">
+                <button class="nhsuk-button nhsuk-button--icon nhsuk-button--small nhsuk-search-input__button"
+                    data-module="nhsuk-button" type="submit" aria-label="Search" id="search-button">
+                    <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        width="16" height="16" focusable="false" aria-hidden="true">
+                        <path
+                            d="m20.7 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 10.6a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </form>
     <div class="search-result-list" id="listed-trusts" style="display:none">
     </div>
-    <div id="search-results" style="display:none" class="nhsuk-inset-text">
-        <p>found 2 matches</p>
-        <div class="nhsuk-grid-row search-result">
-            <div class="nhsuk-grid-column-two-thirds">
-                <p class="search-result-name"><a>Worthington and Greater Bryce North Trust</a></p>
-            </div>
-            <div class="nhsuk-grid-column-one-third">
-                <div class="nhsuk-button-group nhsuk-button-group--small">
-                    <button class="nhsuk-button nhsuk-button--small search-result-button" data-module="nhsuk-button" type="button" value="">
-                        Link trust
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="nhsuk-grid-row search-result">
-            <div class="nhsuk-grid-column-two-thirds">
-                <p class="search-result-name"><a>Gibbonshire County trust</a></p>
-            </div>
-            <div class="nhsuk-grid-column-one-third">
-                <div class="nhsuk-button-group nhsuk-button-group--small">
-                    <button class="nhsuk-button nhsuk-button--small search-result-button" data-module="nhsuk-button" type="button" search-result-button value="">
-                        Link trust
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div id="search-results" style="display:none">
     </div>
+    <div class="nhsuk-form-group nhsuk-file-upload" data-module="nhsuk-file-upload">
+        <h1 class="nhsuk-label-wrapper">
+            <label class="nhsuk-label nhsuk-label--l" for="file-hint">
+                Upload file
+            </label>
+        </h1>
+        <input class="nhsuk-file-upload__input" id="file-hint" name="file-hint" type="file">
+    </div>
+    <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Submit
+    </button>
+
+
 </main>
 
 {% endblock %}
