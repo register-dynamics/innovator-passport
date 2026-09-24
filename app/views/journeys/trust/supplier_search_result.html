@@ -1,0 +1,63 @@
+{% extends './layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "start",
+text: "Back"
+}) }}
+{% endblock %}
+{% block content %}
+
+<form action="./search_for_device" method="post">
+    <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="supplier-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                    Found 3 suppliers
+                </h1>
+            </legend>
+            <div class="nhsuk-hint" id="supplier-hint">
+                Select 1 option
+            </div>
+            <div class="nhsuk-radios" data-module="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="medibeard-solutions-ltd" name="supplier" type="radio"
+                        value="Medibeard Solutions Ltd">
+                    <label class="nhsuk-label nhsuk-radios__label" for="medibeard-solutions-ltd">
+                        Medibeard Solutions Ltd
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="medibeard-devices-inc" name="supplier" type="radio"
+                        value="MediBeard Devices Inc">
+                    <label class="nhsuk-label nhsuk-radios__label" for="medibeard-devices-inc">
+                        MediBeard Devices Inc
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="andys-bargain-medical-supplies" name="supplier" type="radio"
+                        value="Andy's bargain medical supplies">
+                    <label class="nhsuk-label nhsuk-radios__label" for="andys-bargain-medical-supplies">
+                        Andy's bargain medical supplies
+                    </label>
+                </div>
+            </div>
+            <details class="nhsuk-details nhsuk-u-margin-top-4">
+                <summary class="nhsuk-details__summary ">
+                    <span class="nhsuk-details__summary-text">
+                        Supplier not listed?
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>Double check spelling or try searching by supplier provided email address or device name.</p>
+                        </div>
+            </details>
+            <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </fieldset>
+    </div>
+    <form>
+
+
+{% endblock %}

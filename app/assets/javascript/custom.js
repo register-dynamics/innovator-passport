@@ -41,6 +41,19 @@ const dummyTrustNames = [
   "County Jason Trust",
 ];
 
+//General helpers
+function getRandomArrayIndex(array) {
+  const index =  Math.floor(Math.random()*array.length - 1);
+
+}
+function returnRandomSelection(array, num) {
+  let n = 0;
+  while (n < num ){
+
+  }
+  Math.floor(Math.random()*array.length + 1);
+}
+
 //custom data attributes
 //Helper to retrieve value from nested paths like 'users.default_role.email'
 function getNestedValue(obj, path) {

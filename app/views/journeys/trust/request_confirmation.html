@@ -1,0 +1,115 @@
+{% extends './layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "request_docs",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<form action="request_confirmation" method="post">
+    <div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-l">Assurance document request summary</h1>
+
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Supplier name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{data.supplier}}
+            </dd>
+                        <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+             Device name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Moustache Health Monitor App
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Requested documents
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              15 March 1984
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              8 Bridgewater Place<br>Leeds<br>LS11 5BZ
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> home address</span></a>
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="nhsuk-heading-m">
+          Medical details
+        </h2>
+
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Allergies
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              No allergies
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> allergies</span></a>
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Conditions
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Asthma <br> Disabilities, including physical and learning disabilities
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> conditions</span></a>
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="nhsuk-heading-m">
+          Now send your application
+        </h2>
+
+        <p>
+          Your details will be sent to Rose Medical Practice to begin your registration.
+        </p>
+
+        <form action="/form-handler" method="post" novalidate>
+          <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+            Confirm and send
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+ <form>
+{% endblock %}

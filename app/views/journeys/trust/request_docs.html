@@ -1,0 +1,64 @@
+{% extends './layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "search_for_device",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<form action="request_confirmation" method="post">
+    <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="select-forms">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <span class="nhsuk-caption-xl">Request assurance documents</span>
+                <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">Moustache Health Monitor App</h1>
+            </legend>
+            <div class="nhsuk-hint" id="select-forms">
+                Select all the documents you needed for your assurance processes.
+            </div>
+            <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="DTAC" name="assuranceForm" type="checkbox" value="DTAC">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example">
+                        DTAC <span class="nhsuk-u-secondary-text-colour">(Digital Technology Assessment Criteria)</span>
+                    </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="DPIA" name="assuranceForm" type="checkbox" value="DPIA">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="DPIA">
+                        DPIA <span class="nhsuk-u-secondary-text-colour">(Data Protection Impact Assessment)</span>
+                    </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="PAQ" name="assuranceForm" type="checkbox" value="DPIA">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="PAQ">
+                        PAQ <span class="nhsuk-u-secondary-text-colour">(Pre-Acquisition Questionnaire)</span>
+                    </label>
+                </div>
+                <div class="nhsuk-checkboxes__divider">or</div>
+                <div class="nhsuk-checkboxes__item nhsuk-u-frontend-not-supported-hidden">
+                    <input class="nhsuk-checkboxes__input" id="all-forms" name="assuranceForm" type="checkbox"
+                        value="all" data-behaviour="inclusive">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="assuranceForm">
+                        All of the above
+                    </label>
+                </div>
+                <details class="nhsuk-details nhsuk-u-margin-top-4">
+                    <summary class="nhsuk-details__summary">
+                        <span class="nhsuk-details__summary-text">
+                            Require additional documents?
+                        </span>
+                    </summary>
+                    <div class="nhsuk-details__text ">
+                        <p>You can make additional requests on the next page
+                    </div>
+                </details>
+            </div>
+            <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+                Continue
+            </button>
+        </fieldset>
+    </div>
+    <form>
+        {% endblock %}

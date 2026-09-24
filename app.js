@@ -7,13 +7,15 @@ const filters = require('./app/filters')
 const locals = require('./app/locals')
 const routes = require('./app/routes')
 
+
 const viewsPath = [
   'app/views/'
 ]
 
 const entryPoints = [
   'app/assets/sass/main.scss',
-  'app/assets/javascript/*.js'
+  'app/assets/javascript/*.js',
+  'app/views/**/*js'
 ]
 
 async function init() {

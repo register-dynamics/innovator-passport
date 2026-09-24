@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "../index",
+text: "Back"
+}) }}
+{% endblock %}
+{% block content %}
+
+<main class="nhsuk-main-wrapper">
+    <span class="nhsuk-caption-l">Moustache health monitor</span>
+    <h1 class="nhsuk-heading-xl">View additional questions</h1>
+    <p class="nhsuk-body-l">Before creating your own additional questions, please take a look at the ones from other trusts.</p>
+</main>
+
+{% endblock %}
+{% block bodyEnd %}
+{{ super() }}
+<script type="module" src="/assets/javascript/custom.js"></script>
+{% block pageScripts %}{% endblock %}
+{% endblock %}
