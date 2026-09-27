@@ -17,7 +17,7 @@ text: "Back"
             <div class="nhsuk-hint" id="select-forms">
                 Select all the documents you needed for your assurance processes.
             </div>
-            <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes" values="data.assuranceDocs">
                 <div class="nhsuk-checkboxes__item">
                     <input class="nhsuk-checkboxes__input" id="DTAC" name="assuranceForm" type="checkbox" value="DTAC">
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="example">
@@ -60,5 +60,5 @@ text: "Back"
             </button>
         </fieldset>
     </div>
-    <form>
-        {% endblock %}
+</form>
+{% endblock %}

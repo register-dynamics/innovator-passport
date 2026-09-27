@@ -1,0 +1,41 @@
+{% extends '../layout.html' %}
+
+{% block content %}
+<main>
+<form action="./supplier_search_result" method="post">
+    <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+                Submit assurance documents
+            </h1>
+        </legend>
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="email-address">
+                Email address
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email-address" name="addressLine1" type="text" autocomplete="address-line1">
+        </div>
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="reference-code">
+                Reference code
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-two-thirds" id="reference-code" name="addressLine2" type="text" autocomplete="address-line2">
+        </div>
+            <div class="nhsuk-u-margin-top-3">
+        <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    How to find your reference code
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <p> You will find the reference code in the email that you received from the NHS trust requesting
+                    assurance documents.</p>
+            </div>
+        </details>
+    </div>
+    </fieldset>
+</form>
+</main>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends '../layout.html' %}
+
+{% block beforeContent %}
+{{ backLink({
+href: "../../../index",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="maincontent">
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-two-thirds">
+                <h1 class="nhsuk-heading-xl">Submit assurance documents</h1>
+                <p>Use this service to share assurance documents for a medical device with an NHS trust.</p>
+
+                <h2 class="nhsuk-heading-l">Before you start</h2>
+                <p>You will need your:</p>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                    <li>Email address </li>
+                    <li>Unique reference code</li>
+                    <li><strong>All</strong> Requested documents</li>
+                </ul>
+
+                <details class="nhsuk-details">
+                    <summary class="nhsuk-details__summary">
+                        <span class="nhsuk-details__summary-text">
+                            How to find your unique reference code
+                        </span>
+                    </summary>
+                    <div class="nhsuk-details__text">
+                        <p>The reference code should be in the email request from the NHS trust above the link to this
+                            page.</p>
+                    </div>
+                </details>
+                <div class="nhsuk-inset-text">
+                    <span class="nhsuk-u-visually-hidden">Information: </span>
+                    <p>If you would like to save your progress, we recommend you create a <a href="#">Supplier account</a>.</p>
+                </div>
+
+
+                <a class="nhsuk-button" data-module="nhsuk-button" href="#" role="button" draggable="false">
+                    Start now
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
