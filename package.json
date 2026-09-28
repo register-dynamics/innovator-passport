@@ -9,10 +9,9 @@
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
   "dependencies": {
+    "govuk-frontend": "^6.5.1",
     "nhsuk-frontend": "^10.6.0",
     "nhsuk-prototype-kit": "^8.4.0"
-  },
-  "devDependencies": {
   },
   "engines": {
     "node": "^22.11.0 || ^24.11.0"
