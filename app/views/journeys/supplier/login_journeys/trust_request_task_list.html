@@ -1,0 +1,105 @@
+{% extends '../layout.html' %}
+
+{% block beforeContent %}
+{{ backLink({
+href: "./start",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<h1>Overview</h1>
+<p>Worthington and Greater Bryce South Trust have requested assurance documents for your Moustache health monitor app.
+</p>
+
+<h2>Requested files</h2>
+<p>Click on a file name below to view further information.  </p>
+<form action="./selected_file_task_list" method="post">
+    <div id="doc-status" class="nhsuk-card nhsuk-u-padding-4">
+    <ul class="nhsuk-task-list">
+        <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+            <div class="nhsuk-task-list__name-and-hint">
+                <a class="nhsuk-task-list__link nhsuk-link" href="#" aria-describedby="assurance-form-1-status">
+                    DTAC
+                </a>
+            </div>
+            <div class="nhsuk-task-list__status" id="assurance-form-1-status">
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    Awaiting file
+                </strong>
+            </div>
+        </li>
+        <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+            <div class="nhsuk-task-list__name-and-hint">
+                <a class="nhsuk-task-list__link nhsuk-link" href="#" aria-describedby="assurance-form-2-status">
+                    DPIA
+                </a>
+            </div>
+            <div class="nhsuk-task-list__status" id="assurance-form-2-status">
+                <strong class="nhsuk-tag nhsuk-tag--green">
+                    Uploaded
+                </strong>
+            </div>
+        </li>
+        <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+            <div class="nhsuk-task-list__name-and-hint">
+                <a class="nhsuk-task-list__link nhsuk-link" href="#" aria-describedby="assurance-form-3-status">
+                    PAQ
+                </a>
+            </div>
+            <div class="nhsuk-task-list__status" id="assurance-form-3-status">
+                <strong class="nhsuk-tag nhsuk-tag--green">
+                    Uploaded
+                </strong>
+            </div>
+        </li>
+        <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+            <div class="nhsuk-task-list__name-and-hint">
+                <a class="nhsuk-task-list__link nhsuk-link" href="#"
+                    aria-describedby="your-health-3-hint your-health-3-status">
+                    DPST (Data Security and Protection Toolkit)
+                </a>
+            </div>
+            <div class="nhsuk-task-list__status" id="assurance-form-3-status">
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    Awaiting file
+                </strong>
+            </div>
+        </li>
+    </ul>
+    </div>
+        <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Upload file
+                    </h1>
+                </legend>
+                <div class="nhsuk-hint" id="example-hint">
+                    Select one file to upload:
+                </div>
+                <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="example" name="example" type="checkbox"
+                            value="email">
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="example">
+                            DTAC
+                        </label>
+                    </div>
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox"
+                            value="phone">
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+                            DPST
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+            Continue
+        </button>
+</form>
+
+{% endblock %}

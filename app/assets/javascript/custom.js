@@ -43,15 +43,15 @@ const dummyTrustNames = [
 
 //General helpers
 function getRandomArrayIndex(array) {
-  const index =  Math.floor(Math.random()*array.length - 1);
-
+  const index =  Math.floor(Math.random()* (array.length));
+  return index;
 }
 function returnRandomSelection(array, num) {
+  let arrCopy = [...array];
   let n = 0;
   while (n < num ){
-
+    
   }
-  Math.floor(Math.random()*array.length + 1);
 }
 
 //custom data attributes
