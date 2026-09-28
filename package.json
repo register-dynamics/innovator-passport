@@ -11,7 +11,7 @@
   "dependencies": {
     "govuk-frontend": "^6.5.1",
     "nhsuk-frontend": "^10.6.0",
-    "nhsuk-prototype-kit": "^8.4.0"
+    "nhsuk-prototype-kit": "^8.5.0"
   },
   "engines": {
     "node": "^22.11.0 || ^24.11.0"
