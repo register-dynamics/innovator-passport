@@ -1,0 +1,101 @@
+{% extends './layout.html' %}
+{% block beforeContent %}
+{{ backLink({
+href: "request_docs",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}
+<form action="request_confirmation" method="post">
+    <div class="nhsuk-width-container">
+        <main class="nhsuk-main-wrapper" id="maincontent">
+            <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-two-thirds">
+
+                    <h1 class="nhsuk-heading-l">Assurance document request summary</h1>
+
+                    <dl class="nhsuk-summary-list">
+                        <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                                Supplier name
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                                {{data.supplier}}
+                            </dd>
+                            <dd class="nhsuk-summary-list__actions">
+                                <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden">device
+                                        name</span></a>
+                            </dd>
+                        </div>
+                        <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                                Device name
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                                Moustache Health Monitor App
+                            </dd>
+                            <dd class="nhsuk-summary-list__actions">
+                                <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden">device
+                                        name</span></a>
+                            </dd>
+                        </div>
+                        <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                                Requested documents
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                                <ul>
+                                    <li>DTAC <span class="nhsuk-u-secondary-text-colour">(Digital Technology Assessment
+                                            Criteria)</span></li>
+                                    <li>DPIA <span class="nhsuk-u-secondary-text-colour">(Data Protection Impact
+                                            Assessment)
+                                            Criteria)</span></li>
+                                    <li>PAQ <span class="nhsuk-u-secondary-text-colour">(Pre-Acquisition
+                                            Questionnaire)</span></li>
+                                </ul>
+
+                            </dd>
+
+                            <dd class="nhsuk-summary-list__actions">
+                                <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> Requested
+                                        documents</span></a>
+                            </dd>
+                        </div>
+                    </dl>
+                    <div class="nhsuk-form-group">
+                        <h1 class="nhsuk-label-wrapper">
+                            <label class="nhsuk-label nhsuk-label--l" for="additional-questions">
+                                Additional requests 
+                            </label>
+                        </h1>
+                        <p>Here you can ask further questions or request files not listed on the page before.</p>
+                        <div class="nhsuk-hint" id="additional-questions">
+                        </div>
+                        <textarea class="nhsuk-textarea" id="example" name="example" rows="5"
+                            aria-describedby="example-hint"></textarea>
+                    </div>
+
+
+                    <h2 class="nhsuk-heading-m">
+                        Send your assurance form request
+                    </h2>
+
+                    <p>
+                        Your details will be sent to the point of contact for {{data.supplier}}.
+                    </p>
+
+                    <form action="/form-handler" method="post" novalidate>
+                        <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+                            Confirm and send
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <form>
+        {% endblock %}
