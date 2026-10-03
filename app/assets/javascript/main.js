@@ -66,6 +66,8 @@ function renderStoredData() {
   });
 }
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   setupFormStorage();
   setupTableSelection();
