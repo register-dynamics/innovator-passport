@@ -4,22 +4,24 @@ const views = 'journeys/supplier/manage-assurance-information/version-1/'
 
 router.use((req, res, next) => {
   req.session.data.supplierProductAssurance ||= {
-    documentName: 'DTAC_Moustache_v3.2.pdf',
     productVersion: '3.2',
+  }
+  // Initialise section information for both new and existing prototype sessions.
+  req.session.data.supplierProductAssurance.c4 ||= {
+    api: 'Yes',
+    standards: 'Moustache provides REST APIs for exchanging patient information with external clinical systems. The APIs use HL7 FHIR where supported by the receiving system. API documentation is available to integration partners.',
     updatedDate: '14 January 2026'
   }
   res.locals.productAssurance = req.session.data.supplierProductAssurance
   next()
 })
 
-// Simulate a document update. No file content is uploaded or stored.
+// Reuse the existing save endpoint for the two editable C4 answers.
 router.post('/save-dtac', (req, res) => {
-  const record = res.locals.productAssurance
-  const version = (req.body.supplierProductDtacVersion || '').trim() || record.productVersion
-  const selectedName = (req.body.supplierProductDtacFile || '').trim()
+  const record = res.locals.productAssurance.c4
   Object.assign(record, {
-    documentName: selectedName ? selectedName.split(/[\\/]/).pop() : 'DTAC_Moustache_updated.pdf',
-    productVersion: version,
+    api: req.body.supplierProductC4Api === 'No' ? 'No' : 'Yes',
+    standards: req.body.supplierProductC4Standards || '',
     updatedDate: '3 October 2026',
     updated: true
   })
@@ -27,7 +29,7 @@ router.post('/save-dtac', (req, res) => {
 })
 
 router.get('/confirmation', (req, res) => {
-  if (!res.locals.productAssurance.updated) return res.redirect(base + '/assurance-information')
+  if (!res.locals.productAssurance.c4.updated) return res.redirect(base + '/dtac')
   res.render(views + 'confirmation')
 })
 

@@ -1,0 +1,23 @@
+{% extends 'journeys/supplier/manage-assurance-information/version-1/layout.html' %}
+{% set pageName = 'Update C4 – Interoperability criteria' %}
+{% set backHref = '/journeys/supplier/manage-assurance-information/version-1/c4' %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">Update C4 – Interoperability criteria</h1>
+<p><strong>Moustache Health Monitor App</strong><br>Product version: 3.2</p>
+<form action="/journeys/supplier/manage-assurance-information/version-1/save-dtac" method="post" novalidate>
+{{ radios({
+  idPrefix: "c4-api", name: "supplierProductC4Api",
+  fieldset: { legend: { text: "Does your product expose any Application Program Interfaces (API) or integration channels for other products relevant to the provision or administration of health or social care?", classes: "nhsuk-fieldset__legend--m" } },
+  items: [
+    { value: "Yes", text: "Yes", checked: productAssurance.c4.api == "Yes" },
+    { value: "No", text: "No", checked: productAssurance.c4.api == "No" }
+  ]
+}) }}
+{{ textarea({
+  id: "c4-standards", name: "supplierProductC4Standards",
+  label: { text: "If yes, please confirm that these APIs use appropriate international or industry standards for interoperability appropriate for the use case. Please list these and explain why they are appropriate." },
+  value: productAssurance.c4.standards, rows: 8
+}) }}
+{{ button({ text: "Save changes" }) }}
+</form>
+{% endblock %}

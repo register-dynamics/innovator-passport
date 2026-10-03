@@ -1,5 +1,73 @@
 {% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+
 {% set pageName = 'Manage health technology assurance' %}
+
 {% block journeyContent %}
-<h1 class="nhsuk-heading-l">Manage health technology assurance</h1><h2 class="nhsuk-heading-m">Respond to an assurance request</h2><p>View requests from NHS organisations and provide the information they need.</p>{% call insetText({}) %}<p><a href="/journeys/supplier/respond-to-assurance-request/version-1/pending-requests">{% if assurance.submitted %}1 request needs your response{% else %}2 requests need your response{% endif %}</a></p>{% endcall %}<h2 class="nhsuk-heading-m">Manage assurance information for a product</h2><p>View and update assurance information for your products.</p><p><a href="/journeys/supplier/manage-assurance-information/version-1/choose-product">View your products</a></p>
+
+<style>
+  .supplier-action-card {
+    border: 1px solid #d8dde0;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .supplier-action-card h2 {
+    margin-top: 0;
+  }
+
+  .supplier-action-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .request-count {
+    border-left: 4px solid #005eb8;
+    padding-left: 16px;
+    margin-top: 24px;
+  }
+</style>
+
+<h1 class="nhsuk-heading-l">
+  Manage health technology assurance
+</h1>
+
+<div class="supplier-action-card">
+
+  <h2 class="nhsuk-heading-m">
+    Respond to an assurance request
+  </h2>
+
+  <p>
+    View requests from NHS organisations and provide the information they need.
+  </p>
+
+  <p class="request-count">
+    <a href="/journeys/supplier/respond-to-assurance-request/version-1/pending-requests">
+      {% if assurance.submitted %}
+        1 request needs your response
+      {% else %}
+        2 requests need your response
+      {% endif %}
+    </a>
+  </p>
+
+</div>
+
+<div class="supplier-action-card">
+
+  <h2 class="nhsuk-heading-m">
+    Manage assurance information for a product
+  </h2>
+
+  <p>
+    View and update assurance information for your products.
+  </p>
+
+  <p>
+    <a href="/journeys/supplier/manage-assurance-information/version-1/choose-product">
+      View your products
+    </a>
+  </p>
+
+</div>
+
 {% endblock %}

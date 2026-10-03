@@ -1,0 +1,34 @@
+{% extends 'journeys/supplier/manage-assurance-information/version-1/layout.html' %}
+{% set pageName = 'C4 – Interoperability criteria' %}
+{% set backHref = '/journeys/supplier/manage-assurance-information/version-1/dtac' %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">C4 – Interoperability criteria</h1>
+<p><strong>Moustache Health Monitor App</strong><br>Product version: 3.2</p>
+<p>Review the interoperability information held for this product.</p>
+<section class="nhsuk-u-margin-bottom-6">
+<h2 class="nhsuk-heading-m">C4.1</h2>
+<p><strong>Does your product expose any Application Program Interfaces (API) or integration channels for other products relevant to the provision or administration of health or social care?</strong></p>
+<p>{{ productAssurance.c4.api }}</p>
+</section>
+<section class="nhsuk-u-margin-bottom-6">
+<h2 class="nhsuk-heading-m">C4.1.1</h2>
+<p><strong>If yes, please confirm that these APIs use appropriate international or industry standards for interoperability appropriate for the use case. Please list these and explain why they are appropriate.</strong></p>
+<p>{{ productAssurance.c4.standards or "Not provided" }}</p>
+</section>
+<section class="nhsuk-u-margin-bottom-6">
+<h2 class="nhsuk-heading-m">C4.2</h2>
+<p><strong>Is your product intended to share or receive data from national or local systems for managing or delivering patient care (e.g. clinical record systems, patient administration systems etc.) or for other administrative purposes where a patient identity is relevant (e.g. license management of a digital therapeutic)?</strong></p>
+<p>Yes</p>
+</section>
+<section class="nhsuk-u-margin-bottom-6">
+<h2 class="nhsuk-heading-m">C4.2.1</h2>
+<p><strong>Is your product capable of using the NHS number to identify patient data when exchanging data?</strong></p>
+<p>Yes</p>
+</section>
+<section class="nhsuk-u-margin-bottom-6">
+<h2 class="nhsuk-heading-m">C4.2.4</h2>
+<p><strong>If the product is to be used directly by patients, do you use NHS login to verify the identity of and authenticate the user?</strong></p>
+<p>Yes</p>
+</section>
+{{ button({ text: "Update this information", href: "/journeys/supplier/manage-assurance-information/version-1/update-c4" }) }}
+{% endblock %}

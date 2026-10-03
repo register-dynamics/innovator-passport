@@ -1,10 +1,83 @@
 {% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+
 {% set pageName = 'Assurance requests' %}
 {% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/start' %}
+
 {% block journeyContent %}
-<h1 class="nhsuk-heading-l">Assurance requests</h1>{% call card({ heading: { text: "Northshire NHS Foundation Trust", level: 2, size: "m" } }) %}
-{{ tag({ text: "Submitted" if assurance.submitted else "Response needed", classes: "nhsuk-tag--green" if assurance.submitted else "nhsuk-tag--blue" }) }}<p>Moustache Health Monitor App</p><h3 class="nhsuk-heading-s nhsuk-u-margin-top-4">Requested assurance information</h3><ul class="nhsuk-list nhsuk-list--bullet"><li>Clinical safety</li><li>Data protection</li><li>Interoperability</li></ul><p><a href="/journeys/supplier/respond-to-assurance-request/version-1/request-overview">View request<span class="nhsuk-u-visually-hidden"> from Northshire NHS Foundation Trust</span></a></p>
-{% endcall %}{% call card({ heading: { text: "Worthington NHS Foundation Trust", level: 2, size: "m" } }) %}
-{{ tag({ text: "Response needed", classes: "nhsuk-tag--blue" }) }}<p>Moustache Health Monitor App</p><h3 class="nhsuk-heading-s nhsuk-u-margin-top-4">Requested assurance information</h3><ul class="nhsuk-list nhsuk-list--bullet"><li>Cyber security</li><li>Medical device compliance</li></ul><p><a href="#">View request<span class="nhsuk-u-visually-hidden"> from Worthington NHS Foundation Trust</span></a></p>
+
+<h1 class="nhsuk-heading-l">Assurance requests</h1>
+
+{% call card({
+  heading: {
+    text: "Northshire NHS Foundation Trust",
+    level: 2,
+    size: "m"
+  }
+}) %}
+
+<p class="nhsuk-u-margin-bottom-4">
+  {{ tag({
+    text: "Submitted" if assurance.submitted else "Response needed",
+    classes: "nhsuk-tag--green" if assurance.submitted else "nhsuk-tag--blue"
+  }) }}
+</p>
+
+<p class="nhsuk-u-margin-bottom-4">
+  <strong>Moustache Health Monitor App</strong><br>
+  <span class="nhsuk-body-s">Version 3.2</span>
+</p>
+
+<p class="nhsuk-u-margin-bottom-4">
+  <strong>Requested:</strong>
+  Clinical safety, data protection and interoperability
+</p>
+
+<p class="nhsuk-u-margin-bottom-0">
+  <a href="/journeys/supplier/respond-to-assurance-request/version-1/request-overview">
+    View request
+    <span class="nhsuk-u-visually-hidden">
+      from Northshire NHS Foundation Trust
+    </span>
+  </a>
+</p>
+
 {% endcall %}
+
+
+{% call card({
+  heading: {
+    text: "Worthington NHS Foundation Trust",
+    level: 2,
+    size: "m"
+  }
+}) %}
+
+<p class="nhsuk-u-margin-bottom-4">
+  {{ tag({
+    text: "Response needed",
+    classes: "nhsuk-tag--blue"
+  }) }}
+</p>
+
+<p class="nhsuk-u-margin-bottom-4">
+  <strong>Moustache Health Monitor App</strong><br>
+  <span class="nhsuk-body-s">Version 3.2</span>
+</p>
+
+<p class="nhsuk-u-margin-bottom-4">
+  <strong>Requested:</strong>
+  Clinical safety, data protection and technical security
+</p>
+
+<p class="nhsuk-u-margin-bottom-0">
+  <a href="#" onclick="return false;">
+    View request
+    <span class="nhsuk-u-visually-hidden">
+      from Worthington NHS Foundation Trust
+    </span>
+  </a>
+</p>
+
+{% endcall %}
+
 {% endblock %}
