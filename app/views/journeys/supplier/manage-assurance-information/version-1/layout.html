@@ -1,0 +1,7 @@
+{% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+{% block footer %}
+  {% set metaAboutHtml %}
+    <p class="nhsuk-body-s">Built on <a href="https://prototype-kit.service-manual.nhs.uk/updates/">NHS prototype kit {{ prototypeKitVersion }}</a> and <a href="https://github.com/nhsuk/nhsuk-frontend/releases/">NHS.UK frontend {{ nhsukFrontendVersion }}</a></p>
+  {% endset %}
+  {{ footer({ meta: { items: [{ href: "/journeys/supplier/respond-to-assurance-request/version-1/start", text: "Home" }], html: metaAboutHtml } }) }}
+{% endblock %}

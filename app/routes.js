@@ -38,4 +38,14 @@ router.post(
   },
 );
 
+router.use(
+  "/journeys/supplier/respond-to-assurance-request/version-1",
+  require("./routes/supplier-assurance"),
+);
+
+router.use(
+  "/journeys/supplier/manage-assurance-information/version-1",
+  require("./routes/supplier-product-assurance"),
+);
+
 module.exports = router;

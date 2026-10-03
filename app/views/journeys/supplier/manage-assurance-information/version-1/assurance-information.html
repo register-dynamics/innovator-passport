@@ -1,0 +1,27 @@
+{% extends 'journeys/supplier/manage-assurance-information/version-1/layout.html' %}
+{% set pageName = 'Assurance information' %}
+{% set backHref = '/journeys/supplier/manage-assurance-information/version-1/choose-product' %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">Assurance information</h1>
+<h2 class="nhsuk-heading-m">Moustache Health Monitor App</h2>
+<p>Product version: 3.2</p>
+<p>Information you add here may be reused when responding to future assurance requests for this product.</p>
+<section class="nhsuk-u-margin-bottom-6">
+  <h2 class="nhsuk-heading-m">DTAC v2.0</h2>
+  <p>Current document: {{ productAssurance.documentName }}</p>
+  <p>Last updated: {{ productAssurance.updatedDate }}</p>
+  <p>Applies to product version: {{ productAssurance.productVersion }}</p>
+  <p><a href="/journeys/supplier/manage-assurance-information/version-1/dtac">View or update<span class="nhsuk-u-visually-hidden"> DTAC v2.0</span></a></p>
+</section>
+<section class="nhsuk-u-margin-bottom-6">
+  <h2 class="nhsuk-heading-m">Clinical safety evidence</h2>
+  <ul class="nhsuk-list nhsuk-list--bullet"><li>Clinical Safety Case Report</li><li>Hazard Log</li></ul>
+  <p>Last updated: 12 September 2026</p>
+  <p><a href="#">View or update<span class="nhsuk-u-visually-hidden"> clinical safety evidence</span></a></p>
+</section>
+<section class="nhsuk-u-margin-bottom-6">
+  <h2 class="nhsuk-heading-m">Product DPIA</h2>
+  <p>Last updated: 3 February 2026</p>
+  <p><a href="#">View or update<span class="nhsuk-u-visually-hidden"> product DPIA</span></a></p>
+</section>
+{% endblock %}

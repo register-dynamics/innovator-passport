@@ -1,0 +1,21 @@
+{% extends 'journeys/supplier/manage-assurance-information/version-1/layout.html' %}
+{% set pageName = 'DTAC v2.0' %}
+{% set backHref = '/journeys/supplier/manage-assurance-information/version-1/assurance-information' %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">DTAC v2.0</h1>
+{{ summaryList({ rows: [
+ { key: { text: "Current document" }, value: { text: productAssurance.documentName } },
+ { key: { text: "Product version" }, value: { text: productAssurance.productVersion } },
+ { key: { text: "Last updated" }, value: { text: productAssurance.updatedDate } }
+] }) }}
+<p><a class="nhsuk-link" role="link" aria-disabled="true">View document</a></p>
+<h2 class="nhsuk-heading-m">Update this DTAC</h2>
+<p>Upload a newer version of the DTAC for this product.</p>
+<form action="/journeys/supplier/manage-assurance-information/version-1/save-dtac" method="post" novalidate>
+  {{ fileUpload({ id: "product-dtac-file", name: "supplierProductDtacFile", label: { text: "Upload DTAC" } }) }}
+  {{ input({ id: "product-dtac-version", name: "supplierProductDtacVersion", label: { text: "Which product version does this DTAC apply to?" }, value: productAssurance.productVersion, classes: "nhsuk-input--width-10" }) }}
+  {{ button({ text: "Save update" }) }}
+</form>
+<p><a href="/journeys/supplier/manage-assurance-information/version-1/assurance-information">Cancel and return to assurance information</a></p>
+
+{% endblock %}

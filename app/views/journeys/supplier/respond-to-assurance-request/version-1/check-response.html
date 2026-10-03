@@ -1,0 +1,38 @@
+{% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+{% set pageName = 'Check your response' %}
+{% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/request-overview' %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">Check your response</h1><p>Northshire NHS Foundation Trust<br>Moustache Health Monitor App — version 3.2</p><h2 class="nhsuk-heading-m">Clinical safety</h2>
+{{ tag({ text: "Ready to submit", classes: "nhsuk-tag--blue" }) }}
+{% set submittedInformation %}<ul class="nhsuk-list nhsuk-list--bullet"><li>Clinical Safety Case Report</li><li>Hazard Log</li></ul>{% if assurance.differentClinical %}<p>Different evidence provided</p>{% if assurance.clinicalNotes %}<p>{{ assurance.clinicalNotes }}</p>{% endif %}{% endif %}{% endset %}
+{{ summaryList({ classes: "nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6", rows: [
+  { key: { text: "DTAC section" }, value: { text: "DTAC section C1 – Clinical safety" } },
+  { key: { text: "Information" }, value: { html: submittedInformation }, actions: { items: [{
+    href: "/journeys/supplier/respond-to-assurance-request/version-1/clinical-safety",
+    text: "Change", visuallyHiddenText: "clinical safety response"
+  }] } }
+] }) }}
+<h2 class="nhsuk-heading-m">Data protection</h2>
+{{ tag({ text: "Ready to submit", classes: "nhsuk-tag--blue" }) }}
+{% set submittedInformation %}<p>Northshire data flow information</p><p>{{ assurance.protectionNotes or "Not provided" }}</p>{% if data.dataProtectionFile %}<p>Supporting document: {{ data.dataProtectionFile }}</p>{% endif %}{% endset %}
+{{ summaryList({ classes: "nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6", rows: [
+  { key: { text: "DTAC section" }, value: { text: "DTAC section C2 – Data protection" } },
+  { key: { text: "Information" }, value: { html: submittedInformation }, actions: { items: [{
+    href: "/journeys/supplier/respond-to-assurance-request/version-1/data-protection",
+    text: "Change", visuallyHiddenText: "data protection response"
+  }] } }
+] }) }}
+<h2 class="nhsuk-heading-m">Interoperability</h2>
+{{ tag({ text: "Ready to submit", classes: "nhsuk-tag--blue" }) }}
+{% set submittedInformation %}<p>Existing DTAC interoperability information</p><p>Northshire integration information</p><p>{{ assurance.integration or "Not provided" }}</p>{% endset %}
+{{ summaryList({ classes: "nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6", rows: [
+  { key: { text: "DTAC section" }, value: { text: "DTAC section C4 – Interoperability criteria" } },
+  { key: { text: "Information" }, value: { html: submittedInformation }, actions: { items: [{
+    href: "/journeys/supplier/respond-to-assurance-request/version-1/interoperability",
+    text: "Change", visuallyHiddenText: "interoperability response"
+  }] } }
+] }) }}
+<h2 class="nhsuk-heading-m">Submit your response</h2><p>Northshire NHS Foundation Trust will review the information you provide and make its own assurance assessment.</p><form action="/journeys/supplier/respond-to-assurance-request/version-1/submit-response" method="post" novalidate>
+{{ button({ text: "Submit response" }) }}
+</form>
+{% endblock %}

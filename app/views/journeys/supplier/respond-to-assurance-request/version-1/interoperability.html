@@ -1,0 +1,13 @@
+{% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+{% set pageName = 'DTAC section C4 – Interoperability criteria' %}
+{% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/request-overview' %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">DTAC section C4 – Interoperability criteria</h1><p>Northshire NHS Foundation Trust has requested interoperability information.</p><h2 class="nhsuk-heading-m">Existing information</h2><p>You previously provided interoperability information for Moustache Health Monitor App.</p><p>DTAC section C4 – Interoperability criteria<br>Last updated: 4 June 2026</p><p><a class="nhsuk-link" role="link" aria-disabled="true">View existing DTAC interoperability information</a></p><h2 class="nhsuk-heading-m">Information needed for Northshire NHS Foundation Trust</h2><form action="/journeys/supplier/respond-to-assurance-request/version-1/save-interoperability" method="post" novalidate>
+{{ textarea({
+ id: "northshire-integration", name: "supplierNorthshireIntegration",
+ label: { text: "How will Moustache Health Monitor App integrate with Northshire NHS Foundation Trust's systems?" },
+ hint: { text: "Include any systems, interfaces or dependencies that are relevant to this deployment." },
+ value: assurance.integration
+}) }}{{ button({ text: "Save and continue" }) }}
+</form>
+{% endblock %}
