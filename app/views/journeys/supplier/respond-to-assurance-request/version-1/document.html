@@ -1,0 +1,5 @@
+{% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+{% set pageName = documentTitle %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">{{ documentTitle }}</h1><p>Example document for this research prototype.</p><p>Moustache Health Monitor App<br>Product version 3.2</p><p>Last updated: {{ documentDate }}</p><h2 class="nhsuk-heading-m">Document content</h2><p>{{ documentContent }}</p><p>This example evidence is provided for review. Northshire NHS Foundation Trust will make its own assurance assessment.</p><p><a href="{{ backHref }}">Return to {{ documentReturnLabel }}</a></p>
+{% endblock %}

@@ -1,0 +1,184 @@
+{% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+
+{% set pageName = 'Assurance request from Northshire NHS Foundation Trust' %}
+{% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/pending-requests' %}
+
+{% block journeyContent %}
+
+<style>
+  .assurance-request-card {
+    border: 1px solid #d8dde0;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .assurance-request-card h2 {
+    margin-top: 0;
+  }
+
+  .assurance-request-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .assurance-request-meta {
+    color: #425563;
+  }
+</style>
+
+<h1 class="nhsuk-heading-l">
+  Assurance request from Northshire NHS Foundation Trust
+</h1>
+
+{{ summaryList({
+  rows: [
+    {
+      key: { text: "Product" },
+      value: { text: "Moustache Health Monitor App" }
+    },
+    {
+      key: { text: "Product version" },
+      value: { text: "3.2" }
+    },
+    {
+      key: { text: "NHS contact" },
+      value: { html: "Sarah Jones<br>Digital Assurance Lead" }
+    }
+  ]
+}) }}
+
+{% if assurance.submitted %}
+  <p>
+    {{ tag({
+      text: "Submitted",
+      classes: "nhsuk-tag--green"
+    }) }}
+  </p>
+{% endif %}
+
+<h2 class="nhsuk-heading-m">Information requested</h2>
+
+<p>
+  Northshire NHS Foundation Trust has requested assurance information
+  for this product.
+</p>
+
+
+<div class="assurance-request-card">
+
+  <h2 class="nhsuk-heading-m">Clinical safety</h2>
+
+  <p>
+    {{ tag({
+      text: "Completed" if assurance.clinical else "Response needed",
+      classes: "nhsuk-tag--green" if assurance.clinical else "nhsuk-tag--blue"
+    }) }}
+  </p>
+
+  <p class="assurance-request-meta">
+    DTAC section C1
+  </p>
+
+  <p>
+    <strong>Clinical Safety Case Report and Hazard Log</strong>
+  </p>
+
+  <p>
+    You already have evidence for this product that may be relevant
+    to this request.
+  </p>
+
+  {% if not assurance.submitted %}
+    <p>
+      <a href="/journeys/supplier/respond-to-assurance-request/version-1/clinical-safety">
+        {% if assurance.clinical %}
+          Change clinical safety response
+        {% else %}
+          Review existing evidence
+        {% endif %}
+      </a>
+    </p>
+  {% endif %}
+
+</div>
+
+
+<div class="assurance-request-card">
+
+  <h2 class="nhsuk-heading-m">Data protection</h2>
+
+  <p>
+    {{ tag({
+      text: "Completed" if assurance.protection else "Response needed",
+      classes: "nhsuk-tag--green" if assurance.protection else "nhsuk-tag--blue"
+    }) }}
+  </p>
+
+  <p class="assurance-request-meta">
+    DTAC section C2
+  </p>
+
+  <p>
+    Northshire NHS Foundation Trust needs additional information
+    to complete its local Data Protection Impact Assessment.
+  </p>
+
+  {% if not assurance.submitted %}
+    <p>
+      <a href="/journeys/supplier/respond-to-assurance-request/version-1/data-protection">
+        {% if assurance.protection %}
+          Change data protection response
+        {% else %}
+          Provide information
+        {% endif %}
+      </a>
+    </p>
+  {% endif %}
+
+</div>
+
+
+<div class="assurance-request-card">
+
+  <h2 class="nhsuk-heading-m">Interoperability</h2>
+
+  <p>
+    {{ tag({
+      text: "Completed" if assurance.interoperability else "Response needed",
+      classes: "nhsuk-tag--green" if assurance.interoperability else "nhsuk-tag--blue"
+    }) }}
+  </p>
+
+  <p class="assurance-request-meta">
+    DTAC section C4
+  </p>
+
+  <p>
+    Existing product information can be reused, but Northshire NHS Foundation Trust
+    also needs information about its local integration.
+  </p>
+
+  {% if not assurance.submitted %}
+    <p>
+      <a href="/journeys/supplier/respond-to-assurance-request/version-1/interoperability">
+        {% if assurance.interoperability %}
+          Change interoperability response
+        {% else %}
+          Review and respond
+        {% endif %}
+      </a>
+    </p>
+  {% endif %}
+
+</div>
+
+
+{% if assurance.clinical and assurance.interoperability and assurance.protection and not assurance.submitted %}
+
+  {{ button({
+    text: "Check your response",
+    href: "/journeys/supplier/respond-to-assurance-request/version-1/check-response"
+  }) }}
+
+{% endif %}
+
+{% endblock %}

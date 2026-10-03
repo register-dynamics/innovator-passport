@@ -1,0 +1,143 @@
+{% extends 'journeys/supplier/manage-assurance-information/version-1/layout.html' %}
+
+{% set pageName = 'Assurance information' %}
+{% set backHref = '/journeys/supplier/manage-assurance-information/version-1/choose-product' %}
+
+{% block journeyContent %}
+
+<style>
+  .assurance-card {
+    border: 1px solid #d8dde0;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .assurance-card h2 {
+    margin-top: 0;
+  }
+
+  .assurance-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .product-heading {
+    margin-bottom: 4px;
+  }
+
+  .product-version {
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+
+  .evidence-item {
+    border-top: 1px solid #d8dde0;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+
+  .evidence-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .evidence-item p {
+    margin-bottom: 0;
+  }
+</style>
+
+<h1 class="nhsuk-heading-l">
+  Assurance information
+</h1>
+
+<h2 class="nhsuk-heading-m product-heading">
+  Moustache Health Monitor App
+</h2>
+
+<p class="product-version">
+  Version 3.2
+</p>
+
+<p>
+  Information held here may be reused when responding to future assurance requests for this product.
+</p>
+
+
+<div class="assurance-card">
+
+  <h2 class="nhsuk-heading-m">
+    DTAC information
+  </h2>
+
+  <p>
+    DTAC v2.0 information is available for this product and version.
+  </p>
+
+  <p>
+    <strong>Last updated:</strong>
+    {{ productAssurance.c4.updatedDate }}
+  </p>
+
+  <p>
+    <a href="/journeys/supplier/manage-assurance-information/version-1/dtac">
+      View or update DTAC information
+    </a>
+  </p>
+
+</div>
+
+
+<div class="assurance-card">
+
+  <h2 class="nhsuk-heading-m">
+    Supporting evidence
+  </h2>
+
+  <p>
+    Documents that support assurance information for this product and version.
+  </p>
+
+
+  <div class="evidence-item">
+
+    <h3 class="nhsuk-heading-s">
+      Clinical Safety Case Report
+    </h3>
+
+    <p>
+      <strong>Last updated:</strong>
+      12 September 2026
+    </p>
+
+  </div>
+
+
+  <div class="evidence-item">
+
+    <h3 class="nhsuk-heading-s">
+      Hazard Log
+    </h3>
+
+    <p>
+      <strong>Last updated:</strong>
+      12 September 2026
+    </p>
+
+  </div>
+
+
+  <div class="evidence-item">
+
+    <h3 class="nhsuk-heading-s">
+      Product DPIA
+    </h3>
+
+    <p>
+      <strong>Last updated:</strong>
+      3 February 2026
+    </p>
+
+  </div>
+
+</div>
+
+{% endblock %}

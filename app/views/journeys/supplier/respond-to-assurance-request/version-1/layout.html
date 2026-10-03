@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content nhsuk-body-s">
+    {{ tag({ text: "Alpha", classes: "govuk-phase-banner__content__tag" }) }}
+    <span class="govuk-phase-banner__text">This is a new service.</span>
+  </p>
+</div>
+{% if backHref %}{{ backLink({ href: backHref, text: "Back" }) }}{% endif %}
+{% endblock %}
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    {% block journeyContent %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+  {% set metaAboutHtml %}
+    <p class="nhsuk-body-s">Built on <a class="nhsuk-footer__list-item-link" href="https://prototype-kit.service-manual.nhs.uk/updates/">NHS prototype kit {{ prototypeKitVersion }}</a> and <a class="nhsuk-footer__list-item-link" href="https://github.com/nhsuk/nhsuk-frontend/releases/">NHS.UK frontend {{ nhsukFrontendVersion }}</a></p>
+  {% endset %}
+
+  {{ footer({
+    meta: {
+      items: [
+        {
+          href: "/",
+          text: "Home"
+        },
+        {
+          href: "/journeys/supplier/respond-to-assurance-request/version-1/reset",
+          text: "Reset data"
+        }
+      ],
+      html: metaAboutHtml
+    }
+  }) }}
+{% endblock %}

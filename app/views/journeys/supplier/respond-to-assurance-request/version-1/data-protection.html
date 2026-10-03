@@ -1,0 +1,25 @@
+{% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+{% set pageName = 'DTAC section C2 – Data protection' %}
+{% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/request-overview' %}
+{% block journeyContent %}
+<h1 class="nhsuk-heading-l">DTAC section C2 – Data protection</h1>
+<p>Northshire NHS Foundation Trust needs additional information to complete its local Data Protection Impact Assessment.</p>
+<form action="/journeys/supplier/respond-to-assurance-request/version-1/save-data-protection" method="post" novalidate>
+  <h2 class="nhsuk-heading-m">Information needed for this deployment</h2>
+  {{ textarea({
+    id: "data-protection-notes",
+    name: "supplierProtectionNotes",
+    label: { text: "How will patient data flow between Moustache Health Monitor App and Northshire NHS Foundation Trust's systems?" },
+    hint: { text: "Include any differences from the data flows already described in your product DPIA." },
+    value: assurance.protectionNotes
+  }) }}
+  <h2 class="nhsuk-heading-m">Supporting document</h2>
+  <p>You can upload a data flow diagram or other supporting information.</p>
+  {{ fileUpload({
+    id: "data-protection-file",
+    name: "dataProtectionFile",
+    label: { text: "Supporting document (optional)" }
+  }) }}
+  {{ button({ text: "Save and continue" }) }}
+</form>
+{% endblock %}
