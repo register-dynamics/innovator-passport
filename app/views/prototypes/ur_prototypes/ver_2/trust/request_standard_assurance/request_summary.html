@@ -1,0 +1,123 @@
+{% extends "prototypes/ur_prototypes/ver_2/layout.html" %}
+{% block serviceName %}Assure a medical device {% endblock %}
+
+{% block beforeContent %}
+{{ backLink({
+href: "./request_standard_assurance",
+text: "Back"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">Moustache health monitor app (v 3.1.4)</span>
+    Request summary
+</h1>
+<p class="nhsuk-body-l">You are requesting the following standard assurance documents from MediBeard UK</p>
+<dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Pre-acquisition Questionnaire (PAQ)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            Latest version (v2.0)
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link" href="#">Cancel<span class="nhsuk-u-visually-hidden"> name</span></a>
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Data protection impact assessment (DPIA)
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            Latest version (v3.0)
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link" href="#">Cancel<span class="nhsuk-u-visually-hidden"> date of birth</span></a>
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Data Security and Protection Toolkit
+            (DSPT)
+            </h4>
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            version (v8)
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link" href="#">Cancel<span class="nhsuk-u-visually-hidden"> contact information</span></a>
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Penetration test report
+        </dt>
+        <dd class="nhsuk-summary-list__actions">
+            <p></p>
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a class="nhsuk-link" href="#">Cancel<span class="nhsuk-u-visually-hidden"> contact details</span></a>
+        </dd>
+    </div>
+</dl>
+<h2 class="nhsuk-heading-l">Request updated documents</h2>
+<p class="nhsuk-body-m">The following requested assurance documents are already available on the file hub and are still
+    current as of today. If these documents do not meet your organisational standards or you need a more recent version
+    you can send an update request.</p>
+<div class="nhsuk-u-margin-bottom-3 red-card">
+    <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+        data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+        <div class="nhsuk-grid-column-two-thirds">
+            <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                <input class="nhsuk-checkboxes__input " id="update-request-0" name="standardDocs" type="checkbox"
+                    value="right">
+                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                    <div name="standard-doc">
+                        <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Digitial Technology Assessment Criteria
+                            (DTAC)
+                        </h4>
+                        <p class="nhsuk-body-m nhsuk-hint nhsuk-u-margin-top-0">Version 2 for NHS</p>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="nhsuk-grid-column-one-third">
+            <button class="nhsuk-button nhsuk-button--small nhsuk-u-margin-top-2" style="background-color:#005eb8 ;"
+                data-module="nhsuk-button" type="submit">
+                View
+            </button>
+        </div>
+    </div>
+</div>
+<div class="nhsuk-form-group nhsuk-form-group--error" style="display:none" id="update-reason">
+    <label class="nhsuk-label" for="example-error">
+        Please provide a reason for requesting an updated document
+    </label>
+    <textarea class="nhsuk-textarea nhsuk-textarea--error nhsuk-hint" id="example-error" name="exampleError" rows="3"
+        aria-describedby="example-error-error">e.g. 'Half the questions have not been answered.'</textarea>
+</div>
+        <button class="nhsuk-button nhsuk-u-margin-top-6" data-module="nhsuk-button" type="submit">
+  Confirm and submit
+</button>
+
+</form>
+<script>
+    const checkbox = document.getElementById("update-request-0");
+    const textbox = document.getElementById("update-reason")
+
+    function toggleTextbox() {
+        if (checkbox.checked) {
+            textbox.style.display = "block";
+        } else {
+            textbox.style.display = "none";
+        }
+    }
+    toggleTextbox();
+    checkbox.addEventListener('change', toggleTextbox);
+</script>
+
+
+{% endblock %}

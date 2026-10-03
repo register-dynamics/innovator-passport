@@ -1,0 +1,196 @@
+{% extends "prototypes/ur_prototypes/ver_2/layout.html" %}
+{% block serviceName %}Assure a medical device {% endblock %}
+
+{% block beforeContent %}
+{{ backLink({
+href: "../start",
+text: "Back"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">Moustache health monitor app (v 3.1.4)</span>
+    Request standard assurance documents
+</h1>
+<p class="nhsuk-body-l">Select the information you need from the supplier.
+    Some assurance information is already available and can be viewed before you request it again.</p>
+<form action="request_summary">
+    <div class="nhsuk-u-margin-bottom-3 green-card">
+        <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">DCB 0129 Clinical Risk Management System
+                            </h4>
+                            <p class="nhsuk-body-m nhsuk-hint nhsuk-u-margin-top-0">Latest version (v1.0.2)</p>
+                            <p class="nhsuk-body-m nhsuk-u-margin-bottom-0">Supplier assurance information available.
+                            </p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="nhsuk-grid-column-one-third">
+                <button class="nhsuk-button nhsuk-button--small nhsuk-u-margin-top-2" style="background-color:#005eb8 ;"
+                    data-module="nhsuk-button" type="submit">
+                    View
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div class="nhsuk-u-margin-bottom-3 green-card">
+        <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Digitial Technology Assessment Criteria
+                                (DTAC)
+                            </h4>
+                            <p class="nhsuk-body-m nhsuk-hint nhsuk-u-margin-top-0">Version 2 for NHS</p>
+                            <p class="nhsuk-body-m nhsuk-u-margin-bottom-0">Supplier assurance information available.
+                                <br>Does not include supporting
+                                documents.</br></p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="nhsuk-grid-column-one-third">
+                <button class="nhsuk-button nhsuk-button--small nhsuk-u-margin-top-2" style="background-color:#005eb8 ;"
+                    data-module="nhsuk-button" type="submit">
+                    View
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="nhsuk-u-margin-bottom-3 green-card">
+        <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Pre-acquisition Questionnaire (PAQ)
+                            </h4>
+                            <p class="nhsuk-body-m nhsuk-hint nhsuk-u-margin-top-0">Latest version (v2.0)</p>
+                            <p
+                                class="nhsuk-body-m nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0 nhsuk-u-margin-bottom-0">
+                                Supplier assurance information available. <br>Expires in 2 months</br></p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="nhsuk-grid-column-one-third">
+                <button class="nhsuk-button nhsuk-button--small nhsuk-u-margin-top-2" style="background-color:#005eb8 ;"
+                    data-module="nhsuk-button" type="submit">
+                    View
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="nhsuk-u-margin-bottom-3 grey-card">
+        <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Data protection impact assessment (DPIA)
+                            </h4>
+                            <p class="nhsuk-body-m nhsuk-hint nhsuk-u-margin-bottom-0">Latest version (v3.0)</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nhsuk-u-margin-bottom-3 grey-card">
+        <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Data Security and Protection Toolkit
+                                (DSPT)
+                            </h4>
+                            <p class="nhsuk-body-m nhsuk-hint nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-0">Latest
+                                version (v8)</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nhsuk-u-margin-bottom-3 grey-card">
+        <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Penetration test report
+                            </h4>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nhsuk-u-margin-bottom-3 grey-card">
+        <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="example-inline">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Cyber Essentials certificate
+                            </h4>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="nhsuk-heading-s nhsuk-u-margin-top-6">Or</h2>
+    <div class="nhsuk-checkboxes nhsuk-checkboxes--inline nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4"
+            data-module="nhsuk-checkboxes" name="standard-assurance-doc">
+            <div class="nhsuk-grid-column-two-thirds nhsuk-u-padding-left-0">
+                <div class="nhsuk-checkboxes__item" style="max-width: 100%;">
+                    <input class="nhsuk-checkboxes__input " id="example-inline" name="standardDocs" type="checkbox"
+                        value="right" data-behaviour="inclusive">
+                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-padding-top-0" for="standard-doc">
+                        <div name="standard-doc">
+                            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Select all
+                            </h4>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="nhsuk-button nhsuk-u-margin-top-6" data-module="nhsuk-button" type="submit">
+  Continue
+</button>
+
+</form>
+
+{% endblock %}
