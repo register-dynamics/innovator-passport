@@ -10,6 +10,35 @@ text: "Back"
 
 
 {% block content %}
+<h1 class="nhsuk-heading-xl">
+    <span class="nhsuk-caption-l">Moustache health monitor app (v 3.1.4)</span>
+    Request additional assurance information
+</h1>
+<p class="nhsuk-body-l">Choose how you want to ask questions specific to your organisational or local needs.</p>
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset">
+    <div class="nhsuk-radios" data-module="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints" name="exampleHints" type="radio" value="mobile" aria-describedby="example-hints-item-hint">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+          Upload a file
+          </label>
+        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-item-hint">
+          Upload or re-use question files from your organisation's file hub.
+        </div>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="landline" aria-describedby="example-hints-2-item-hint">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+          Add questions individually
+        </label>
+        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+          We will call you to give you a 6 digit security code
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
 
 
 {% endblock %}
