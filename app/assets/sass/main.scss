@@ -42,27 +42,53 @@
   margin: 0px;
 }
 .urgent-inset .inset-title {
-  margin-bottom:24px;
+  margin-bottom: 24px;
 }
 
 .assurance-tag {
-margin-top:0.6em;
+  margin-top: 0.6em;
 }
 
 .green-card {
-background-color:#cce5d8; 
-border-radius: 10px; 
-border-color: #004c23;
+  background-color: #cce5d8;
+  border-radius: 10px;
+  border-color: #004c23;
 }
 
 .grey-card {
-background-color:#d8dde0 ; 
-border-radius: 10px; 
-border-color: #004c23;
+  background-color: #d8dde0;
+  border-radius: 10px;
+  border-color: #004c23;
 }
 
 .red-card {
-background-color: #f7d4d1 ; 
-border-radius: 10px; 
-border-color: #004c23;
+  background-color: #f7d4d1;
+  border-radius: 10px;
+  border-color: #004c23;
+}
+
+.grey-bottom-border {
+  border-bottom: solid;
+  border-bottom-color: #d8dde0;
+  max-width: 80%;
+}
+
+.chat-bubble--blue {
+  background-color: #d2e2f1;
+  border-radius: 10px;
+  border-color: #004c23;
+  padding-left: 1em;
+  padding-top: 0.8em;
+  padding-right: 1em;
+  padding-bottom: 0.2em;
+}
+.chat-bubble--reply {
+  display: inline-block;
+  background-color: #cecece;
+  border-radius: 10px;
+  border-color: #004c23;
+  padding:1em;
+}
+.question-container {
+  padding: 1em;
 }
