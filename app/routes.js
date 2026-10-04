@@ -5,6 +5,24 @@ const router = express.Router();
 
 // Add your routes here - above the module.exports line
 
+router.post("/additional-request-choice", function (req, res) {
+  const choice = req.session.data.additionalAssurance;
+  console.log(`choice is ${choice}`);
+
+  if (choice === "uploadFile") {
+    console.log(`choice is ${choice}...redirecting`);
+    res.redirect("/prototypes/ur_prototypes/ver_2/trust/request_additional_assurance/upload_file/submit_question_files");
+  }
+  else if (choice === "Add questions individually") {
+    console.log(`choice is ${choice}...redirecting`);
+    res.redirect("/prototypes/ur_prototypes/ver_2/trust/request_additional_assurance/ask_individual_questions/question_wizard");
+  }
+    else if (choice === "questionBank") {
+    console.log(`choice is ${choice}...redirecting`);
+    res.redirect("/prototypes/ur_prototypes/ver_2/trust/request_additional_assurance/question_bank/question_bank");
+  }
+});
+
 router.post(
   "/journeys/trust/ver_2/supplier_search_result",
   function (req, res) {
@@ -24,16 +42,6 @@ router.post(
     //If searching by device
     else if (!supplierSearchField && deviceSearchField) {
       res.redirect("./search_for_device");
-    }
-
-    // Otherwise if it's a number between 0 and 6
-    else if (daysExperiencingSymptoms >= 0) {
-      res.redirect("/how-to-treat-yourself");
-
-      // No answer given, or not a number, or a negative number
-    } else {
-      // Return to question
-      res.redirect("/days-experiencing-symptoms");
     }
   },
 );
