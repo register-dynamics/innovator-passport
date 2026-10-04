@@ -14,31 +14,56 @@ text: "Back"
     <span class="nhsuk-caption-l">Moustache health monitor app (v 3.1.4)</span>
     Request additional assurance information
 </h1>
+<form action="/additional-request-choice" method="post">
 <p class="nhsuk-body-l">Choose how you want to ask questions specific to your organisational or local needs.</p>
 <div class="nhsuk-form-group">
-  <fieldset class="nhsuk-fieldset">
-    <div class="nhsuk-radios" data-module="nhsuk-radios">
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-hints" name="exampleHints" type="radio" value="mobile" aria-describedby="example-hints-item-hint">
-        <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
-          Upload a file
-          </label>
-        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-item-hint">
-          Upload or re-use question files from your organisation's file hub.
+    <fieldset class="nhsuk-fieldset">
+        <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints" name="additionalAssurance" type="radio" value="uploadFile"
+                    aria-describedby="example-hints-item-hint">
+                <label class="nhsuk-heading-m nhsuk-radios__label" for="example-hints">
+                    Upload a file
+                </label>
+                <div class="nhsuk-body-m nhsuk-radios__hint" id="example-hints-item-hint">
+                    Upload or re-use question files from your organisation's file hub.
+                </div>
+            </div>
+            <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints-2" name="additionalAssurance" type="radio"
+                    value="Add questions individually" aria-describedby="example-hints-2-item-hint">
+                <label class="nhsuk-heading-m nhsuk-radios__label" for="example-hints-2">
+                    Add questions individually
+                </label>
+                <div class="nhsuk-body-m nhsuk-radios__hint" id="example-hints-2-item-hint">
+                    <p>Benefits of using creating a question web form:</p>
+                    <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>Update individual questions rather than whole documents.</li>
+                        <li>Build a question bank for your organisation.</li>
+                        <li>Track answered questions and clarification requests live.</li>
+                        <li>Share questions with other trusts.</li>
+                        <li>Fine grain control over which questions to share.</li>
+                        <li>Help standardisation processes.</li>
+                    </ul>
+                </div>
+                            <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints" name="additionalAssurance" type="radio" value="questionBank"
+                    aria-describedby="example-hints-item-hint">
+                <label class="nhsuk-heading-m nhsuk-radios__label" for="example-hints">
+                    Find questions to reuse from other Trusts
+                </label>
+                <div class=" nhsuk-body-m nhsuk-radios__hint" id="example-hints-item-hint">
+                    View what other trusts have asked about this medical device. 
+                </div>
+            </div>
+            </div>
         </div>
-      </div>
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="landline" aria-describedby="example-hints-2-item-hint">
-        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
-          Add questions individually
-        </label>
-        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-          We will call you to give you a 6 digit security code
-        </div>
-      </div>
-    </div>
-  </fieldset>
+    </fieldset>
 </div>
+<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+  Continue
+</button>
+</form>
 
 
 {% endblock %}
