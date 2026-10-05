@@ -7,6 +7,7 @@
 
 <style>
   .assurance-request-card {
+    background: #ffffff;
     border: 1px solid #d8dde0;
     padding: 24px;
     margin-bottom: 24px;
@@ -14,6 +15,7 @@
 
   .assurance-request-card h2 {
     margin-top: 0;
+    margin-bottom: 8px;
   }
 
   .assurance-request-card p:last-child {
@@ -22,6 +24,11 @@
 
   .assurance-request-meta {
     color: #425563;
+    margin-bottom: 16px;
+  }
+
+  .assurance-request-status {
+    margin-bottom: 16px;
   }
 </style>
 
@@ -65,17 +72,19 @@
 
 <div class="assurance-request-card">
 
-  <h2 class="nhsuk-heading-m">Clinical safety</h2>
+  <h2 class="nhsuk-heading-m">
+    Clinical safety
+  </h2>
 
-  <p>
+  <p class="assurance-request-meta">
+    DTAC section C1
+  </p>
+
+  <p class="assurance-request-status">
     {{ tag({
       text: "Completed" if assurance.clinical else "Response needed",
       classes: "nhsuk-tag--green" if assurance.clinical else "nhsuk-tag--blue"
     }) }}
-  </p>
-
-  <p class="assurance-request-meta">
-    DTAC section C1
   </p>
 
   <p>
@@ -104,17 +113,19 @@
 
 <div class="assurance-request-card">
 
-  <h2 class="nhsuk-heading-m">Data protection</h2>
+  <h2 class="nhsuk-heading-m">
+    Data protection
+  </h2>
 
-  <p>
+  <p class="assurance-request-meta">
+    DTAC section C2
+  </p>
+
+  <p class="assurance-request-status">
     {{ tag({
       text: "Completed" if assurance.protection else "Response needed",
       classes: "nhsuk-tag--green" if assurance.protection else "nhsuk-tag--blue"
     }) }}
-  </p>
-
-  <p class="assurance-request-meta">
-    DTAC section C2
   </p>
 
   <p>
@@ -139,17 +150,55 @@
 
 <div class="assurance-request-card">
 
-  <h2 class="nhsuk-heading-m">Interoperability</h2>
+  <h2 class="nhsuk-heading-m">
+    Technical security
+  </h2>
+
+  <p class="assurance-request-meta">
+    DTAC section C3
+  </p>
+
+  <p class="assurance-request-status">
+    {{ tag({
+      text: "Completed" if assurance.security else "Response needed",
+      classes: "nhsuk-tag--green" if assurance.security else "nhsuk-tag--blue"
+    }) }}
+  </p>
 
   <p>
+    A Cyber Essentials certificate is required as part of this section.
+  </p>
+
+  {% if not assurance.submitted %}
+    <p>
+      <a href="/journeys/supplier/respond-to-assurance-request/version-1/technical-security">
+        {% if assurance.security %}
+          Change technical security response
+        {% else %}
+          Review and respond
+        {% endif %}
+      </a>
+    </p>
+  {% endif %}
+
+</div>
+
+
+<div class="assurance-request-card">
+
+  <h2 class="nhsuk-heading-m">
+    Interoperability
+  </h2>
+
+  <p class="assurance-request-meta">
+    DTAC section C4
+  </p>
+
+  <p class="assurance-request-status">
     {{ tag({
       text: "Completed" if assurance.interoperability else "Response needed",
       classes: "nhsuk-tag--green" if assurance.interoperability else "nhsuk-tag--blue"
     }) }}
-  </p>
-
-  <p class="assurance-request-meta">
-    DTAC section C4
   </p>
 
   <p>
@@ -172,7 +221,7 @@
 </div>
 
 
-{% if assurance.clinical and assurance.interoperability and assurance.protection and not assurance.submitted %}
+{% if assurance.clinical and assurance.interoperability and assurance.protection and assurance.security and not assurance.submitted %}
 
   {{ button({
     text: "Check your response",

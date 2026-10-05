@@ -1,0 +1,42 @@
+{% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+{% set pageName = 'DTAC section C3 – Technical security' %}
+{% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/request-overview' %}
+
+{% block journeyContent %}
+
+<h1 class="nhsuk-heading-l">DTAC section C3 – Technical security</h1>
+
+<h2 class="nhsuk-heading-m">Cyber Essentials certificate</h2>
+
+<p>As part of DTAC section C3, you need to provide this certificate.</p>
+
+<h2 class="nhsuk-heading-m">Your organisation already has this certificate</h2>
+
+<h3 class="nhsuk-heading-s">Cyber Essentials</h3>
+
+<p>
+  Moustache Health Ltd<br>
+  Expires 14 March 2027
+</p>
+
+<form action="/journeys/supplier/respond-to-assurance-request/version-1/save-technical-security" method="post" novalidate>
+  {{ button({ text: "Use this certificate" }) }}
+</form>
+
+{% call details({ summaryText: "Provide a different certificate", id: "different-certificate" }) %}
+
+<form action="/journeys/supplier/respond-to-assurance-request/version-1/save-technical-security-different" method="post" novalidate>
+  {{ fileUpload({
+    id: "security-file",
+    name: "supplierSecurityFile",
+    label: {
+      text: "Cyber Essentials certificate"
+    }
+  }) }}
+
+  {{ button({ text: "Use different certificate" }) }}
+</form>
+
+{% endcall %}
+
+{% endblock %}

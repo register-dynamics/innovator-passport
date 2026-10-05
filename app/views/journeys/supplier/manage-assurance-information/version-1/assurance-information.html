@@ -7,6 +7,7 @@
 
 <style>
   .assurance-card {
+    background: #ffffff;
     border: 1px solid #d8dde0;
     padding: 24px;
     margin-bottom: 24px;
@@ -29,10 +30,20 @@
     margin-bottom: 32px;
   }
 
+  .evidence-list {
+    margin-top: 24px;
+  }
+
   .evidence-item {
     border-top: 1px solid #d8dde0;
-    padding-top: 20px;
-    margin-top: 20px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .evidence-item:last-child {
+    padding-bottom: 0;
   }
 
   .evidence-item h3 {
@@ -43,7 +54,12 @@
   .evidence-item p {
     margin-bottom: 0;
   }
+
+  .evidence-action {
+    flex-shrink: 0;
+  }
 </style>
+
 
 <h1 class="nhsuk-heading-l">
   Assurance information
@@ -97,44 +113,81 @@
   </p>
 
 
-  <div class="evidence-item">
+  <div class="evidence-list">
 
-    <h3 class="nhsuk-heading-s">
-      Clinical Safety Case Report
-    </h3>
+    <div class="evidence-item">
 
-    <p>
-      <strong>Last updated:</strong>
-      12 September 2026
-    </p>
+      <div>
+        <h3 class="nhsuk-heading-s">
+          Clinical Safety Case Report
+        </h3>
 
-  </div>
+        <p>
+          <strong>Last updated:</strong>
+          12 September 2026
+        </p>
+      </div>
+
+      <div class="evidence-action">
+        <a href="#">
+          View
+          <span class="nhsuk-u-visually-hidden">
+            Clinical Safety Case Report
+          </span>
+        </a>
+      </div>
+
+    </div>
 
 
-  <div class="evidence-item">
+    <div class="evidence-item">
 
-    <h3 class="nhsuk-heading-s">
-      Hazard Log
-    </h3>
+      <div>
+        <h3 class="nhsuk-heading-s">
+          Hazard Log
+        </h3>
 
-    <p>
-      <strong>Last updated:</strong>
-      12 September 2026
-    </p>
+        <p>
+          <strong>Last updated:</strong>
+          12 September 2026
+        </p>
+      </div>
 
-  </div>
+      <div class="evidence-action">
+        <a href="#">
+          View
+          <span class="nhsuk-u-visually-hidden">
+            Hazard Log
+          </span>
+        </a>
+      </div>
+
+    </div>
 
 
-  <div class="evidence-item">
+    <div class="evidence-item">
 
-    <h3 class="nhsuk-heading-s">
-      Product DPIA
-    </h3>
+      <div>
+        <h3 class="nhsuk-heading-s">
+          Product DPIA
+        </h3>
 
-    <p>
-      <strong>Last updated:</strong>
-      3 February 2026
-    </p>
+        <p>
+          <strong>Last updated:</strong>
+          3 February 2026
+        </p>
+      </div>
+
+      <div class="evidence-action">
+        <a href="#">
+          View
+          <span class="nhsuk-u-visually-hidden">
+            Product DPIA
+          </span>
+        </a>
+      </div>
+
+    </div>
 
   </div>
 

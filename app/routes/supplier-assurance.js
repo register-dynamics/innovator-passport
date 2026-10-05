@@ -9,13 +9,13 @@ router.use((req, res, next) => {
   next()
 })
 
-const complete = state => state.clinical && state.interoperability && state.protection
+const complete = state => state.clinical && state.interoperability && state.protection && state.security
 
 // Reset this journey only, including fields copied by the kit's auto-store.
 router.get('/reset', (req, res) => {
   for (const key of [
     'supplierAssurance', 'supplierClinicalNotes', 'supplierNorthshireIntegration',
-    'supplierProtectionNotes', 'clinicalFiles', 'dataProtectionFile'
+    'supplierProtectionNotes', 'clinicalFiles', 'dataProtectionFile', 'supplierSecurityFile'
   ]) {
     delete req.session.data[key]
   }
@@ -25,7 +25,7 @@ router.get('/reset', (req, res) => {
 // Keep completed responses read-only after submission.
 router.use((req, res, next) => {
   if (res.locals.assurance.submitted &&
-      (req.method === 'POST' || ['/clinical-safety', '/interoperability', '/data-protection', '/check-response'].includes(req.path))) {
+      (req.method === 'POST' || ['/clinical-safety', '/interoperability', '/data-protection', '/technical-security', '/check-response'].includes(req.path))) {
     return res.redirect(base + '/confirmation')
   }
   next()
@@ -57,6 +57,22 @@ router.post('/save-data-protection', (req, res) => {
   Object.assign(res.locals.assurance, {
     protection: true,
     protectionNotes: req.body.supplierProtectionNotes || ''
+  })
+  res.redirect(base + '/request-overview')
+})
+
+// Choosing a certificate explicitly completes C3 for this request only.
+router.post('/save-technical-security', (req, res) => {
+  Object.assign(res.locals.assurance, { security: true, differentSecurity: false, securityFile: '' })
+  res.redirect(base + '/request-overview')
+})
+
+// Follow the existing simulated alternative-evidence pattern; no file is stored.
+router.post('/save-technical-security-different', (req, res) => {
+  Object.assign(res.locals.assurance, {
+    security: true,
+    differentSecurity: true,
+    securityFile: req.body.supplierSecurityFile || ''
   })
   res.redirect(base + '/request-overview')
 })

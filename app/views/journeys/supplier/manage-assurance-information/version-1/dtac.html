@@ -1,9 +1,13 @@
 {% extends 'journeys/supplier/manage-assurance-information/version-1/layout.html' %}
+
 {% set pageName = 'DTAC v2.0' %}
 {% set backHref = '/journeys/supplier/manage-assurance-information/version-1/assurance-information' %}
+
 {% block journeyContent %}
+
 <style>
   .assurance-card {
+    background: #ffffff;
     border: 1px solid #d8dde0;
     padding: 24px;
     margin-bottom: 24px;
@@ -11,38 +15,134 @@
 
   .assurance-card h2 {
     margin-top: 0;
+    margin-bottom: 8px;
   }
 
   .assurance-card p:last-child {
     margin-bottom: 0;
   }
+
+  .assurance-status {
+    color: #425563;
+  }
 </style>
-<h1 class="nhsuk-heading-l">DTAC v2.0</h1>
-<p><strong>Moustache Health Monitor App</strong><br>Product version: 3.2</p>
-<p>Review and update the DTAC information held for this product.</p>
+
+
+<h1 class="nhsuk-heading-l">
+  DTAC v2.0
+</h1>
+
+<p>
+  <strong>Moustache Health Monitor App</strong><br>
+  Product version: 3.2
+</p>
+
+<p>
+  Review the DTAC information held for this product.
+</p>
+
+
 <div class="assurance-card">
-<h2 class="nhsuk-heading-m">C1 – Clinical safety</h2>
-<p>Information available</p>
-<p>Last updated: 12 September 2026</p>
-<p><a class="nhsuk-link" role="link" aria-disabled="true">View or update<span class="nhsuk-u-visually-hidden"> C1 – Clinical safety</span></a></p>
+
+  <h2 class="nhsuk-heading-m">
+    C1 – Clinical safety
+  </h2>
+
+  <p class="assurance-status">
+    Information available
+  </p>
+
+  <p>
+    <strong>Last updated:</strong> 12 September 2026
+  </p>
+
+  <p>
+    <a class="nhsuk-link" role="link" aria-disabled="true">
+      View information
+      <span class="nhsuk-u-visually-hidden">
+        for C1 – Clinical safety
+      </span>
+    </a>
+  </p>
+
 </div>
+
+
 <div class="assurance-card">
-<h2 class="nhsuk-heading-m">C2 – Data protection</h2>
-<p>Information available</p>
-<p>Last updated: 3 February 2026</p>
-<p><a class="nhsuk-link" role="link" aria-disabled="true">View or update<span class="nhsuk-u-visually-hidden"> C2 – Data protection</span></a></p>
+
+  <h2 class="nhsuk-heading-m">
+    C2 – Data protection
+  </h2>
+
+  <p class="assurance-status">
+    Information available
+  </p>
+
+  <p>
+    <strong>Last updated:</strong> 3 February 2026
+  </p>
+
+  <p>
+    <a class="nhsuk-link" role="link" aria-disabled="true">
+      View information
+      <span class="nhsuk-u-visually-hidden">
+        for C2 – Data protection
+      </span>
+    </a>
+  </p>
+
 </div>
+
+
 <div class="assurance-card">
-<h2 class="nhsuk-heading-m">C3 – Technical security</h2>
-<p>Information available</p>
-<p>Last updated: 14 January 2026</p>
-<p><a class="nhsuk-link" role="link" aria-disabled="true">View or update<span class="nhsuk-u-visually-hidden"> C3 – Technical security</span></a></p>
+
+  <h2 class="nhsuk-heading-m">
+    C3 – Technical security
+  </h2>
+
+  <p class="assurance-status">
+    Information available
+  </p>
+
+  <p>
+    <strong>Last updated:</strong> 14 January 2026
+  </p>
+
+  <p>
+    <a class="nhsuk-link" role="link" aria-disabled="true">
+      View information
+      <span class="nhsuk-u-visually-hidden">
+        for C3 – Technical security
+      </span>
+    </a>
+  </p>
+
 </div>
+
+
 <div class="assurance-card">
-<h2 class="nhsuk-heading-m">C4 – Interoperability criteria</h2>
-<p>Information available</p>
-<p>Last updated: {{ productAssurance.c4.updatedDate }}</p>
-<p><a href="/journeys/supplier/manage-assurance-information/version-1/c4">View or update<span class="nhsuk-u-visually-hidden"> C4 – Interoperability criteria</span></a></p>
+
+  <h2 class="nhsuk-heading-m">
+    C4 – Interoperability criteria
+  </h2>
+
+  <p class="assurance-status">
+    Information available
+  </p>
+
+  <p>
+    <strong>Last updated:</strong> {{ productAssurance.c4.updatedDate }}
+  </p>
+
+  <p>
+    <a href="/journeys/supplier/manage-assurance-information/version-1/c4">
+      View information
+      <span class="nhsuk-u-visually-hidden">
+        for C4 – Interoperability criteria
+      </span>
+    </a>
+  </p>
+
 </div>
 
 {% endblock %}

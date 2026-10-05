@@ -1,12 +1,150 @@
 {% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+
 {% set pageName = 'DTAC section C1 – Clinical safety' %}
 {% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/request-overview' %}
+
 {% block journeyContent %}
-<h1 class="nhsuk-heading-l">DTAC section C1 – Clinical safety</h1><p>Northshire NHS Foundation Trust has requested:</p><p>Clinical Safety Case Report and Hazard Log</p><h2 class="nhsuk-heading-m">Existing evidence</h2><h3 class="nhsuk-heading-s">Clinical Safety Case Report</h3><p>Moustache Health Monitor App<br>Product version 3.2<br>Last updated: 12 September 2026</p><p><a class="nhsuk-link" role="link" aria-disabled="true">View document<span class="nhsuk-u-visually-hidden">: Clinical Safety Case Report</span></a></p><hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
-<h3 class="nhsuk-heading-s">Hazard Log</h3><p>Moustache Health Monitor App<br>Product version 3.2<br>Last updated: 12 September 2026</p><p><a class="nhsuk-link" role="link" aria-disabled="true">View document<span class="nhsuk-u-visually-hidden">: Hazard Log</span></a></p><h2 class="nhsuk-heading-m">Use this evidence</h2><p>Review the evidence before using it to respond to this request.</p><form action="/journeys/supplier/respond-to-assurance-request/version-1/save-clinical" method="post" novalidate>
-{{ button({ text: "Use this evidence" }) }}
-</form>{% call details({ summaryText: "Provide different evidence", id: "different-evidence" }) %}<p>Provide a different Clinical Safety Case Report and Hazard Log. You can continue with example evidence for this prototype.</p><form action="/journeys/supplier/respond-to-assurance-request/version-1/save-clinical-different" method="post" novalidate>
-{{ fileUpload({ id: "clinical-files", name: "clinicalFiles", label: { text: "Clinical safety evidence" }, attributes: { multiple: true } }) }}
-{{ textarea({ id: "clinical-notes", name: "supplierClinicalNotes", label: { text: "Additional information" }, value: assurance.clinicalNotes }) }}{{ button({ text: "Use different evidence" }) }}
-</form>{% endcall %}
+
+<style>
+  .evidence-card {
+    background: #ffffff;
+    border: 1px solid #d8dde0;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .evidence-card h3 {
+    margin-top: 0;
+  }
+
+  .evidence-card p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<h1 class="nhsuk-heading-l">
+  DTAC section C1 – Clinical safety
+</h1>
+
+<p>
+  Northshire NHS Foundation Trust has requested:
+</p>
+
+<p>
+  <strong>Clinical Safety Case Report and Hazard Log</strong>
+</p>
+
+<h2 class="nhsuk-heading-m">
+  Existing evidence
+</h2>
+
+
+<div class="evidence-card">
+
+  <h3 class="nhsuk-heading-s">
+    Clinical Safety Case Report
+  </h3>
+
+  <p>
+    Moustache Health Monitor App<br>
+    Product version 3.2<br>
+    Last updated: 12 September 2026
+  </p>
+
+  <p>
+    <a class="nhsuk-link" role="link" aria-disabled="true">
+      View document
+      <span class="nhsuk-u-visually-hidden">
+        : Clinical Safety Case Report
+      </span>
+    </a>
+  </p>
+
+</div>
+
+
+<div class="evidence-card">
+
+  <h3 class="nhsuk-heading-s">
+    Hazard Log
+  </h3>
+
+  <p>
+    Moustache Health Monitor App<br>
+    Product version 3.2<br>
+    Last updated: 12 September 2026
+  </p>
+
+  <p>
+    <a class="nhsuk-link" role="link" aria-disabled="true">
+      View document
+      <span class="nhsuk-u-visually-hidden">
+        : Hazard Log
+      </span>
+    </a>
+  </p>
+
+</div>
+
+
+<p>
+  Review the evidence before using it to respond to this request.
+</p>
+
+<form
+  action="/journeys/supplier/respond-to-assurance-request/version-1/save-clinical"
+  method="post"
+  novalidate
+>
+
+  {{ button({
+    text: "Use this evidence"
+  }) }}
+
+</form>
+
+
+{% call details({
+  summaryText: "Provide different evidence",
+  id: "different-evidence"
+}) %}
+
+<p>
+  Provide a different Clinical Safety Case Report and Hazard Log.
+</p>
+
+<form
+  action="/journeys/supplier/respond-to-assurance-request/version-1/save-clinical-different"
+  method="post"
+  novalidate
+>
+
+  {{ fileUpload({
+    id: "clinical-files",
+    name: "clinicalFiles",
+    label: {
+      text: "Clinical safety evidence"
+    },
+    attributes: {
+      multiple: true
+    }
+  }) }}
+
+  {{ textarea({
+    id: "clinical-notes",
+    name: "supplierClinicalNotes",
+    label: {
+      text: "Additional information"
+    },
+    value: assurance.clinicalNotes
+  }) }}
+
+  {{ button({
+    text: "Use different evidence"
+  }) }}
+
+</form>
+
+{% endcall %}
+
 {% endblock %}

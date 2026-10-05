@@ -22,6 +22,25 @@
     text: "Change", visuallyHiddenText: "data protection response"
   }] } }
 ] }) }}
+<h2 class="nhsuk-heading-m">Technical security</h2>
+{{ tag({ text: "Ready to submit", classes: "nhsuk-tag--blue" }) }}
+{% set submittedInformation %}
+<p>Cyber Essentials certificate</p>
+{% if assurance.differentSecurity %}
+<p>Different certificate provided for Moustache Health Ltd</p>
+<p>{{ assurance.securityFile or "Example certificate (simulated)" }}</p>
+{% else %}
+<p>Moustache Health Ltd<br>Expires 14 March 2027</p>
+<p>Moustache Health Ltd – Cyber Essentials Certificate.pdf</p>
+{% endif %}
+{% endset %}
+{{ summaryList({ classes: "nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6", rows: [
+  { key: { text: "DTAC section" }, value: { text: "DTAC section C3 – Technical security" } },
+  { key: { text: "Information" }, value: { html: submittedInformation }, actions: { items: [{
+    href: "/journeys/supplier/respond-to-assurance-request/version-1/technical-security",
+    text: "Change", visuallyHiddenText: "technical security response"
+  }] } }
+] }) }}
 <h2 class="nhsuk-heading-m">Interoperability</h2>
 {{ tag({ text: "Ready to submit", classes: "nhsuk-tag--blue" }) }}
 {% set submittedInformation %}<p>Existing DTAC interoperability information</p><p>Northshire integration information</p><p>{{ assurance.integration or "Not provided" }}</p>{% endset %}

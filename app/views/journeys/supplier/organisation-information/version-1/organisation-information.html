@@ -1,0 +1,193 @@
+{% extends 'journeys/supplier/manage-assurance-information/version-1/layout.html' %}
+
+{% set pageName = 'Organisation information' %}
+{% set backHref = '/journeys/supplier/respond-to-assurance-request/version-1/start' %}
+
+{% block journeyContent %}
+
+<h1 class="nhsuk-heading-l">
+  Organisation information
+</h1>
+
+<p>
+  Information and evidence that applies to Moustache Health Ltd.
+</p>
+
+
+<h2 class="nhsuk-heading-m">
+  Company details
+</h2>
+
+<dl class="nhsuk-summary-list">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Registered company name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Moustache Health Ltd
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+      <a href="#">
+        Change
+        <span class="nhsuk-u-visually-hidden">
+          registered company name
+        </span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Companies House number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      12345678
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+      <a href="#">
+        Change
+        <span class="nhsuk-u-visually-hidden">
+          Companies House number
+        </span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Registered address
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      10 Example Street<br>
+      London<br>
+      SW1A 1AA
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+      <a href="#">
+        Change
+        <span class="nhsuk-u-visually-hidden">
+          registered address
+        </span>
+      </a>
+    </dd>
+  </div>
+
+</dl>
+
+
+<h2 class="nhsuk-heading-m">
+  Assurance information
+</h2>
+
+<table class="nhsuk-table">
+
+  <thead class="nhsuk-table__head">
+    <tr class="nhsuk-table__row">
+
+      <th scope="col" class="nhsuk-table__header">
+        Name
+      </th>
+
+      <th scope="col" class="nhsuk-table__header">
+        Status
+      </th>
+
+      <th scope="col" class="nhsuk-table__header">
+        Expires
+      </th>
+
+      <th scope="col" class="nhsuk-table__header">
+        <span class="nhsuk-u-visually-hidden">
+          Action
+        </span>
+      </th>
+
+    </tr>
+  </thead>
+
+  <tbody class="nhsuk-table__body">
+
+    <tr class="nhsuk-table__row">
+
+      <td class="nhsuk-table__cell">
+        Cyber Essentials
+      </td>
+
+      <td class="nhsuk-table__cell">
+        Issued 15 March 2026
+      </td>
+
+      <td class="nhsuk-table__cell">
+        14 March 2027<br>
+        <a href="#">Get a reminder</a>
+      </td>
+
+      <td class="nhsuk-table__cell">
+        <a href="#">
+          View
+          <span class="nhsuk-u-visually-hidden">
+            Cyber Essentials
+          </span>
+        </a>
+      </td>
+
+    </tr>
+
+    <tr class="nhsuk-table__row">
+
+      <td class="nhsuk-table__cell">
+        ICO registration
+      </td>
+
+      <td class="nhsuk-table__cell">
+        Registered
+      </td>
+
+      <td class="nhsuk-table__cell">
+        7 June 2027<br>
+        <a href="#">Get a reminder</a>
+      </td>
+
+      <td class="nhsuk-table__cell">
+        <a href="#">
+          View
+          <span class="nhsuk-u-visually-hidden">
+            ICO registration
+          </span>
+        </a>
+      </td>
+
+    </tr>
+
+    <tr class="nhsuk-table__row">
+
+      <td class="nhsuk-table__cell">
+        Data Security and Protection Toolkit (DSPT)
+      </td>
+
+      <td class="nhsuk-table__cell">
+        Standards met
+      </td>
+
+      <td class="nhsuk-table__cell">
+        30 June 2027<br>
+        <a href="#">Get a reminder</a>
+      </td>
+
+      <td class="nhsuk-table__cell">
+        <a href="#">
+          View
+          <span class="nhsuk-u-visually-hidden">
+            Data Security and Protection Toolkit
+          </span>
+        </a>
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+{% endblock %}
