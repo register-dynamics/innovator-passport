@@ -1,5 +1,41 @@
 {% extends 'journeys/supplier/respond-to-assurance-request/version-1/layout.html' %}
+
 {% set pageName = 'Response submitted' %}
+
 {% block journeyContent %}
-{{ panel({ heading: { text: "Response submitted", level: 1 }, text: "Your assurance response has been sent to Northshire NHS Foundation Trust." }) }}<h2 class="nhsuk-heading-m">What happens next</h2><p>Northshire NHS Foundation Trust will review the information you provided.</p><p>They may contact you if they need clarification or additional information.</p><p>You can track this request from your assurance requests.</p><p><a href="/journeys/supplier/respond-to-assurance-request/version-1/pending-requests">View assurance requests</a></p>
+
+{{ panel({
+  heading: {
+    text: "Response submitted",
+    level: 1
+  },
+  text: "Your assurance response has been sent to Northshire NHS Foundation Trust."
+}) }}
+
+<h2 class="nhsuk-heading-m">What happens next</h2>
+
+<p>
+  Northshire NHS Foundation Trust will review the information you provided.
+</p>
+
+<p>
+  They may contact you if they need clarification or additional information.
+</p>
+
+<p>
+  You can track this request from your assurance requests.
+</p>
+
+<p>
+  <a href="/journeys/supplier/respond-to-assurance-request/version-1/pending-requests">
+    View assurance requests
+  </a>
+</p>
+
+<p class="nhsuk-u-margin-top-6">
+  <a href="/journeys/supplier/respond-to-assurance-request/version-1/start">
+    Manage health technology assurance
+  </a>
+</p>
+
 {% endblock %}
