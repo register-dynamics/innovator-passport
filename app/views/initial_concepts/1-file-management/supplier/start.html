@@ -5,26 +5,6 @@
 {% from "inset-text/macro.njk" import insetText %}
 
 
-
-{% block beforeContent %}
-{{ breadcrumb({
-items: [
-{
-href: "#",
-text: "Home"
-},
-{
-href: "#",
-text: "NHS services"
-},
-{
-href: "#",
-text: "Online services"
-}
-]
-}) }}
-{% endblock %}
-
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">

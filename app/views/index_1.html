@@ -1,0 +1,53 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!-- Add your content here -->
+    <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+    <h1 class="nhsuk-heading-xl">
+      {{ serviceName }}
+    </h1>
+    <section class="nhsuk-u-margin-top-6" aria-labelledby="supplier-assurance-request-heading">
+      <h2 class="nhsuk-heading-m" id="supplier-assurance-request-heading">Supplier journeys</h2>
+      <p>Respond to a request from an NHS organisation using existing assurance information where possible.</p>
+      <p>View and update assurance information for a product so that it can be reused.</p>
+      <p><a href="/journeys/supplier/respond-to-assurance-request/version-1/start">Version 1</a></p>
+    </section>
+    <section class="nhsuk-u-margin-top-6" aria-labelledby="trust-assurance-request-heading">
+      <h2 class="nhsuk-heading-m" id="trust-assurance-request-heading">Trust journeys</h2>
+      <p>Request assurance information from a supplier for a medical product.</p>
+      <p>View existing assurance information and re-use if possible.</p>
+      <p><a href="/prototypes/ur_prototypes/ver_2/trust/start">Version 1</a></p>
+    </section>
+  </div>
+</div>
+{% endblock %}

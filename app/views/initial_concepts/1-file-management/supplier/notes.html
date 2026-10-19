@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1>Design choices and discussion points</h1>
+        <h2>User details</h2>
+        <ul>
+            <li>This is their first time registering this specific device.</li>
+            <li>Device has already begun passport process (Whatever that may be).</li>
+            <li>For now, we assume they want a place to upload files.</li>
+        </ul>
+        <h2>Assumptions</h2>
+        <ul>
+            <li>Multiple users have access to the file hub.</li>
+            <li>Passporting means something here. There is a notion of a completed passport.</li>
+            <li>Company details are a placeholder.</li>
+            <li>Any user can access all parts of the service (for now).</li>
+        </ul>
+        <h2>Discussion points</h2>
+        <ul>
+            <li>Who has access? How many people have access? What levels of access?</li>
+            <li>We will almost certainly need some sort of login system, right?</li>
+            <li>How do we control/configure what trusts/customers see?</li>
+            <li>Do we envision some sort of dashboard or hub? Would this be useful?</li>
+            <li>What sort of information might we expect to see here? How is this linked to Compass?</li>
+            <li>What might the other end look like for the trust? Do they get a neat version? Are they going to see
+                every single DTAC ever uploaded?</li>
+            <li>What is this file management system? Doesn't feel like a passport in any sense of the word.</li>
+            <li>What does a user see when they click on a file?</li>
+        </ul>
+        <p class="nhsuk-body-l"><a href="start">View prototype</a></p>
+    </div>
+</div>
+{% endblock %}
