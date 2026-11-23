@@ -2,7 +2,7 @@
 
 module.exports = {
   // Service name
-  serviceName: 'Manage health technology assurance',
+  serviceName: 'Assure MedTech Documentation',
 
   // Port to run the prototype on locally
   port: 3000
