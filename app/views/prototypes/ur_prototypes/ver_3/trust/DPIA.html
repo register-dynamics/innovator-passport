@@ -1,0 +1,154 @@
+{% extends "prototypes/ur_prototypes/ver_3/layout.html" %}
+{% block beforeContent %}
+{{ backLink({
+href: "dashboard",
+text: "Back"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <h2 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-l">Moustache Health Monitor App (v 1.2.3)</span>
+        Data protection impact assessment (DPIA) <strong class="nhsuk-tag nhsuk-tag--grey">Needs review</strong>
+    </h2>
+</div>
+<dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Document name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            Data protection impact assessment (DPIA)
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Category
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            Information governance & data protection
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Template
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            NHS version 2.0
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Status
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            <strong class="nhsuk-tag nhsuk-tag--grey">Needs review</strong>
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Expires
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            <strong>12 months</strong> (24/11/2027)
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Last updated
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            <p><strong>3 days ago</strong> (21/11/2027)</p>
+        </dd>
+        <dd class="nhsuk-summary-list__value">
+            <p><a href="">View file history</a>
+            <p>
+        </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Assigned to
+        </dt>
+        <dd class="nhsuk-summary-list__value nhsuk-u-secondary-text-colour">
+            Unassigned
+        </dd>
+        <dd class="nhsuk-summary-list__value">
+            <p><a href="">Assign</a>
+            <p>
+        </dd>
+
+    </div>
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Last accepted by
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            Ismail County Trust (and <a href="">3 others</a>)
+        </dd>
+    </div>
+</dl>
+
+<button class="nhsuk-button nhsuk-button--small nhsuk-u-margin-top-2  nhsuk-u-margin-right-4"
+    style="background-color:#005eb8 ;" data-module="nhsuk-button" type="submit">
+    View document
+</button>
+<button class="nhsuk-button nhsuk-button--secondary-solid nhsuk-button--small nhsuk-u-margin-top-2"
+    data-module="nhsuk-button" type="submit">
+    Download
+</button>
+
+
+<h2>Accept document</h2>
+<p>By clicking accept, you are confirming that this document has been reviewed and that it meets your organisation's
+    assurance needs. If unassigned it will be automatically assigned to you.</p>
+<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+    Accept
+</button>
+<p class="nhsuk-body-l">Or</p>
+<h2>Choose another action</h2>
+<ul class="nhsuk-grid-row nhsuk-card-group">
+    <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+        <div class="nhsuk-card nhsuk-card--clickable nhsuk-card--secondary">
+            <div class="nhsuk-card__content">
+                <h2 class="nhsuk-card__heading nhsuk-heading-m">
+                    <a class="nhsuk-card__link" href="#">Assign or Reassign task</a>
+                </h2>
+                <p class="nhsuk-card__description">
+                    Assign this task to yourself or another member of your organisation. 
+                </p>
+            </div>
+        </div>
+    </li>
+    <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+        <div class="nhsuk-card nhsuk-card--clickable nhsuk-card--secondary">
+            <div class="nhsuk-card__content">
+                <h2 class="nhsuk-card__heading nhsuk-heading-m">
+                    <a class="nhsuk-card__link" href="#">Request clarification</a>
+                </h2>
+                <p class="nhsuk-card__description">
+                    Request an updated assurance document if any of the supplier's answers are unsatisfactory or need clarification.
+                </p>
+            </div>
+        </div>
+    </li>
+    <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+        <div class="nhsuk-card nhsuk-card--clickable nhsuk-card--secondary">
+            <div class="nhsuk-card__content">
+                <h2 id="additionalQuestions" class="nhsuk-card__heading nhsuk-heading-m">
+                    <a class="nhsuk-card__link" href="">Request additional evidence</a>
+                </h2>
+                <p class="nhsuk-card__description">
+                    Attach additional questions to this assurance document if the assurance document does not cover all of your assurance needs. Please do not submit duplicate questions.
+                </p>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+</div>
+
+
+{% endblock %}

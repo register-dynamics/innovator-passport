@@ -61,3 +61,5 @@ We always want to be giving something to the researcher to test.
 - Digital tech - lots of people have problems with IT. 
 - If you don't solve the DTAC problem, you'll fail (medtech director. So this view can be challenged)
 - Assume central models of certification will happen. Not aiming to reprove this
+
+
