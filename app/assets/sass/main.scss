@@ -100,3 +100,34 @@
   color: #801810;
   border-style: solid;
 }
+#assuranceProgress {
+  display: flex;
+  width: 100%;
+  background-color: grey;
+}
+
+#acceptedBar {
+  width: 20%;
+  height: 30px;
+  background-color: #cce5d8;
+
+}
+
+#needsReviewBar {
+  width: 20%;
+  height: 30px;
+  background-color: #f7d4d1;
+}
+#inReviewBar {
+  width: 20%;
+  height: 30px;
+  background-color: #fff9c4;
+}
+#requestedBar {
+  width: 20%;
+  height: 30px;
+  background-color: rgb(222, 214, 232);
+}
+.nhsuk-tag--nowrap {
+  white-space: nowrap;
+}
