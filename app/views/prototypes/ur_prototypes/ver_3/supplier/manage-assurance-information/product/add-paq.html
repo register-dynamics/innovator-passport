@@ -1,0 +1,116 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Add Pre-Acquisition Questionnaire (PAQ)' %}
+
+{% block content %}
+
+{{ backLink({
+  href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information",
+  text: "Back to product assurance information"
+}) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Add Pre-Acquisition Questionnaire (PAQ)</h1>
+
+    <p>
+      Upload your completed PAQ so NHS organisations can
+      use it without requesting it again.
+    </p>
+
+    <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+      Product
+    </h2>
+    <p class="nhsuk-u-margin-bottom-4">
+      Moustache Health Monitor
+    </p>
+
+    <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+      Product version
+    </h2>
+    <p class="nhsuk-u-margin-bottom-6">
+      3.1.4
+    </p>
+
+    <form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/paq-evidence-access" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset
+          class="nhsuk-fieldset"
+          role="group"
+          aria-describedby="paq-date-hint"
+        >
+
+          <legend class="nhsuk-fieldset__legend">
+            PAQ completion date
+          </legend>
+
+          <div class="nhsuk-hint" id="paq-date-hint">
+            For example, 20 11 2026
+          </div>
+
+          <div class="nhsuk-date-input" id="paq-date">
+
+            {% for part in [
+              ['day', 'Day', 'paqDay', 2],
+              ['month', 'Month', 'paqMonth', 2],
+              ['year', 'Year', 'paqYear', 4]
+            ] %}
+
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+
+                <label
+                  class="nhsuk-label nhsuk-date-input__label"
+                  for="paq-{{ part[0] }}"
+                >
+                  {{ part[1] }}
+                </label>
+
+                <input
+                  class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-{{ part[3] }}"
+                  id="paq-{{ part[0] }}"
+                  name="{{ part[2] }}"
+                  value="{{ data[part[2]] or '' }}"
+                  type="text"
+                  inputmode="numeric"
+                  
+                >
+
+              </div>
+            </div>
+
+            {% endfor %}
+
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="paq-file">
+          Upload completed PAQ
+        </label>
+
+        <input
+          class="nhsuk-file-upload"
+          id="paq-file"
+          type="file"
+          aria-describedby="paq-file-hint"
+        >
+
+ 
+
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

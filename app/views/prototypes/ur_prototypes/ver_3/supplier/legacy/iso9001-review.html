@@ -1,0 +1,17 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'ISO 9001 certification' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-details", text: "Back to ISO 9001 certification" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+{% if data.iso9001Answer == "yes" %}
+  <h1>Confirm this certification record</h1>
+  <p>You have said this record belongs to your organisation. Confirming links the illustrative external record; it does not independently verify the certification.</p>
+  <form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information" method="post"><input type="hidden" name="iso9001Linked" value="true"><button class="nhsuk-button" type="submit">Confirm and link record</button></form>
+{% else %}
+  <h1>Check the certification record</h1>
+  <p>The record has not been linked. You can check the details with your certification body or contact UKAS about a potential mismatch.</p>
+  <p><a href="https://certcheck.ukas.com/contact">Contact UKAS CertCheck</a></p>
+  <p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information">Return to organisation information</a></p>
+{% endif %}
+</div></div>
+{% endblock %}

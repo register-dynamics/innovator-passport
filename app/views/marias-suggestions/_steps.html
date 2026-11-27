@@ -1,0 +1,10 @@
+<nav aria-label="Assurance request progress" class="marias-steps-nav">
+  <ol class="marias-steps">
+    {% for step in ['Review available evidence', 'Request additional evidence', 'Review and submit'] %}
+    <li class="marias-steps__item {% if loop.index == currentStep %}marias-steps__item--current{% elif loop.index < currentStep %}marias-steps__item--complete{% else %}marias-steps__item--upcoming{% endif %}" {% if loop.index == currentStep %}aria-current="step"{% endif %}>
+      <span class="marias-steps__label">Step {{ loop.index }}: {{ step }}</span>
+      <span class="marias-steps__state">{% if loop.index == currentStep %}Current step{% elif loop.index < currentStep %}Completed{% else %}Upcoming{% endif %}</span>
+    </li>
+    {% endfor %}
+  </ol>
+</nav>

@@ -1,0 +1,14 @@
+{% extends "prototypes/ur_prototypes/ver_3/layout.html" %}
+{% block head %}
+{{ super() }}
+<style>
+.marias-steps { display: flex; gap: 16px; list-style: none; margin: 0 0 32px; padding: 0; }
+.marias-steps__item { border-bottom: 4px solid #aeb7bc; box-sizing: border-box; flex: 1; padding: 0 0 8px; }
+.marias-steps__item--current { border-color: #005eb8; }
+.marias-steps__item--complete { border-color: #4c6272; }
+.marias-steps__label, .marias-steps__state { display: block; }
+.marias-steps__label { font-weight: 600; }
+.marias-steps__state { color: #4c6272; font-size: 0.875em; }
+@media (max-width: 40em) { .marias-steps { flex-direction: column; gap: 8px; } .marias-steps__item { border-bottom: 0; border-left: 4px solid #aeb7bc; padding: 0 0 0 12px; } .marias-steps__item--current { border-color: #005eb8; } .marias-steps__item--complete { border-color: #4c6272; } }
+</style>
+{% endblock %}

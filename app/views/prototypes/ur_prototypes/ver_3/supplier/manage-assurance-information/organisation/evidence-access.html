@@ -1,0 +1,137 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Who can access this evidence?' %}
+
+{% block content %}
+{% if data.organisationEvidenceType and data.organisationEvidenceType != '' %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-organisation-evidence", text: "Back to evidence details" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+  <h1>Who can access this evidence?</h1>
+  <p>Choose how authorised NHS users can access your organisation assurance evidence.</p>
+  <div class="nhsuk-inset-text"><span class="nhsuk-u-visually-hidden">Information: </span><p>{{ data.organisationEvidenceName }}</p></div>
+  <form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/check-public-liability-insurance" method="post"><fieldset class="nhsuk-fieldset"><legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">How would you like to share this evidence?</legend><div class="nhsuk-radios">
+    <div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="org-available" name="organisationEvidenceAccess" type="radio" value="available" required {% if data.organisationEvidenceAccess == 'available' %}checked{% endif %}><label class="nhsuk-label nhsuk-radios__label" for="org-available">Available to NHS organisations</label><div class="nhsuk-hint nhsuk-radios__hint">NHS organisations can access this evidence without requesting it again.</div></div>
+    <div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="org-request" name="organisationEvidenceAccess" type="radio" value="request" {% if data.organisationEvidenceAccess == 'request' %}checked{% endif %}><label class="nhsuk-label nhsuk-radios__label" for="org-request">Access on request</label><div class="nhsuk-hint nhsuk-radios__hint">NHS organisations must request access from your organisation.</div></div>
+  </div></fieldset><button class="nhsuk-button nhsuk-u-margin-top-4" type="submit">Continue</button></form>
+</div></div>
+{% else %}
+
+<!-- Back link -->
+<div class="nhsuk-back-link nhsuk-u-margin-bottom-6">
+  <a class="nhsuk-back-link__link"
+     href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+    <span aria-hidden="true">‹ </span>
+    Back to insurance details
+  </a>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-l">
+      Who can access this evidence?
+    </h1>
+
+    <p class="nhsuk-body-l">
+      Choose how authorised NHS users can access your
+      public liability insurance evidence.
+    </p>
+
+    <!-- Evidence summary -->
+    <div class="nhsuk-inset-text nhsuk-u-margin-bottom-6">
+
+      <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+        Public liability insurance
+      </h2>
+
+      <p class="nhsuk-u-margin-bottom-0">
+        {{ data.insurerName or "Example Insurance Ltd" }}
+        · Policy {{ data.policyNumber or "PLI-2026-00384" }}
+      </p>
+
+    </div>
+
+    <!-- Access permissions form -->
+    <form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/check-public-liability-insurance"
+          method="get">
+
+      <div class="nhsuk-form-group">
+
+        <fieldset class="nhsuk-fieldset">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            How would you like to share this evidence?
+          </legend>
+
+          <div class="nhsuk-radios">
+
+            <!-- Option 1 -->
+            <div class="nhsuk-radios__item">
+
+              <input
+                class="nhsuk-radios__input"
+                id="access-available"
+                name="evidenceAccess"
+                type="radio"
+                value="available"
+                required>
+
+              <label
+                class="nhsuk-label nhsuk-radios__label"
+                for="access-available">
+
+                Available to NHS organisations
+
+              </label>
+
+              <div class="nhsuk-hint nhsuk-radios__hint">
+                NHS organisations can access and use this 
+                evidence when reviewing your products, without having to request it from you again.
+              </div>
+
+            </div>
+
+            <!-- Option 2 -->
+            <div class="nhsuk-radios__item">
+
+              <input
+                class="nhsuk-radios__input"
+                id="access-request"
+                name="evidenceAccess"
+                type="radio"
+                value="request">
+
+              <label
+                class="nhsuk-label nhsuk-radios__label"
+                for="access-request">
+
+                Access on request
+
+              </label>
+
+              <div class="nhsuk-hint nhsuk-radios__hint">
+                NHS organisations can see that this evidence exists, 
+                but must request access from your organisation before they can view or download it.
+              </div>
+
+            </div>
+
+          </div>
+
+        </fieldset>
+
+      </div>
+
+      <!-- Continue -->
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}

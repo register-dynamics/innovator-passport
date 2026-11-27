@@ -1,0 +1,15 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Penetration testing report' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information", text: "Back to product assurance information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds"><h1>Penetration testing report</h1><p class="nhsuk-lede-text">Moustache Health Monitor</p>
+{% if data.penetrationAdded == 'true' %}<dl class="nhsuk-summary-list">
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Status</dt><dd class="nhsuk-summary-list__value">Added</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Report date</dt><dd class="nhsuk-summary-list__value">{{ data.penetrationSavedDay }}/{{ data.penetrationSavedMonth }}/{{ data.penetrationSavedYear }}</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Product version or scope covered</dt><dd class="nhsuk-summary-list__value">{{ data.penetrationSavedScope }}</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Sharing permissions</dt><dd class="nhsuk-summary-list__value">{% if data.penetrationSavedAccess == 'available' %}Available to NHS organisations{% else %}Access on request{% endif %}</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Full report</dt><dd class="nhsuk-summary-list__value">{% if data.penetrationSavedLocation == 'service' %}In this service{% if data.penetrationSavedAccess == 'request' %}, with access restricted until approved{% endif %} (simulated){% else %}Held by your organisation and provided separately when access is agreed{% endif %}</dd></div>
+{% if data.penetrationSavedAccess == 'request' %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Non-sensitive summary</dt><dd class="nhsuk-summary-list__value">{{ data.penetrationSavedSummary or 'Not provided' }}</dd></div>{% endif %}</dl>
+{% if data.penetrationSavedLocation == 'service' %}<p>No file has been uploaded or stored in this research prototype.</p>{% endif %}
+{% else %}<p>This evidence has not been added.</p><p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-penetration-testing">Add penetration testing report</a></p>{% endif %}</div></div>
+{% endblock %}

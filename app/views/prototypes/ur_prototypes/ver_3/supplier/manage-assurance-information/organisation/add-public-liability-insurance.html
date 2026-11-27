@@ -1,0 +1,265 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Add public liability insurance' %}
+
+{% block content %}
+
+<div class="nhsuk-back-link nhsuk-u-margin-bottom-6">
+  <a class="nhsuk-back-link__link" href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information.html">
+    Back to organisation information
+  </a>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-l">
+      Add public liability insurance
+    </h1>
+
+    <p class="nhsuk-body-l">
+      Provide details of your organisation's public liability insurance.
+    </p>
+
+    <form
+      action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/evidence-access"
+      method="get">
+
+      <input type="hidden" name="organisationEvidenceType" value="">
+
+      <!-- Insurer name -->
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="insurer-name">
+          Insurer name
+        </label>
+        <input
+          class="nhsuk-input nhsuk-u-width-two-thirds"
+          id="insurer-name"
+          name="insurerName"
+          type="text"
+          value="Example Insurance Ltd"
+          autocomplete="organization">
+      </div>
+
+      <!-- Policy number -->
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="policy-number">
+          Policy number
+        </label>
+        <input
+          class="nhsuk-input nhsuk-input--width-20"
+          id="policy-number"
+          name="policyNumber"
+          type="text"
+          value="PLI-2026-00384">
+      </div>
+
+      <!-- Level of cover -->
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="level-of-cover">
+          Level of cover
+        </label>
+
+        <div class="nhsuk-hint" id="cover-hint">
+          Enter the total level of cover in pounds sterling.
+        </div>
+
+        <div class="nhsuk-input-wrapper">
+          <div class="nhsuk-input-wrapper__prefix" aria-hidden="true">
+            £
+          </div>
+          <input
+            class="nhsuk-input nhsuk-input--width-10"
+            id="level-of-cover"
+            name="levelOfCover"
+            type="text"
+            inputmode="numeric"
+            value="5000000"
+            aria-describedby="cover-hint">
+        </div>
+      </div>
+
+      <!-- Policy start date -->
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" role="group">
+          <legend class="nhsuk-fieldset__legend">
+            Policy start date
+          </legend>
+
+          <div class="nhsuk-date-input" id="policy-start-date">
+
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label"
+                       for="start-day">Day</label>
+                <input
+                  class="nhsuk-input nhsuk-input--width-2 nhsuk-date-input__input"
+                  id="start-day"
+                  name="startDay"
+                  type="text"
+                  inputmode="numeric"
+                  value="01">
+              </div>
+            </div>
+
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label"
+                       for="start-month">Month</label>
+                <input
+                  class="nhsuk-input nhsuk-input--width-2 nhsuk-date-input__input"
+                  id="start-month"
+                  name="startMonth"
+                  type="text"
+                  inputmode="numeric"
+                  value="01">
+              </div>
+            </div>
+
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label"
+                       for="start-year">Year</label>
+                <input
+                  class="nhsuk-input nhsuk-input--width-4 nhsuk-date-input__input"
+                  id="start-year"
+                  name="startYear"
+                  type="text"
+                  inputmode="numeric"
+                  value="2026">
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Policy expiry date -->
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" role="group">
+          <legend class="nhsuk-fieldset__legend">
+            Policy expiry date
+          </legend>
+
+          <div class="nhsuk-date-input" id="policy-expiry-date">
+
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label"
+                       for="expiry-day">Day</label>
+                <input
+                  class="nhsuk-input nhsuk-input--width-2 nhsuk-date-input__input"
+                  id="expiry-day"
+                  name="expiryDay"
+                  type="text"
+                  inputmode="numeric"
+                  value="31">
+              </div>
+            </div>
+
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label"
+                       for="expiry-month">Month</label>
+                <input
+                  class="nhsuk-input nhsuk-input--width-2 nhsuk-date-input__input"
+                  id="expiry-month"
+                  name="expiryMonth"
+                  type="text"
+                  inputmode="numeric"
+                  value="12">
+              </div>
+            </div>
+
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label"
+                       for="expiry-year">Year</label>
+                <input
+                  class="nhsuk-input nhsuk-input--width-4 nhsuk-date-input__input"
+                  id="expiry-year"
+                  name="expiryYear"
+                  type="text"
+                  inputmode="numeric"
+                  value="2026">
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+
+       <p class="nhsuk-hint nhsuk-u-margin-top-3">
+  We'll remind you before this policy expires so you can
+  keep your assurance information up to date.
+</p>
+
+<div class="nhsuk-checkboxes">
+  <div class="nhsuk-checkboxes__item">
+    <input
+      class="nhsuk-checkboxes__input"
+      id="no-expiry-reminders"
+      name="noExpiryReminders"
+      type="checkbox"
+      value="yes">
+
+    <label class="nhsuk-label nhsuk-checkboxes__label"
+           for="no-expiry-reminders">
+      I do not want to receive expiry reminders for this policy.
+    </label>
+  </div>
+</div>
+      </div>
+
+      <!-- File upload -->
+      <div class="nhsuk-form-group nhsuk-file-upload"
+           data-module="nhsuk-file-upload">
+
+        <label class="nhsuk-label" for="insurance-file">
+          Upload insurance certificate or policy schedule
+        </label>
+
+        <div class="nhsuk-hint" id="insurance-file-hint">
+          Upload a PDF, Word document or image.
+        </div>
+
+        <input
+          class="nhsuk-file-upload__input"
+          id="insurance-file"
+          name="insuranceFile"
+          type="file"
+          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+          aria-describedby="insurance-file-hint">
+      </div>
+
+      <!-- Additional information -->
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="additional-information">
+          Additional information (optional)
+        </label>
+
+        <div class="nhsuk-hint" id="additional-information-hint">
+          Include any relevant information about the scope of cover.
+        </div>
+
+        <textarea
+          class="nhsuk-textarea"
+          id="additional-information"
+          name="additionalInformation"
+          rows="4"
+          aria-describedby="additional-information-hint"
+          placeholder="For example, exclusions or limitations of cover"></textarea>
+      </div>
+
+      <!-- Continue -->
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

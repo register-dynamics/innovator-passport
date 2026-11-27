@@ -1,0 +1,15 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'ISO 9001 certificate' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information", text: "Back to organisation information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+  <h1>ISO 9001 certificate</h1>
+  <dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Certification body</dt><dd class="nhsuk-summary-list__value">{{ data.iso9001SavedBody or 'Not provided' }}</dd></div>
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Certificate number</dt><dd class="nhsuk-summary-list__value">{{ data.iso9001SavedNumber or 'Not provided' }}</dd></div>
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Evidence source</dt><dd class="nhsuk-summary-list__value">Provided by your organisation</dd></div>
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Status</dt><dd class="nhsuk-summary-list__value">{% if data.iso9001Added == 'true' %}Added{% else %}Not added{% endif %}</dd></div>
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Certificate file</dt><dd class="nhsuk-summary-list__value">No file has been uploaded or saved in this research prototype.</dd></div>
+  </dl>
+</div></div>
+{% endblock %}

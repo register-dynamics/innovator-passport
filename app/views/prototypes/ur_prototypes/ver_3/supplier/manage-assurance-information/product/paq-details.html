@@ -1,0 +1,96 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'PAQ details' %}
+
+{% block content %}
+
+{{ backLink({
+  href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information",
+  text: "Back to product assurance information"
+}) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Pre-Acquisition Questionnaire (PAQ)</h1>
+
+    <p class="nhsuk-lede-text">Moustache Health Monitor</p>
+
+    {% if data.paqAdded == 'true' %}
+
+      <h2>PAQ details</h2>
+
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Product version
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            3.1.4
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            PAQ completion date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data.paqSavedDay }}/{{ data.paqSavedMonth }}/{{ data.paqSavedYear }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Document
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            PAQ-Moustache-Health-Monitor-3.1.4.pdf
+            <p class="nhsuk-u-margin-top-2">
+              <a href="#">View document</a>
+            </p>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Sharing permissions
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data.paqSavedAccess == 'request' %}
+              Access on request
+            {% else %}
+              Available to NHS organisations
+            {% endif %}
+          </dd>
+        </div>
+
+      </dl>
+
+      <h2>Manage evidence</h2>
+
+      <ul class="nhsuk-list">
+        <li>
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-paq">Upload a new version</a>
+        </li>
+        <li>
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/paq-evidence-access">Change sharing permissions</a>
+        </li>
+      </ul>
+
+    {% else %}
+
+      <p>You have not added a PAQ for this product.</p>
+
+      <p>
+        <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-paq" class="nhsuk-button" role="button">
+          Add PAQ
+        </a>
+      </p>
+
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'DTAC assessment' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information", text: "Back to product assurance information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds"><h1>DTAC assessment</h1><p class="nhsuk-lede-text">Moustache Health Monitor</p><p>This is a fictional evidence record for research.</p>
+<dl class="nhsuk-summary-list">{% for item in [['Evidence', 'Digital Technology Assessment Criteria (DTAC)'], ['Product version covered', '3.1.4'], ['Date added', '20 November 2026'], ['Document version', '1.0'], ['Sharing', 'Available to NHS organisations'], ['Source', 'Provided by supplier']] %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">{{ item[0] }}</dt><dd class="nhsuk-summary-list__value">{{ item[1] }}</dd></div>{% endfor %}</dl>
+<p>DTAC document: illustrative placeholder; no document is available to view or download.</p></div></div>
+{% endblock %}

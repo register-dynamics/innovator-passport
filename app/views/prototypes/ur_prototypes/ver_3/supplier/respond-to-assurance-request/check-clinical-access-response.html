@@ -1,0 +1,41 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Check your response' %}
+{% block content %}
+{{ backLink({ href: "respond-to-clinical-safety-access", text: "Back to access request response" }) }}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1>Check your response</h1>
+    <p>In this scenario, the Clinical Safety Case Report will be shared with Northshire NHS Trust for this assessment
+      only.</p>
+    <p>For this prototype, no file is uploaded, stored or transferred.</p>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">NHS organisation</dt>
+        <dd class="nhsuk-summary-list__value">Northshire NHS Trust</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Product</dt>
+        <dd class="nhsuk-summary-list__value">Moustache Health Monitor</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Evidence</dt>
+        <dd class="nhsuk-summary-list__value">Clinical Safety Case Report</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Report</dt>
+        <dd class="nhsuk-summary-list__value">File selection simulated; no file stored</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="respond-to-clinical-safety-access">Change<span
+              class="nhsuk-u-visually-hidden"> report</span></a></dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Message to Northshire NHS Trust</dt>
+        <dd class="nhsuk-summary-list__value">{{ data.clinicalAccessMessage or 'Not provided' }}</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="respond-to-clinical-safety-access">Change<span
+              class="nhsuk-u-visually-hidden"> message</span></a></dd>
+      </div>
+    </dl>
+    <form action="submit-clinical-access-response" method="post"><button class="nhsuk-button" type="submit">Submit
+        response</button></form>
+  </div>
+</div>
+{% endblock %}

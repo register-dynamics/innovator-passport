@@ -1,0 +1,11 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Public liability insurance' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information", text: "Back to organisation information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds"><h1>Public liability insurance</h1>
+{% if data.publicLiabilityAdded == 'true' %}
+<dl class="nhsuk-summary-list"><div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Insurer name</dt><dd class="nhsuk-summary-list__value">{{ data.insurerName or 'Example Insurance Ltd' }}</dd></div><div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Policy number</dt><dd class="nhsuk-summary-list__value">{{ data.policyNumber or 'PLI-2026-00384' }}</dd></div><div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Status</dt><dd class="nhsuk-summary-list__value">Added by supplier</dd></div></dl>
+<p>Insurance details are illustrative prototype data. No document is stored.</p>
+{% else %}<p>Not added</p><p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">Add public liability insurance</a></p>{% endif %}
+<p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information">Return to product assurance information</a></p></div></div>
+{% endblock %}

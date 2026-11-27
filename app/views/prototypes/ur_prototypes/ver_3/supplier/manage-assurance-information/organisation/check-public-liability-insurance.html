@@ -1,0 +1,276 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Check your answers' %}
+
+{% block content %}
+{% if data.organisationEvidenceType and data.organisationEvidenceType != '' %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/evidence-access", text: "Back to sharing permissions" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds"><h1>Check your answers</h1><p>Review your organisation assurance information before adding it.</p>
+<dl class="nhsuk-summary-list">
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Evidence</dt><dd class="nhsuk-summary-list__value">{{ data.organisationEvidenceName }}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-organisation-evidence">Change<span class="nhsuk-u-visually-hidden"> evidence details</span></a></dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Description</dt><dd class="nhsuk-summary-list__value">{{ data.organisationEvidenceDescription or 'Not provided' }}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-organisation-evidence">Change<span class="nhsuk-u-visually-hidden"> description</span></a></dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Sharing permissions</dt><dd class="nhsuk-summary-list__value">{% if data.organisationEvidenceAccess == 'available' %}Available to NHS organisations{% elif data.organisationEvidenceAccess == 'request' %}Access on request{% else %}Not selected{% endif %}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/evidence-access">Change<span class="nhsuk-u-visually-hidden"> sharing permissions</span></a></dd></div>
+</dl><form action="/prototypes/ur_prototypes/ver_3/supplier/save-organisation-evidence" method="post"><button class="nhsuk-button" type="submit">Confirm and add evidence</button></form></div></div>
+{% else %}
+
+<div class="nhsuk-back-link nhsuk-u-margin-bottom-6">
+  <a class="nhsuk-back-link__link"
+     href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/evidence-access">
+    <span aria-hidden="true">‹ </span>Back
+  </a>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-l">
+      Check your answers
+    </h1>
+
+    <p class="nhsuk-body-l">
+      Review your public liability insurance information before
+      adding it to your organisation's assurance evidence.
+    </p>
+
+    <!-- INSURANCE DETAILS -->
+
+    <h2 class="nhsuk-heading-m">
+      Insurance details
+    </h2>
+
+    <dl class="nhsuk-summary-list">
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Insurer name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data.insurerName or "Example Insurance Ltd" }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              insurer name
+            </span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Policy number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data.policyNumber or "PLI-2026-00384" }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              policy number
+            </span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Level of cover
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          £5,000,000
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              level of cover
+            </span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Policy start date
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data.startDay or "01" }}/{{ data.startMonth or "01" }}/{{ data.startYear or "2026" }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              policy start date
+            </span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Policy expiry date
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data.expiryDay or "31" }}/{{ data.expiryMonth or "12" }}/{{ data.expiryYear or "2026" }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              policy expiry date
+            </span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Insurance certificate
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Insurance-policy.pdf
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              insurance certificate
+            </span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Additional information
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {{ data.additionalInformation or "None provided" }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              additional information
+            </span>
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+
+    <!-- EXPIRY REMINDERS -->
+
+    <h2 class="nhsuk-heading-m nhsuk-u-margin-top-7">
+      Expiry reminders
+    </h2>
+
+    <dl class="nhsuk-summary-list">
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Receive expiry reminders
+        </dt>
+
+        <dd class="nhsuk-summary-list__value">
+          {% if data.noExpiryReminders == "yes" %}
+            No
+          {% else %}
+            Yes
+          {% endif %}
+        </dd>
+
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              expiry reminders
+            </span>
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+
+    <!-- ACCESS PERMISSIONS -->
+
+    <h2 class="nhsuk-heading-m nhsuk-u-margin-top-7">
+      Access permissions
+    </h2>
+
+    <dl class="nhsuk-summary-list">
+
+      <div class="nhsuk-summary-list__row">
+
+        <dt class="nhsuk-summary-list__key">
+          Who can access this evidence?
+        </dt>
+
+        <dd class="nhsuk-summary-list__value">
+
+          {% if data.evidenceAccess == "request" %}
+            <strong>Access on request</strong>
+            <p class="nhsuk-body-s nhsuk-u-margin-top-2">
+              NHS users can see that this evidence exists,
+              but must request access from your organisation.
+            </p>
+
+          {% else %}
+            <strong>Available to NHS organisations</strong>
+            <p class="nhsuk-body-s nhsuk-u-margin-top-2">
+              Authorised NHS users can view and download
+              this evidence without requesting permission.
+            </p>
+          {% endif %}
+
+        </dd>
+
+        <dd class="nhsuk-summary-list__actions">
+          <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/evidence-access">
+            Change
+            <span class="nhsuk-u-visually-hidden">
+              access permissions
+            </span>
+          </a>
+        </dd>
+
+      </div>
+
+    </dl>
+
+    <!-- SAVE -->
+
+    <h2 class="nhsuk-heading-m nhsuk-u-margin-top-7">
+      Add assurance evidence
+    </h2>
+
+    <p>
+      By saving this evidence, you will add it to your
+      organisation's assurance information.
+    </p>
+
+    <p>
+      NHS organisations will be able to access it
+      according to the permissions you have selected.
+    </p>
+
+   
+<form action="/prototypes/ur_prototypes/ver_3/supplier/confirm-public-liability-insurance" method="post">
+
+  <input type="hidden" name="publicLiabilityAdded" value="true">
+
+  <button class="nhsuk-button" type="submit">
+    Confirm and add evidence
+  </button>
+
+</form>
+
+
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}

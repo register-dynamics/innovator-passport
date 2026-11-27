@@ -1,0 +1,109 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Share your Clinical Safety Case Report' %}
+
+{% block content %}
+
+{{ backLink({
+  href: "request-clinical-details",
+  text: "Back to assurance request"
+}) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-u-margin-bottom-4">
+      Share your Clinical Safety Case Report
+    </h1>
+
+    <p class="nhsuk-u-margin-bottom-5">
+      Northshire NHS Trust has requested this report
+      for Moustache Health Monitor.
+    </p>
+
+    <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-5">
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          NHS organisation
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Northshire NHS Trust
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Product
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Moustache Health Monitor
+        </dd>
+      </div>
+
+    </dl>
+
+    <form
+      action="check-clinical-access-response"
+      method="post"
+    >
+
+      <div class="nhsuk-form-group">
+
+        <label
+          class="nhsuk-label nhsuk-label--s"
+          for="clinical-access-file"
+        >
+          Upload report
+        </label>
+
+
+
+        <input
+          class="nhsuk-file-upload"
+          id="clinical-access-file"
+          name="clinicalAccessFile"
+          type="file"
+          aria-describedby="clinical-access-file-hint"
+          required
+        >
+
+      </div>
+
+      <div class="nhsuk-form-group">
+
+        <label
+          class="nhsuk-label"
+          for="clinical-access-message"
+        >
+          Message to Northshire NHS Trust (optional)
+        </label>
+
+        <textarea
+          class="nhsuk-textarea"
+          id="clinical-access-message"
+          name="clinicalAccessMessage"
+          rows="3"
+        >{{ data.clinicalAccessMessage or '' }}</textarea>
+
+      </div>
+
+      <p class="nhsuk-body-s nhsuk-u-margin-bottom-5">
+        This report will only be shared with
+        Northshire NHS Trust for this assessment.
+      </p>
+
+      <button
+        class="nhsuk-button"
+        type="submit"
+      >
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

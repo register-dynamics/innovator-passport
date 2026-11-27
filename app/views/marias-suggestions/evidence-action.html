@@ -1,0 +1,12 @@
+{% extends "marias-suggestions/layout.html" %}
+{% if action == 'assign' %}{% set pageName = 'Assign or reassign reviewer' %}{% else %}{% set pageName = 'Request clarification' %}{% endif %}
+{% block content %}
+<p><a href="/marias-suggestions/review-evidence/{{ document.id }}">Back to {{ document.name }}</a></p>
+<h1>{{ pageName }}</h1>
+<p>{{ document.name }}</p>
+{% if error %}<div class="nhsuk-error-summary" role="alert" tabindex="-1"><h2 class="nhsuk-error-summary__title">There is a problem</h2><div class="nhsuk-error-summary__body"><ul class="nhsuk-list nhsuk-error-summary__list"><li><a href="#value">{{ error }}</a></li></ul></div></div>{% endif %}
+<form method="post" action="/marias-suggestions/review-evidence/{{ document.id }}/{{ action }}"><div class="nhsuk-form-group{% if error %} nhsuk-form-group--error{% endif %}">
+{% if action == 'assign' %}<label class="nhsuk-label" for="value">Reviewer name</label>{% if error %}<span class="nhsuk-error-message">{{ error }}</span>{% endif %}<input class="nhsuk-input" id="value" name="_value" value="{{ exploration.reviewers[document.id] or '' }}" required maxlength="150">
+{% else %}<label class="nhsuk-label" for="value">What would you like the supplier to clarify?</label><div class="nhsuk-hint" id="clarification-hint">Save a draft for this assessment. It will not be sent to the supplier.</div>{% if error %}<span class="nhsuk-error-message">{{ error }}</span>{% endif %}<textarea class="nhsuk-textarea" id="value" name="_value" rows="5" maxlength="2000" aria-describedby="clarification-hint" required>{{ exploration.clarifications[document.id] or '' }}</textarea>{% endif %}
+</div><button class="nhsuk-button" type="submit">{% if action == 'assign' %}Save reviewer{% else %}Save clarification draft{% endif %}</button></form>
+{% endblock %}

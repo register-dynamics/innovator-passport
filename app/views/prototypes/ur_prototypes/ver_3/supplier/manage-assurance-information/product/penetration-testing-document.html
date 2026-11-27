@@ -1,0 +1,6 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Upload penetration testing report' %}
+{% block content %}
+{% if data.penetrationAccess == 'request' %}{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/penetration-testing-location", text: "Back to report location" }) }}{% else %}{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-penetration-testing", text: "Back to report details" }) }}{% endif %}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds"><h1>Upload the penetration testing report</h1><p>This research prototype simulates an upload. The file you select will not be uploaded or stored.</p><form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/check-penetration-testing" method="post"><div class="nhsuk-form-group"><label class="nhsuk-label" for="penetration-file">Upload the report</label><input class="nhsuk-file-upload" id="penetration-file" type="file" required></div><button class="nhsuk-button" type="submit">Continue</button></form></div></div>
+{% endblock %}

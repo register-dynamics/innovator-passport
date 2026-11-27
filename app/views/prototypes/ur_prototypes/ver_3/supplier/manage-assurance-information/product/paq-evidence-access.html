@@ -1,0 +1,37 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'How would you like to share this evidence?' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-paq", text: "Back to PAQ details" }) }}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1>How would you like to share this evidence?</h1>
+        <div class="nhsuk-inset-text"><span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>Pre-Acquisition Questionnaire (PAQ)<br>Moustache Health Monitor</p>
+        </div>
+
+        <form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/check-paq" method="post">
+            <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-u-visually-hidden">Choose how to share the PAQ</legend>
+                <div class="nhsuk-radios">
+                    <div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="paq-available"
+                            name="paqAccess" type="radio" value="available" aria-describedby="paq-available-hint"
+                            required {% if data.paqAccess=='available' %}checked{% endif %}><label
+                            class="nhsuk-label nhsuk-radios__label" for="paq-available">Available to NHS
+                            organisations</label>
+                        <div class="nhsuk-hint nhsuk-radios__hint" id="paq-available-hint">Authorised NHS users can view
+                            and download this evidence without requesting permission.</div>
+                    </div>
+                    <div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="paq-request" name="paqAccess"
+                            type="radio" value="request" aria-describedby="paq-request-hint" {% if
+                            data.paqAccess=='request' %}checked{% endif %}><label
+                            class="nhsuk-label nhsuk-radios__label" for="paq-request">Access on request</label>
+                        <div class="nhsuk-hint nhsuk-radios__hint" id="paq-request-hint">NHS users can see that this
+                            evidence exists, but your organisation must approve their request before they can view or
+                            download it.</div>
+                    </div>
+                </div>
+            </fieldset><button class="nhsuk-button nhsuk-u-margin-top-4" type="submit">Continue</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

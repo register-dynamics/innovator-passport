@@ -1,0 +1,15 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Add organisation assurance evidence' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-assurance-evidence", text: "Back to evidence types" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+<h1>Add organisation assurance evidence</h1>
+{% if messages.organisationEvidenceError %}<div class="nhsuk-error-summary" role="alert" aria-labelledby="org-error-title"><h2 class="nhsuk-error-summary__title" id="org-error-title">There is a problem</h2><div class="nhsuk-error-summary__body"><p>{{ messages.organisationEvidenceError[0] }}</p></div></div>{% endif %}
+{% if data.organisationEvidenceType %}
+<form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/evidence-access" method="post">
+{% if data.organisationEvidenceType == 'other' %}<div class="nhsuk-form-group"><label class="nhsuk-label" for="org-name">Evidence name</label><input class="nhsuk-input" id="org-name" name="organisationEvidenceName" type="text" maxlength="150" required value="{% if data.organisationEvidenceName != 'Other organisation assurance evidence' %}{{ data.organisationEvidenceName or '' }}{% endif %}"></div>{% else %}<p><strong>{{ data.organisationEvidenceName }}</strong></p>{% endif %}
+<div class="nhsuk-form-group"><label class="nhsuk-label" for="org-description">Description (optional)</label><textarea class="nhsuk-textarea" id="org-description" name="organisationEvidenceDescription" rows="4">{{ data.organisationEvidenceDescription or '' }}</textarea></div>
+<button class="nhsuk-button" type="submit">Continue</button></form>
+{% else %}<p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-assurance-evidence">Choose an evidence type</a></p>{% endif %}
+</div></div>
+{% endblock %}

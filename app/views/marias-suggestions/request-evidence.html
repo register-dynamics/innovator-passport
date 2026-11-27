@@ -1,0 +1,44 @@
+{% extends "marias-suggestions/layout.html" %}
+{% set pageName = 'Request additional assurance evidence' %}
+{% block content %}
+<p><button class="nhsuk-link" type="submit" form="catalogue-form" name="_action" value="back">Back to available evidence</button></p>
+<h1>Request additional assurance evidence</h1>
+<p>Choose additional documents needed for this assessment. Evidence already available is listed on the previous page.</p>
+{% if messages.mariasError %}<div class="nhsuk-error-summary" role="alert" aria-labelledby="marias-error-title" tabindex="-1"><h2 class="nhsuk-error-summary__title" id="marias-error-title">There is a problem</h2><div class="nhsuk-error-summary__body"><ul class="nhsuk-list nhsuk-error-summary__list"><li><a href="#local-name">{{ messages.mariasError[0] }}</a></li></ul></div></div>{% endif %}
+<form action="/marias-suggestions/request-evidence" method="post" id="catalogue-form">
+  <div class="nhsuk-form-group"><label class="nhsuk-label" for="catalogue-search">Search by keyword</label><input class="nhsuk-input nhsuk-u-width-two-thirds" id="catalogue-search" name="_q" value="{{ query }}" type="search"></div>
+  <button class="nhsuk-button nhsuk-button--secondary" type="submit" name="_action" value="search">Search</button>
+  {% if query %}<p>Results for “{{ query }}”. <button class="nhsuk-link" type="submit" name="_action" value="clear-search">Clear search</button>.</p>{% endif %}
+  <div class="nhsuk-inset-text" role="status"><span class="nhsuk-u-visually-hidden">Information: </span><p><strong><span id="selected-count" data-total="{{ exploration.selected | length }}">{{ exploration.selected | length }}</span> documents selected</strong></p></div>
+  {% set lowerQuery = query | lower %}
+  {% set matchingCount = 0 %}{% for item in catalogue %}{% if not query or lowerQuery in (item.name | lower) or lowerQuery in (item.category | lower) %}{% set matchingCount = matchingCount + 1 %}{% endif %}{% endfor %}
+  {% if matchingCount == 0 %}<p>No matching documents found. Try another keyword.</p>{% endif %}
+  {% for category in categories %}
+    {% set categoryMatches = 0 %}{% for item in catalogue %}{% if item.category == category and (not query or lowerQuery in (item.name | lower) or lowerQuery in (item.category | lower)) %}{% set categoryMatches = categoryMatches + 1 %}{% endif %}{% endfor %}
+    {% if categoryMatches %}<details class="nhsuk-details" open><summary class="nhsuk-details__summary"><span class="nhsuk-details__summary-text">{{ category }}</span></summary><div class="nhsuk-details__text"><fieldset class="nhsuk-fieldset"><legend class="nhsuk-fieldset__legend nhsuk-u-visually-hidden">{{ category }} documents</legend><div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
+      {% for item in catalogue %}{% if item.category == category and (not query or lowerQuery in (item.name | lower) or lowerQuery in (item.category | lower)) %}
+      <input type="hidden" name="_visible" value="{{ item.id }}"><div class="nhsuk-checkboxes__item"><input class="nhsuk-checkboxes__input" id="document-{{ item.id }}" name="_selected" type="checkbox" value="{{ item.id }}" {% if item.id in exploration.selected %}checked{% endif %}><label class="nhsuk-label nhsuk-checkboxes__label" for="document-{{ item.id }}">{{ item.name }}</label></div>
+      {% endif %}{% endfor %}</div></fieldset></div></details>{% endif %}
+  {% endfor %}
+  <button class="nhsuk-button nhsuk-button--secondary" type="submit" name="_action" value="update">Update selection</button>
+  <h2 id="local-needs">Local assurance needs</h2>
+  <p>Add a requirement or template used by your Trust.</p>
+  {% if exploration.local | length %}<ul class="nhsuk-list">{% for item in exploration.local %}<li>{{ item.name }} <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-left-3 nhsuk-u-margin-bottom-2" type="submit" name="_action" value="remove:{{ item.id }}">Remove<span class="nhsuk-u-visually-hidden"> {{ item.name }}</span></button></li>{% endfor %}</ul>{% endif %}
+  <div class="nhsuk-form-group"><label class="nhsuk-label" for="local-name">Local requirement or template name</label><input class="nhsuk-input nhsuk-u-width-two-thirds" id="local-name" name="_localName" type="text" maxlength="150"></div>
+  <button class="nhsuk-button nhsuk-button--secondary" type="submit" name="_action" value="add-local">Add local requirement</button>
+  <div><button class="nhsuk-button" type="submit" name="_action" value="continue">Continue to review request</button></div>
+</form>
+{% endblock %}
+{% block pageScripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('catalogue-form');
+    const count = document.getElementById('selected-count');
+    const boxes = Array.from(form.querySelectorAll('input[name="_selected"]'));
+    const hiddenSelections = Number(count.dataset.total) - boxes.filter(box => box.checked).length;
+    form.addEventListener('change', function (event) {
+      if (event.target.name === '_selected') count.textContent = hiddenSelections + boxes.filter(box => box.checked).length;
+    });
+  });
+</script>
+{% endblock %}

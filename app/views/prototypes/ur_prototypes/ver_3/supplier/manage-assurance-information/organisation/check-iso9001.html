@@ -1,0 +1,16 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Check your ISO 9001 answers' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-manual-upload", text: "Back to ISO 9001 certificate" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+  <h1>Check your answers</h1>
+  <p>Review your ISO 9001 certification information before adding it to your organisation's assurance information.</p>
+  <h2 class="nhsuk-heading-m">Certificate details</h2>
+  <dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Certification body</dt><dd class="nhsuk-summary-list__value">{{ data.iso9001ManualBody or 'Not provided' }}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-manual-upload">Change<span class="nhsuk-u-visually-hidden"> certification body</span></a></dd></div>
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Certificate number</dt><dd class="nhsuk-summary-list__value">{{ data.iso9001ManualNumber or 'Not provided' }}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-manual-upload">Change<span class="nhsuk-u-visually-hidden"> certificate number</span></a></dd></div>
+    <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Certificate file</dt><dd class="nhsuk-summary-list__value">No file has been uploaded or saved in this research prototype.</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-manual-upload">Change<span class="nhsuk-u-visually-hidden"> certificate file</span></a></dd></div>
+  </dl>
+  <form action="/prototypes/ur_prototypes/ver_3/supplier/confirm-iso9001" method="post"><button class="nhsuk-button" type="submit">Confirm and add evidence</button></form>
+</div></div>
+{% endblock %}

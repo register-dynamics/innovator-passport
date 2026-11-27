@@ -1,0 +1,382 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Assurance request' %}
+
+{% block content %}
+
+<style>
+  /* Summary */
+
+  .request-summary {
+    border-left: 4px solid #005eb8;
+    padding: 4px 0 4px 20px;
+    margin-bottom: 40px;
+  }
+
+  .request-summary p {
+    margin: 0;
+  }
+
+  /* Requested actions */
+
+  .request-action-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+  }
+
+  .request-action-item {
+    border-bottom: 1px solid #d8dde0;
+    padding: 20px 0;
+    margin: 0;
+  }
+
+  .request-action-item:first-child {
+    border-top: 1px solid #d8dde0;
+  }
+
+  .request-action-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .request-action-header h3 {
+    margin: 0;
+  }
+
+  .request-action-item p {
+    margin-bottom: 12px;
+  }
+
+  .request-action-item p:last-child {
+    margin-bottom: 0;
+  }
+
+  .request-status {
+    display: inline-block;
+    background: #e8edee;
+    color: #212b32;
+    padding: 4px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Evidence status */
+
+  .assessment-status {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .assessment-status--available {
+    color: #4c6272;
+  }
+
+  /* Minimal activity timeline */
+
+  .assurance-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+  }
+
+  .assurance-timeline__item {
+    position: relative;
+    padding: 0 0 32px 36px;
+    margin: 0;
+  }
+
+  .assurance-timeline__item::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 0;
+    width: 2px;
+    background: #d8dde0;
+  }
+
+  .assurance-timeline__item:last-child {
+    padding-bottom: 0;
+  }
+
+  .assurance-timeline__item:last-child::before {
+    display: none;
+  }
+
+  .assurance-timeline__marker {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border: 3px solid #005eb8;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  .assurance-timeline__date {
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+
+  .assurance-timeline__description {
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .request-action-header {
+      display: block;
+    }
+
+    .request-action-header .request-status {
+      margin-top: 8px;
+    }
+  }
+</style>
+
+{#
+  Northshire NHS Trust research scenario.
+
+  This is an access request for evidence that the
+  supplier has already registered.
+
+  Access has not yet been granted.
+
+  The request date is illustrative and should be
+  aligned with the Trust prototype.
+#}
+
+{% set requestResponded =
+  data.northshireClinicalSafetyAccessResponded == 'true'
+%}
+
+{#
+  Only show other evidence if it is explicitly
+  included in this Trust's assessment.
+
+  Do not inherit another Trust's assurance decisions.
+#}
+
+{% set cyberEssentialsAvailable =
+  data.northshireCyberEssentialsAvailable == 'true'
+%}
+
+{{ backLink({
+  href: "/prototypes/ur_prototypes/ver_3/supplier/start",
+  text: "Back to dashboard"
+}) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Assurance request</h1>
+
+    <p class="nhsuk-lede-text">
+      Northshire NHS Trust
+    </p>
+
+    <div class="request-summary">
+      <p>
+        {% if requestResponded %}
+          <strong>Response sent</strong>
+        {% else %}
+          <strong>1 item needs your response</strong>
+        {% endif %}
+      </p>
+    </div>
+
+    <!-- REQUEST DETAILS -->
+
+    <h2>Request details</h2>
+
+    <dl class="nhsuk-summary-list">
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Product
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Moustache Health Monitor
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Product version
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          3.1.4
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Requested on
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          25 November 2026
+        </dd>
+      </div>
+
+    </dl>
+
+    <!-- ACTIONS -->
+
+    <h2>
+      {% if requestResponded %}
+        Your response
+      {% else %}
+        What you need to do
+      {% endif %}
+    </h2>
+
+    <ul class="request-action-list">
+
+      <li class="request-action-item">
+
+        <div class="request-action-header">
+
+          <h3 class="nhsuk-heading-s">
+            Clinical Safety Case Report
+          </h3>
+
+          <span class="request-status">
+            {% if requestResponded %}
+              Response sent
+            {% else %}
+              Access requested
+            {% endif %}
+          </span>
+
+        </div>
+
+        {% if requestResponded %}
+
+          <p>
+            You have submitted a simulated response to Northshire NHS Trust’s request for access to this report. No file was stored or transferred.
+          </p>
+
+        {% else %}
+
+          <p>
+            Northshire NHS Trust has requested access
+            to your Clinical Safety Case Report.
+          </p>
+
+          <p>
+            Provide the report for this assessment.
+          </p>
+
+          <p>
+            <a href="/prototypes/ur_prototypes/ver_3/supplier/respond-to-assurance-request/respond-to-clinical-safety-access">
+              Respond to access request
+              <span class="nhsuk-u-visually-hidden">
+                for Clinical Safety Case Report
+              </span>
+            </a>
+          </p>
+
+        {% endif %}
+
+      </li>
+
+    </ul>
+
+    <!-- OTHER ASSURANCE EVIDENCE -->
+
+    {% if cyberEssentialsAvailable %}
+
+      <h2>
+        Other assurance evidence for this assessment
+      </h2>
+
+      <p>
+        The following evidence is available to
+        Northshire NHS Trust for review.
+      </p>
+
+      <div class="nhsuk-table-responsive">
+
+        <table class="nhsuk-table">
+
+          <thead>
+            <tr>
+              <th scope="col">Evidence</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>Cyber Essentials</td>
+              <td>
+                <span class="assessment-status assessment-status--available">
+                  Available for review
+                </span>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    {% endif %}
+
+    <!-- ASSURANCE ACTIVITY -->
+
+    <h2>Assurance activity</h2>
+
+    <ol class="assurance-timeline">
+
+      {% if requestResponded %}
+
+      <li class="assurance-timeline__item">
+
+        <span
+          class="assurance-timeline__marker"
+          aria-hidden="true">
+        </span>
+
+        <p class="assurance-timeline__description">
+          You submitted a simulated response to the request for the Clinical Safety Case Report. No file was stored or transferred.
+        </p>
+
+      </li>
+
+      {% endif %}
+
+      <li class="assurance-timeline__item">
+
+        <span
+          class="assurance-timeline__marker"
+          aria-hidden="true">
+        </span>
+
+        <p class="assurance-timeline__date">
+          25 November 2026
+        </p>
+
+        <p class="assurance-timeline__description">
+          Northshire NHS Trust requested access to
+          the Clinical Safety Case Report.
+        </p>
+
+      </li>
+
+    </ol>
+
+  </div>
+</div>
+
+{% endblock %}

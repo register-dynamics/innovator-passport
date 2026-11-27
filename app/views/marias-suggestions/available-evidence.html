@@ -1,0 +1,157 @@
+
+{% extends "marias-suggestions/layout.html" %}
+{% set pageName = 'Review assurance evidence' %}
+
+{% block content %}
+
+<h1>Review assurance evidence</h1>
+
+<p>
+  Review the evidence already available for this product.
+  You can request additional evidence from the supplier if needed.
+</p>
+
+<div class="nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-6">
+  <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">
+    Moustache Health Monitor App
+  </h2>
+
+  <dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Product version</dt>
+      <dd class="nhsuk-summary-list__value">1.2.3</dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Supplier</dt>
+      <dd class="nhsuk-summary-list__value">
+        Face Hair Care Supplies UK
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Manufacturer</dt>
+      <dd class="nhsuk-summary-list__value">
+        MediBeard Corp
+      </dd>
+    </div>
+  </dl>
+</div>
+
+{% set needsReview = 0 %}
+{% set inReview = 0 %}
+{% set accepted = 0 %}
+{% for doc in allAvailableEvidence %}
+  {% set decision = exploration.decisions[doc.id] %}
+  {% if decision == 'accepted' %}
+    {% set accepted = accepted + 1 %}
+  {% elif decision == 'in-review' %}
+    {% set inReview = inReview + 1 %}
+  {% elif not decision or decision == 'later' %}
+    {% set needsReview = needsReview + 1 %}
+  {% endif %}
+{% endfor %}
+<section aria-labelledby="assurance-overview-heading">
+  <h2 id="assurance-overview-heading">Assurance overview</h2>
+  <div class="nhsuk-grid-row nhsuk-card-group">
+    {% for metric in [[needsReview, 'Needs review'], [inReview, 'In review'], [accepted, 'Accepted']] %}
+    <div class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+      <div class="nhsuk-card nhsuk-u-margin-bottom-3" style="width: 100%; border: 1px solid #d8dde0;">
+        <div class="nhsuk-card__content nhsuk-u-padding-4">
+          <p class="nhsuk-heading-m nhsuk-u-margin-bottom-1">{{ metric[0] }}</p>
+          <p class="nhsuk-u-margin-bottom-0">{{ metric[1] }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<section aria-labelledby="attention-heading">
+  <h2 id="attention-heading">Tasks needing your attention</h2>
+  <p>The signed-in user is not identified in this prototype, so tasks cannot be matched to you.</p>
+</section>
+<h2>All assurance tasks</h2>
+
+{% for group in [organisationEvidence, availableEvidence] | reverse %}
+
+  {% if loop.first %}
+    <h3>MedTech product assurance</h3>
+  {% else %}
+    <h3>Organisation-level assurance</h3>
+  {% endif %}
+
+  <table
+    class="nhsuk-table nhsuk-table--responsive"
+    aria-label="{% if loop.first %}MedTech product assurance{% else %}Organisation-level assurance{% endif %}"
+  >
+    <thead class="nhsuk-table__head">
+      <tr class="nhsuk-table__row">
+        <th class="nhsuk-table__header" scope="col">
+          Document
+        </th>
+        <th class="nhsuk-table__header" scope="col">
+          Review status
+        </th>
+        <th class="nhsuk-table__header" scope="col">
+          Action
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="nhsuk-table__body">
+
+      {% for doc in group %}
+        <tr class="nhsuk-table__row">
+
+          <th class="nhsuk-table__header" scope="row">
+            <span class="nhsuk-table__heading" aria-hidden="true">
+              Document
+            </span>
+            {{ doc.name }}
+          </th>
+
+          <td class="nhsuk-table__cell">
+            <span class="nhsuk-table__heading" aria-hidden="true">
+              Review status
+            </span>
+
+            {% if exploration.decisions[doc.id] == 'accepted' %}
+              Accepted
+            {% elif exploration.decisions[doc.id] == 'not-accepted' %}
+              Not accepted
+            {% elif exploration.decisions[doc.id] == 'later' %}
+              Leave for later
+            {% else %}
+              Needs review
+            {% endif %}
+          </td>
+
+          <td class="nhsuk-table__cell">
+            <span class="nhsuk-table__heading" aria-hidden="true">
+              Action
+            </span>
+
+            <a href="/marias-suggestions/review-evidence/{{ doc.id }}">
+              Review
+              <span class="nhsuk-u-visually-hidden">
+                {{ doc.name }}
+              </span>
+            </a>
+          </td>
+
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endfor %}
+
+<a
+  class="nhsuk-button nhsuk-u-margin-top-4"
+  href="/marias-suggestions/request-evidence"
+>
+  Request additional evidence
+</a>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Product assurance information' %}
+{% block content %}
+<style>
+    @media (min-width: 48.0625em) {
+        .product-evidence-table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .product-evidence-table th:nth-child(1) {
+            width: 50%;
+        }
+
+        .product-evidence-table th:nth-child(2) {
+            width: 30%;
+        }
+
+        .product-evidence-table th:nth-child(3) {
+            width: 20%;
+        }
+    }
+</style>
+
+<div class="nhsuk-back-link nhsuk-u-margin-bottom-6">
+  <a class="nhsuk-back-link__link" href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/products.html">
+    Back to your products
+  </a>
+</div>
+
+<h1>Product assurance information</h1>
+{% if messages.paqAdded %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success" role="alert"
+    aria-labelledby="paq-success-title" data-module="nhsuk-notification-banner">
+    <div class="nhsuk-notification-banner__header">
+        <h2 class="nhsuk-notification-banner__title" id="paq-success-title">Success</h2>
+    </div>
+    <div class="nhsuk-notification-banner__content">
+        <h3 class="nhsuk-notification-banner__heading">PAQ added</h3>
+        <p class="nhsuk-u-margin-bottom-0">Your Pre-Acquisition Questionnaire has been added to the assurance
+            information for Moustache Health Monitor.</p>
+    </div>
+</div>
+{% endif %}
+{% if messages.clinicalSafetyAdded %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success" role="alert" aria-labelledby="clinical-success-title" data-module="nhsuk-notification-banner">
+  <div class="nhsuk-notification-banner__header"><h2 class="nhsuk-notification-banner__title" id="clinical-success-title">Success</h2></div>
+  <div class="nhsuk-notification-banner__content"><h3 class="nhsuk-notification-banner__heading">Clinical Safety Case Report added</h3><p class="nhsuk-u-margin-bottom-0">Your evidence has been added to the assurance information for Moustache Health Monitor.</p></div>
+</div>
+{% endif %}
+{% if messages.penetrationAdded %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success" role="alert" aria-labelledby="penetration-success-title" data-module="nhsuk-notification-banner"><div class="nhsuk-notification-banner__header"><h2 class="nhsuk-notification-banner__title" id="penetration-success-title">Success</h2></div><div class="nhsuk-notification-banner__content"><h3 class="nhsuk-notification-banner__heading">Penetration testing report added</h3><p class="nhsuk-u-margin-bottom-0">Your evidence has been added to the assurance information for Moustache Health Monitor.</p></div></div>
+{% endif %}
+<p class="nhsuk-lede-text">Moustache Health Monitor</p>
+<p>Add and manage assurance evidence for this product so NHS organisations can use it without requesting it again.</p>
+<h2>Product details</h2>
+<dl class="nhsuk-summary-list">
+    {% for item in [["Product name", "Moustache Health Monitor"], ["Product type", "Digital health software"], ["Current
+    version", "3.1.4"], ["Supplier", "Moustache Health Ltd"]] %}
+    <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">{{ item[0] }}</dt>
+        <dd class="nhsuk-summary-list__value">{{ item[1] }}</dd>
+    </div>
+    {% endfor %}
+</dl>
+<h2>Product assurance evidence</h2>
+<p>View existing evidence or add new documents for this product.</p>
+
+{% macro evidenceTable(title, id, rows) %}
+<h3 class="nhsuk-u-margin-bottom-3" id="{{ id }}">{{ title }}</h3>
+<table class="nhsuk-table nhsuk-table--responsive nhsuk-u-margin-bottom-4 product-evidence-table" role="table"
+    aria-labelledby="{{ id }}">
+    <thead class="nhsuk-table__head" role="rowgroup">
+        <tr class="nhsuk-table__row" role="row">
+            <th class="nhsuk-table__header" scope="col" role="columnheader">Evidence</th>
+            <th class="nhsuk-table__header" scope="col" role="columnheader">Status</th>
+            <th class="nhsuk-table__header" scope="col" role="columnheader">Action</th>
+        </tr>
+    </thead>
+    <tbody class="nhsuk-table__body" role="rowgroup">{% for row in rows %}<tr class="nhsuk-table__row" role="row">
+            <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading"
+                    aria-hidden="true">Evidence</span><span>{{ row[0] }}</span></th>
+            <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading"
+                    aria-hidden="true">Status</span><span>{{ row[1] }}</span></td>
+            <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading"
+                    aria-hidden="true">Action</span><span><a href="{{ row[2] }}">{{ row[3] }}<span
+                            class="nhsuk-u-visually-hidden"> for {{ row[0] }}</span></a></span></td>
+        </tr>{% endfor %}</tbody>
+</table>
+{% endmacro %}
+{% if data.paqAdded == 'true' %}{% set paqStatus = 'Added' %}{% set paqHref = '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/paq-details' %}{% set paqAction = 'View details' %}{% else %}{% set paqStatus = 'Not added' %}{% set paqHref = '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-paq' %}{% set paqAction = 'Add' %}{% endif
+%}
+{{ evidenceTable('Assessment documents', 'assessment-heading', [['DTAC', 'Not added', '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-product-assurance-evidence', 'Add'],
+['PAQ', paqStatus, paqHref, paqAction]]) }}
+{% if data.clinicalSafetyAdded == 'true' %}{% set clinicalStatus = 'Added' %}{% set clinicalHref = '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/clinical-safety-details' %}{% set clinicalAction = 'View details' %}{% else %}{% set clinicalStatus = 'Not added' %}{% set clinicalHref = '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety' %}{% set clinicalAction = 'Add' %}{% endif %}
+{{ evidenceTable('Clinical safety', 'clinical-heading', [['Clinical Safety Case Report', clinicalStatus,
+clinicalHref, clinicalAction], ['Hazard Log', 'Not added', '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-product-assurance-evidence', 'Add']]) }}
+{% if data.penetrationAdded == 'true' %}{% set penetrationStatus = 'Added' %}{% set penetrationHref = '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/penetration-testing-details' %}{% set penetrationAction = 'View details' %}{% else %}{% set penetrationStatus = 'Not added' %}{% set penetrationHref = '/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-penetration-testing' %}{% set penetrationAction = 'Add' %}{% endif %}
+{{ evidenceTable('Technical security', 'technical-heading', [['Penetration testing report', penetrationStatus, penetrationHref, penetrationAction]]) }}
+<p><a class="nhsuk-button" href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-product-assurance-evidence">Add product assurance evidence</a></p>
+
+{% endblock %}

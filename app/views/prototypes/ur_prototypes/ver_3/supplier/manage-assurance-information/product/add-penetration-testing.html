@@ -1,0 +1,18 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Add penetration testing report' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information", text: "Back to product assurance information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds"><h1>Add penetration testing report</h1><p>Product: <strong>Moustache Health Monitor</strong></p>
+{% if messages.penetrationError %}<div class="nhsuk-error-summary" role="alert" aria-labelledby="penetration-error-title"><h2 class="nhsuk-error-summary__title" id="penetration-error-title">There is a problem</h2><div class="nhsuk-error-summary__body"><p>{{ messages.penetrationError[0] }}</p></div></div>{% endif %}
+{% if data.penetrationAdded == 'true' %}<p>A penetration testing report has already been added.</p><p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/penetration-testing-details">View details</a></p>{% else %}
+<form action="/prototypes/ur_prototypes/ver_3/supplier/choose-penetration-sharing" method="post">
+<div class="nhsuk-form-group"><fieldset class="nhsuk-fieldset" role="group" aria-describedby="penetration-date-hint"><legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">Report date</legend><div class="nhsuk-hint" id="penetration-date-hint">For example, 20 11 2026</div><div class="nhsuk-date-input">
+{% for part in [['day', 'Day', 'penetrationDay', 2], ['month', 'Month', 'penetrationMonth', 2], ['year', 'Year', 'penetrationYear', 4]] %}<div class="nhsuk-date-input__item"><div class="nhsuk-form-group"><label class="nhsuk-label nhsuk-date-input__label" for="penetration-{{ part[0] }}">{{ part[1] }}</label><input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-{{ part[3] }}" id="penetration-{{ part[0] }}" name="{{ part[2] }}" value="{{ data[part[2]] or '' }}" type="text" inputmode="numeric" required></div></div>{% endfor %}
+</div></fieldset></div>
+<div class="nhsuk-form-group"><label class="nhsuk-label" for="penetration-scope">Product version or scope covered</label><input class="nhsuk-input" id="penetration-scope" name="penetrationScope" value="{{ data.penetrationScope or '' }}" required></div>
+<fieldset class="nhsuk-fieldset"><legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">How would you like to share this evidence?</legend><div class="nhsuk-radios">
+<div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="penetration-available" name="penetrationAccess" type="radio" value="available" required {% if data.penetrationAccess == 'available' %}checked{% endif %} aria-describedby="penetration-available-hint"><label class="nhsuk-label nhsuk-radios__label" for="penetration-available">Available to NHS organisations</label><div class="nhsuk-hint nhsuk-radios__hint" id="penetration-available-hint">NHS organisations can access and use this report without requesting it again.</div></div>
+<div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="penetration-request" name="penetrationAccess" type="radio" value="request" {% if data.penetrationAccess == 'request' %}checked{% endif %} aria-describedby="penetration-request-hint"><label class="nhsuk-label nhsuk-radios__label" for="penetration-request">Access on request</label><div class="nhsuk-hint nhsuk-radios__hint" id="penetration-request-hint">NHS organisations can see that the report exists but must request access before viewing it.</div></div>
+</div></fieldset><button class="nhsuk-button nhsuk-u-margin-top-4" type="submit">Continue</button></form>{% endif %}
+</div></div>
+{% endblock %}

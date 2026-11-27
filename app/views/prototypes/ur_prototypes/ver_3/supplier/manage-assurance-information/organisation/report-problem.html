@@ -1,0 +1,126 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Report a problem with this record' %}
+
+{% block content %}
+
+<div class="nhsuk-back-link nhsuk-u-margin-bottom-6">
+  <a class="nhsuk-back-link__link" href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/cyber-essentials.html">
+    Back to Cyber Essentials certificate
+  </a>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">
+      Report a problem with this record
+    </h1>
+
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-6">
+      Cyber Essentials · CE-2026-88412
+    </p>
+
+    <fieldset class="nhsuk-fieldset">
+
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+        What's wrong with this record?
+      </legend>
+
+      <p class="nhsuk-hint">
+        Select the problem you want to report.
+      </p>
+
+      <div class="nhsuk-radios">
+
+        <div class="nhsuk-radios__item">
+          <input
+            class="nhsuk-radios__input"
+            id="another-organisation"
+            name="problem"
+            type="radio"
+            value="another-organisation"
+          >
+          <label
+            class="nhsuk-label nhsuk-radios__label"
+            for="another-organisation">
+            This record belongs to another organisation
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input
+            class="nhsuk-radios__input"
+            id="incorrect-details"
+            name="problem"
+            type="radio"
+            value="incorrect-details"
+          >
+          <label
+            class="nhsuk-label nhsuk-radios__label"
+            for="incorrect-details">
+            Some details are incorrect
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input
+            class="nhsuk-radios__input"
+            id="out-of-date"
+            name="problem"
+            type="radio"
+            value="out-of-date"
+          >
+          <label
+            class="nhsuk-label nhsuk-radios__label"
+            for="out-of-date">
+            The information is out of date
+          </label>
+        </div>
+
+      </div>
+
+    </fieldset>
+
+    <div class="nhsuk-u-margin-top-6">
+
+      <h2 class="nhsuk-heading-s">
+        What you can do
+      </h2>
+
+      <p>
+        If this record belongs to another organisation,
+        you may need to remove the link to it from
+        your assurance information.
+      </p>
+
+      <p>
+        If the details are incorrect or out of date,
+        you will need to contact the organisation
+        that maintains the original register.
+      </p>
+
+      <p>
+        Changes made in this service will not change
+        the information held in the original register.
+      </p>
+
+    </div>
+
+
+<div class="nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+  <a
+    href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/cyber-essentials"
+    class="nhsuk-button"
+    role="button">
+    Continue
+  </a>
+</div>
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Provide a Pre-Acquisition Questionnaire (PAQ)' %}
+{% block content %}
+{{ backLink({ href: "request-paq-details", text: "Back to assurance request" }) }}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1>Provide a Pre-Acquisition Questionnaire (PAQ)</h1>
+    <p>Greater Worthington and Bryce Trust has requested a completed PAQ for Moustache Health Monitor.</p>
+    {% if data.worthingtonPaqResponded == 'true' %}<p>A response has already been sent for this request.</p>
+    <p><a href="request-paq-details">View request</a></p>{% else %}
+    {% if messages.worthingtonPaqError %}<div class="nhsuk-error-summary" role="alert" aria-labelledby="paq-error-title"
+      tabindex="-1">
+      <h2 class="nhsuk-error-summary__title" id="paq-error-title">There is a problem</h2>
+      <div class="nhsuk-error-summary__body">
+        <ul class="nhsuk-list nhsuk-error-summary__list">
+          <li><a href="#request-paq-day">{{ messages.worthingtonPaqError[0] }}</a></li>
+        </ul>
+      </div>
+    </div>{% endif %}
+    <p><strong>Product:</strong> Moustache Health Monitor<br><strong>Product version:</strong> 3.1.4</p>
+    <form action="review-paq-response" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" role="group" aria-describedby="request-paq-date-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">PAQ completion date</legend>
+          <div class="nhsuk-hint" id="request-paq-date-hint">For example, 20 11 2026</div>
+          <div class="nhsuk-date-input">
+            {% for part in [['day', 'Day', 'worthingtonPaqDay', 2], ['month', 'Month', 'worthingtonPaqMonth', 2],
+            ['year', 'Year', 'worthingtonPaqYear', 4]] %}<div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group"><label class="nhsuk-label nhsuk-date-input__label"
+                  for="request-paq-{{ part[0] }}">{{ part[1] }}</label><input
+                  class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-{{ part[3] }}"
+                  id="request-paq-{{ part[0] }}" name="{{ part[2] }}" value="{{ data[part[2]] or '' }}" type="text"
+                  inputmode="numeric"></div>
+            </div>{% endfor %}</div>
+        </fieldset>
+      </div>
+      <div class="nhsuk-form-group"><label class="nhsuk-label" for="request-paq-file">Upload completed PAQ</label>
+        <input class="nhsuk-file-upload" id="request-paq-file" type="file"
+          aria-describedby="request-paq-file-hint">
+      </div>
+      <button class="nhsuk-button" type="submit">Continue</button>
+    </form>{% endif %}
+  </div>
+</div>
+{% endblock %}

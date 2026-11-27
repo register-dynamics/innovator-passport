@@ -1,0 +1,10 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Add product assurance evidence' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information", text: "Back to product assurance information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds"><h1>Add product assurance evidence</h1><p>Select the type of evidence you want to add for Moustache Health Monitor.</p>
+<form action="/prototypes/ur_prototypes/ver_3/supplier/choose-product-evidence" method="post"><fieldset class="nhsuk-fieldset"><legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">Evidence type</legend><div class="nhsuk-radios">
+{% for option in [['paq', 'Pre-Acquisition Questionnaire (PAQ)'], ['clinical', 'Clinical Safety Case Report'], ['penetration', 'Penetration testing report']] %}
+<div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="type-{{ option[0] }}" name="productEvidenceType" type="radio" value="{{ option[0] }}" required {% if data.productEvidenceType == option[0] %}checked{% endif %}><label class="nhsuk-label nhsuk-radios__label" for="type-{{ option[0] }}">{{ option[1] }}</label></div>
+{% endfor %}</div></fieldset><button class="nhsuk-button nhsuk-u-margin-top-4" type="submit">Continue</button></form></div></div>
+{% endblock %}

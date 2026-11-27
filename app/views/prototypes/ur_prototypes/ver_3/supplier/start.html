@@ -1,0 +1,121 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Manage health technology assurance' %}
+
+{% block content %}
+
+<style>
+  .supplier-action-card {
+    background: #ffffff;
+    border: 1px solid #d8dde0;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .supplier-action-card h2 {
+    margin-top: 0;
+  }
+
+  .supplier-action-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .assessment-metric { border-left: 4px solid #4c6272; }
+  .assessment-metric--pending { border-left-color: #005eb8; }
+  .assessment-response--pending { color: #005eb8; font-weight: 600; }
+</style>
+
+<h1 class="nhsuk-heading-l">
+  Manage MedTech assurance
+</h1>
+
+{% if messages.northshireClinicalResponseSubmitted %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success nhsuk-u-margin-bottom-6" role="alert" aria-labelledby="response-success-title" data-module="nhsuk-notification-banner">
+  <div class="nhsuk-notification-banner__header"><h2 class="nhsuk-notification-banner__title" id="response-success-title">Success</h2></div>
+  <div class="nhsuk-notification-banner__content"><h3 class="nhsuk-notification-banner__heading">Response submitted</h3><p class="nhsuk-u-margin-bottom-0">Your response to Northshire NHS Trust has been recorded.</p></div>
+</div>
+{% endif %}
+
+{% if messages.worthingtonPaqResponseSubmitted %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success nhsuk-u-margin-bottom-6" role="alert" aria-labelledby="paq-response-success-title" data-module="nhsuk-notification-banner">
+  <div class="nhsuk-notification-banner__header"><h2 class="nhsuk-notification-banner__title" id="paq-response-success-title">Success</h2></div>
+  <div class="nhsuk-notification-banner__content"><h3 class="nhsuk-notification-banner__heading">Response submitted</h3><p class="nhsuk-u-margin-bottom-0">Your response to Greater Worthington and Bryce Trust has been recorded.</p></div>
+</div>
+{% endif %}
+
+<p>
+  Manage assurance requests from NHS organisations and keep your organisation and product evidence up to date.
+</p>
+
+
+<!-- ASSURANCE REQUESTS -->
+<h2 class="nhsuk-heading-m">Assurance requests</h2>
+<p>Track assurance requests from NHS organisations and see where you need to respond.</p>
+
+{% set pendingRequests = 0 %}
+{% if data.worthingtonPaqResponded != 'true' %}{% set pendingRequests = pendingRequests + 1 %}{% endif %}
+{% if data.northshireClinicalSafetyAccessResponded != 'true' %}{% set pendingRequests = pendingRequests + 1 %}{% endif %}
+{% set responsesSent = 2 - pendingRequests %}
+
+<ul class="nhsuk-grid-row nhsuk-card-group nhsuk-u-margin-bottom-4" aria-label="Assessment summary">
+  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item"><div class="nhsuk-card assessment-metric"><div class="nhsuk-card__content nhsuk-u-padding-4"><p class="nhsuk-heading-l nhsuk-u-margin-bottom-1">2</p><p class="nhsuk-body-s nhsuk-u-margin-bottom-0">Assessments</p></div></div></li>
+  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item"><div class="nhsuk-card assessment-metric assessment-metric--pending"><div class="nhsuk-card__content nhsuk-u-padding-4"><p class="nhsuk-heading-l nhsuk-u-margin-bottom-1">{{ pendingRequests }}</p><p class="nhsuk-body-s nhsuk-u-margin-bottom-0">Needs your response</p></div></div></li>
+  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item"><div class="nhsuk-card assessment-metric"><div class="nhsuk-card__content nhsuk-u-padding-4"><p class="nhsuk-heading-l nhsuk-u-margin-bottom-1">{{ responsesSent }}</p><p class="nhsuk-body-s nhsuk-u-margin-bottom-0">Responses sent</p></div></div></li>
+</ul>
+
+<h3 class="nhsuk-heading-s" id="assessments-heading">Your assessments</h3>
+<table class="nhsuk-table nhsuk-table--responsive" role="table" aria-labelledby="assessments-heading">
+  <thead class="nhsuk-table__head" role="rowgroup"><tr class="nhsuk-table__row" role="row">
+    <th class="nhsuk-table__header" scope="col" role="columnheader">NHS organisation</th>
+    <th class="nhsuk-table__header" scope="col" role="columnheader">Product</th>
+    <th class="nhsuk-table__header" scope="col" role="columnheader">Your response</th>
+    <th class="nhsuk-table__header" scope="col" role="columnheader">Action</th>
+  </tr></thead>
+  <tbody class="nhsuk-table__body" role="rowgroup">
+    <tr class="nhsuk-table__row" role="row">
+      <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">NHS organisation</span><span>Northshire NHS Trust</span></th>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Product</span><span>Moustache Health Monitor</span></td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Your response</span><span>{% if data.northshireClinicalSafetyAccessResponded == 'true' %}Response sent{% else %}<strong class="assessment-response--pending">1 item needs response</strong>{% endif %}</span></td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/respond-to-assurance-request/request-clinical-details">View request<span class="nhsuk-u-visually-hidden"> from Northshire NHS Trust</span></a></span></td>
+    </tr>
+    <tr class="nhsuk-table__row" role="row">
+      <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">NHS organisation</span><span>Greater Worthington and Bryce Trust</span></th>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Product</span><span>Moustache Health Monitor</span></td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Your response</span><span>{% if data.worthingtonPaqResponded == 'true' %}Response sent{% else %}<strong class="assessment-response--pending">1 item needs response</strong>{% endif %}</span></td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/respond-to-assurance-request/request-paq-details.html">View request<span class="nhsuk-u-visually-hidden"> from Greater Worthington and Bryce Trust</span></a></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- MANAGE ASSURANCE INFORMATION -->
+
+<h2 class="nhsuk-heading-m nhsuk-u-margin-top-8">
+  Manage your assurance information
+</h2>
+
+<p>Build and maintain a reusable profile of your organisation and product assurance evidence.</p>
+<p>Add documents, keep them up to date and control who can access them. You can reuse evidence from your profile when responding to requests from NHS organisations.</p>
+
+<ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading nhsuk-heading-m">Organisation information</h3>
+        <p>Manage evidence that applies across your organisation, such as insurance and certifications.</p>
+        <p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information">View organisation information</a></p>
+      </div>
+    </div>
+  </li>
+  <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading nhsuk-heading-m">Product assurance information</h3>
+        <p>Manage evidence for individual products, such as DTAC, PAQ and clinical safety documents.</p>
+        <p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/products">View your products</a></p>
+      </div>
+    </div>
+  </li>
+</ul>
+
+{% endblock %}

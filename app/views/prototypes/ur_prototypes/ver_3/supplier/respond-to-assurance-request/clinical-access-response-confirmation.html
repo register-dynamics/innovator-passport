@@ -1,0 +1,14 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Response submitted' %}
+{% block content %}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+{% if data.northshireClinicalSafetyAccessResponded == 'true' %}
+  <div class="nhsuk-panel nhsuk-panel--confirmation"><h1 class="nhsuk-panel__title">Response submitted</h1></div>
+  <p>This is a simulated response for Northshire NHS Trust's assessment. No file has been uploaded, stored or transferred.</p>
+  <p><a href="request-clinical-details">View the assurance request</a></p>
+{% else %}
+  <h1>Response not submitted</h1><p><a href="respond-to-clinical-safety-access">Respond to the access request</a></p>
+{% endif %}
+  <p><a href="/prototypes/ur_prototypes/ver_3/supplier/start">Return to dashboard</a></p>
+</div></div>
+{% endblock %}

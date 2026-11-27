@@ -1,0 +1,14 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Where will the Clinical Safety Case Report be held?' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety", text: "Back to sharing permissions" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+  <h1>Where will the full report be held?</h1>
+  <form action="/prototypes/ur_prototypes/ver_3/supplier/choose-clinical-location" method="post"><fieldset class="nhsuk-fieldset"><legend class="nhsuk-fieldset__legend nhsuk-u-visually-hidden">Choose where the full report will be held</legend><div class="nhsuk-radios">
+    <div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="clinical-service" name="clinicalDocumentHeld" type="radio" value="service" required {% if data.clinicalDocumentHeld == 'service' %}checked{% endif %}><label class="nhsuk-label nhsuk-radios__label" for="clinical-service">In this service, with access restricted until approved</label></div>
+    <div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="clinical-supplier" name="clinicalDocumentHeld" type="radio" value="supplier" {% if data.clinicalDocumentHeld == 'supplier' or data.clinicalDocumentHeld == 'yes' %}checked{% endif %}><label class="nhsuk-label nhsuk-radios__label" for="clinical-supplier">By my organisation, to be provided separately when access is agreed</label></div>
+  </div></fieldset>
+  <div class="nhsuk-form-group nhsuk-u-margin-top-5"><label class="nhsuk-label" for="clinical-summary">Non-sensitive summary (optional)</label><div class="nhsuk-hint" id="clinical-summary-hint">Do not include sensitive or confidential information.</div><textarea class="nhsuk-textarea" id="clinical-summary" name="clinicalSummary" rows="5" aria-describedby="clinical-summary-hint">{{ data.clinicalSummary or '' }}</textarea></div>
+  <button class="nhsuk-button" type="submit">Continue</button></form>
+</div></div>
+{% endblock %}

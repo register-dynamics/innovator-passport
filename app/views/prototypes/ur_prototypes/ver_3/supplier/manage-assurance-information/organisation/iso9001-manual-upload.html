@@ -1,0 +1,27 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Add ISO 9001 certificate' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information", text: "Back to organisation information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+  <h1>Add ISO 9001 certificate</h1>
+  <h2 class="nhsuk-heading-m">We could not find an ISO 9001 certification record</h2>
+  <p>We could not find a matching ISO 9001 record for your organisation in the external source we checked. This does not mean your organisation is not certified.</p>
+  <p>UKAS CertCheck is the illustrative source for this scenario. No live lookup has taken place.</p>
+  <form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/check-iso9001" method="post">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="iso-body">Certification body</label>
+      <input class="nhsuk-input" id="iso-body" name="iso9001ManualBody" type="text" value="{{ data.iso9001ManualBody or '' }}" required>
+    </div>
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="iso-number">Certificate number</label>
+      <input class="nhsuk-input" id="iso-number" name="iso9001ManualNumber" type="text" value="{{ data.iso9001ManualNumber or '' }}" required>
+    </div>
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="iso-file">Upload certificate</label>
+      <div class="nhsuk-hint" id="iso-file-hint">For this research scenario, the selected file will not be uploaded or saved. You will need to select it again if you return to this page.</div>
+      <input class="nhsuk-file-upload" id="iso-file" type="file" aria-describedby="iso-file-hint">
+    </div>
+    <button class="nhsuk-button" type="submit">Continue</button>
+  </form>
+</div></div>
+{% endblock %}

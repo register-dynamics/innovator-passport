@@ -1,0 +1,10 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Upload Clinical Safety Case Report' %}
+{% block content %}
+{% if data.clinicalAccess == 'request' %}{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/legacy/clinical-safety-location", text: "Back to report location" }) }}{% else %}{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety", text: "Back to sharing permissions" }) }}{% endif %}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+  <h1>Upload the Clinical Safety Case Report</h1>
+  <p>This research prototype simulates an upload. The file you select will not be uploaded or stored.</p>
+  <form action="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/check-clinical-safety" method="post"><div class="nhsuk-form-group"><label class="nhsuk-label" for="clinical-file">Upload the full report</label><input class="nhsuk-file-upload" id="clinical-file" type="file" required></div><button class="nhsuk-button" type="submit">Continue</button></form>
+</div></div>
+{% endblock %}

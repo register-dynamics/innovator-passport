@@ -1,0 +1,87 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Add organisation assurance evidence' %}
+
+{% block content %}
+
+<div class="nhsuk-back-link nhsuk-u-margin-bottom-6">
+  <a class="nhsuk-back-link__link" href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-information.html">
+    Back to organisation information
+  </a>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-l">
+      Add organisation assurance evidence
+    </h1>
+
+    <p class="nhsuk-body-l">
+      Choose the assurance evidence you want to add or manage.
+    </p>
+
+  <form
+  action="/prototypes/ur_prototypes/ver_3/supplier/choose-organisation-evidence"
+  method="post">
+
+      <fieldset class="nhsuk-fieldset">
+
+        <legend class="nhsuk-fieldset__legend nhsuk-u-visually-hidden">
+          Select the type of evidence
+        </legend>
+
+        <div class="nhsuk-radios">
+
+          {% if data.publicLiabilityAdded == 'true' %}
+          <div class="nhsuk-u-margin-bottom-4">
+            <p class="nhsuk-u-margin-bottom-2">Public liability insurance — Already added</p>
+            <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/public-liability-insurance-details">View details<span class="nhsuk-u-visually-hidden"> for public liability insurance</span></a>
+          </div>
+          {% else %}
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="public-liability" name="evidenceType" type="radio" value="public-liability" required>
+            <label class="nhsuk-label nhsuk-radios__label" for="public-liability">Public liability insurance</label>
+          </div>
+          {% endif %}
+
+
+          {% if data.iso9001Added == 'true' %}
+          <div class="nhsuk-u-margin-bottom-4">
+            <p class="nhsuk-u-margin-bottom-2">ISO 9001 certification — Already added</p>
+            <a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-details">View details<span class="nhsuk-u-visually-hidden"> for ISO 9001 certification</span></a>
+          </div>
+          {% else %}
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="iso-9001" name="evidenceType" type="radio" value="iso-9001" required>
+            <label class="nhsuk-label nhsuk-radios__label" for="iso-9001">ISO 9001 certification</label>
+          </div>
+          {% endif %}
+
+          {% for option in [['employers-liability', "Employers' liability insurance"], ['professional-indemnity', 'Professional indemnity insurance'], ['modern-slavery', 'Modern Slavery statement'], ['financial-accounts', 'Financial accounts or statements'], ['information-security', 'Information security policy'], ['carbon-reduction', 'Carbon Reduction Plan'], ['other', 'Other organisation assurance evidence']] %}
+            {% set existing = null %}
+            {% for record in data.organisationEvidenceRecords %}{% if record.type == option[0] and option[0] != 'other' %}{% set existing = record %}{% endif %}{% endfor %}
+            {% if existing %}
+            <div class="nhsuk-u-margin-bottom-4"><p class="nhsuk-u-margin-bottom-2">{{ option[1] }} — Already added</p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-evidence-details/{{ existing.id }}">View details<span class="nhsuk-u-visually-hidden"> for {{ option[1] }}</span></a></div>
+            {% else %}
+            <div class="nhsuk-radios__item"><input class="nhsuk-radios__input" id="{{ option[0] }}" name="evidenceType" type="radio" value="{{ option[0] }}" required><label class="nhsuk-label nhsuk-radios__label" for="{{ option[0] }}">{{ option[1] }}</label></div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      </fieldset>
+
+      <div class="nhsuk-u-margin-top-6">
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

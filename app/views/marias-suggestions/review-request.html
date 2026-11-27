@@ -1,0 +1,21 @@
+{% extends "marias-suggestions/layout.html" %}
+{% set pageName = 'Review your assurance request' %}
+{% block content %}
+{% if exploration.submitted %}
+<div class="nhsuk-panel nhsuk-panel--confirmation"><h1 class="nhsuk-panel__title">Request submitted</h1></div>
+<p>The supplier can now respond to the assurance request in this prototype.</p>
+<p>No real request or documents have been sent.</p>
+{% else %}
+{{ backLink({ href: "/marias-suggestions/request-evidence", text: "Back to request additional evidence" }) }}
+<h1>Review your assurance request</h1>
+<p>Greater Worthington and Bryce Trust<br>Moustache health monitor App, version 1.2.3<br>Supplier: Face Hair Care Supplies UK</p>
+{% endif %}
+<h2>Existing evidence reviewed</h2>
+<table class="nhsuk-table nhsuk-table--responsive" role="table"><caption class="nhsuk-u-visually-hidden">Existing evidence review decisions</caption><thead class="nhsuk-table__head" role="rowgroup"><tr class="nhsuk-table__row" role="row"><th class="nhsuk-table__header" scope="col" role="columnheader">Document</th><th class="nhsuk-table__header" scope="col" role="columnheader">Decision</th></tr></thead><tbody class="nhsuk-table__body" role="rowgroup">{% for doc in allAvailableEvidence %}<tr class="nhsuk-table__row" role="row"><th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Document</span><span>{{ doc.name }}</span></th><td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Decision</span><span>{% if reviewDecisions[doc.id] == 'accepted' %}Accepted{% elif reviewDecisions[doc.id] == 'not-accepted' %}Not accepted{% elif reviewDecisions[doc.id] == 'later' %}Leave for later{% else %}Not yet reviewed{% endif %}</span></td></tr>{% endfor %}</tbody></table>
+{% if not exploration.submitted %}<p><a href="/marias-suggestions/available-evidence">Change evidence review decisions</a></p>{% endif %}
+<h2>Additional catalogue documents</h2>
+{% if reviewSelected | length %}<ul class="nhsuk-list nhsuk-list--bullet">{% for item in catalogue %}{% if item.id in reviewSelected %}<li>{{ item.name }}</li>{% endif %}{% endfor %}</ul>{% else %}<p>No additional documents selected.</p>{% endif %}
+<h2>Local Trust requirements</h2>
+{% if reviewLocal | length %}<ul class="nhsuk-list nhsuk-list--bullet">{% for item in reviewLocal %}<li>{{ item.name }}</li>{% endfor %}</ul>{% else %}<p>No local requirements added.</p>{% endif %}
+{% if not exploration.submitted %}<p><a href="/marias-suggestions/request-evidence">Change requested documents or local requirements</a></p><form action="/marias-suggestions/submit-request" method="post"><button class="nhsuk-button" type="submit">Submit request</button></form>{% endif %}
+{% endblock %}

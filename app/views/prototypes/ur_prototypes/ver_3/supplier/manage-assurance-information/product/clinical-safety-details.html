@@ -1,0 +1,14 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Clinical Safety Case Report' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/product-assurance-information", text: "Back to product assurance information" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+<h1>Clinical Safety Case Report</h1><p class="nhsuk-lede-text">Moustache Health Monitor</p>
+{% if data.clinicalSafetyAdded == 'true' %}<dl class="nhsuk-summary-list">
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Status</dt><dd class="nhsuk-summary-list__value">Added</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Sharing permissions</dt><dd class="nhsuk-summary-list__value">{% if data.clinicalSavedAccess == 'available' %}Available to NHS organisations{% else %}Access on request{% endif %}</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Full report</dt><dd class="nhsuk-summary-list__value">{% if data.clinicalSavedDocumentHeld == 'service' %}In this service{% if data.clinicalSavedAccess == 'request' %}, with access restricted until approved{% endif %} (simulated){% else %}Held by your organisation and provided separately when access is agreed{% endif %}</dd></div>
+{% if data.clinicalSavedAccess == 'request' %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Non-sensitive summary</dt><dd class="nhsuk-summary-list__value">{{ data.clinicalSavedSummary or 'Not provided' }}</dd></div>{% endif %}</dl>
+{% if data.clinicalSavedDocumentHeld == 'service' %}<p>No file has been uploaded or stored in this research prototype.</p>{% endif %}
+{% else %}<p>This evidence has not been added.</p><p><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety">Add Clinical Safety Case Report</a></p>{% endif %}</div></div>
+{% endblock %}

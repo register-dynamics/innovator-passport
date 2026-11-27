@@ -1,0 +1,16 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Check your Clinical Safety Case Report answers' %}
+{% block content %}
+{{ backLink({ href: "/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety", text: "Back to Clinical Safety Case Report" }) }}
+<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-two-thirds">
+<h1>Check your answers</h1><p>Check the information before adding this evidence to your product assurance record.</p>
+<dl class="nhsuk-summary-list">
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Evidence</dt><dd class="nhsuk-summary-list__value">Clinical Safety Case Report</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Product</dt><dd class="nhsuk-summary-list__value">Moustache Health Monitor</dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Sharing permissions</dt><dd class="nhsuk-summary-list__value">{% if data.clinicalAccess == 'available' %}Available to NHS organisations{% elif data.clinicalAccess == 'request' %}Access on request{% else %}Not selected{% endif %}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety">Change<span class="nhsuk-u-visually-hidden"> sharing permissions</span></a></dd></div>
+<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Full report</dt><dd class="nhsuk-summary-list__value">{% if data.clinicalDocumentHeld == 'service' %}In this service{% if data.clinicalAccess == 'request' %}, with access restricted until approved{% endif %} (simulated){% elif data.clinicalDocumentHeld == 'supplier' or data.clinicalDocumentHeld == 'yes' %}Held by your organisation and provided separately when access is agreed{% else %}Not selected{% endif %}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety">Change<span class="nhsuk-u-visually-hidden"> full report details</span></a></dd></div>
+{% if data.clinicalAccess == 'request' %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Non-sensitive summary</dt><dd class="nhsuk-summary-list__value">{{ data.clinicalSummary or 'Not provided' }}</dd><dd class="nhsuk-summary-list__actions"><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/product/add-clinical-safety">Change<span class="nhsuk-u-visually-hidden"> summary</span></a></dd></div>{% endif %}
+</dl>
+{% if data.clinicalDocumentHeld == 'service' %}<p>No file has been uploaded or stored in this research prototype.</p>{% endif %}
+<form action="/prototypes/ur_prototypes/ver_3/supplier/save-clinical-safety" method="post"><button class="nhsuk-button" type="submit">Save evidence</button></form></div></div>
+{% endblock %}

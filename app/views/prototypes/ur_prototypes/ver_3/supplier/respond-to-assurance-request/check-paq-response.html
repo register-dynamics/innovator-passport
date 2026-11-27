@@ -1,0 +1,34 @@
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+{% set pageName = 'Check your PAQ response' %}
+{% block content %}
+{{ backLink({ href: "provide-paq", text: "Back to provide PAQ" }) }}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1>Check your response</h1>
+        <p>This PAQ will be shared only with Greater Worthington and Bryce Trust for this assessment.
+        </p>
+        <dl class="nhsuk-summary-list">
+            {% for item in [['NHS organisation', 'Greater Worthington and Bryce Trust'], ['Product', 'Moustache Health
+            Monitor'], ['Product version', '3.1.4'], ['Evidence', 'Pre-Acquisition Questionnaire (PAQ)']] %}<div
+                class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">{{ item[0] }}</dt>
+                <dd class="nhsuk-summary-list__value">{{ item[1] }}</dd>
+            </div>{% endfor %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">PAQ completion date</dt>
+                <dd class="nhsuk-summary-list__value">{% if (data.worthingtonPaqDay or '') | trim or (data.worthingtonPaqMonth or '') | trim or (data.worthingtonPaqYear or '') | trim %}{{ data.worthingtonPaqDay }}/{{ data.worthingtonPaqMonth }}/{{ data.worthingtonPaqYear }}{% else %}Not provided{% endif %}</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="provide-paq">Change<span
+                            class="nhsuk-u-visually-hidden"> PAQ completion date</span></a></dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Document</dt>
+                <dd class="nhsuk-summary-list__value">PAQ.pdf</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="provide-paq">Change<span
+                            class="nhsuk-u-visually-hidden"> document</span></a></dd>
+            </div>
+        </dl>
+        <form action="send-paq-response" method="post"><button class="nhsuk-button" type="submit">Send response</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

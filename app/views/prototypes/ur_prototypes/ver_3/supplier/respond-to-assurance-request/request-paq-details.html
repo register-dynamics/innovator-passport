@@ -1,0 +1,387 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% set pageName = 'Assurance request' %}
+
+{% block content %}
+
+<style>
+  /* Requested actions */
+
+  .request-action-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+
+  .request-action-item {
+    border-bottom: 1px solid #d8dde0;
+    padding: 16px 0;
+    margin: 0;
+  }
+
+  .request-action-item:first-child {
+    border-top: 1px solid #d8dde0;
+  }
+
+  .request-action-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .request-action-header h3 {
+    margin: 0;
+  }
+
+  .request-action-item p {
+    margin-bottom: 12px;
+  }
+
+  .request-action-item p:last-child {
+    margin-bottom: 0;
+  }
+
+  .request-status {
+    display: inline-block;
+    background: #e8edee;
+    color: #212b32;
+    padding: 4px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Evidence status */
+
+  .assessment-status {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .assessment-status--accepted {
+    color: #007f3b;
+  }
+
+  .assessment-status--available {
+    color: #4c6272;
+  }
+
+  .assessment-status--accepted::before {
+    content: "✓";
+    margin-right: 6px;
+  }
+
+  /* Minimal activity timeline */
+
+  .assurance-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+  }
+
+  .assurance-timeline__item {
+    position: relative;
+    padding: 0 0 32px 36px;
+    margin: 0;
+  }
+
+  .assurance-timeline__item::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 0;
+    width: 2px;
+    background: #d8dde0;
+  }
+
+  .assurance-timeline__item:last-child {
+    padding-bottom: 0;
+  }
+
+  .assurance-timeline__item:last-child::before {
+    display: none;
+  }
+
+  .assurance-timeline__marker {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border: 3px solid #005eb8;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  .assurance-timeline__date {
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+
+  .assurance-timeline__description {
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .request-action-header {
+      display: block;
+    }
+
+    .request-action-header .request-status {
+      margin-top: 8px;
+    }
+  }
+</style>
+
+{#
+  Research scenario:
+  Cyber Essentials has been accepted by this Trust
+  for this specific assessment.
+
+  The decision must eventually come from the Trust
+  assessment record rather than being hard-coded.
+#}
+
+{% set cyberEssentialsAccepted = true %}
+
+{#
+  Replace publicLiabilityAccess with the actual
+  saved session field after checking its name.
+
+  "Added" alone does not mean a Trust can access it.
+#}
+
+{% set publicLiabilityAvailable =
+  data.publicLiabilityAdded == 'true'
+  and data.publicLiabilityAccess == 'available'
+%}
+
+{{ backLink({
+  href: "/prototypes/ur_prototypes/ver_3/supplier/start",
+  text: "Back to dashboard"
+}) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Assurance request</h1>
+
+
+    <!-- REQUEST DETAILS -->
+
+    <div class="nhsuk-card nhsuk-u-margin-bottom-6">
+      <div class="nhsuk-card__content nhsuk-u-padding-4">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">Request details</h2>
+        <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-0">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Requesting NHS organisation</dt>
+        <dd class="nhsuk-summary-list__value">Greater Worthington and Bryce Trust</dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Product
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Moustache Health Monitor
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Product version
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          3.1.4
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Requested on
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          25 November 2026
+        </dd>
+      </div>
+
+        </dl>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+
+    <h2>{% if data.worthingtonPaqResponded == 'true' %}Your response{% else %}What you need to do{% endif %}</h2>
+    {% if data.worthingtonPaqResponded != 'true' %}<p><strong>1 item needs your response</strong></p>{% endif %}
+
+    {% set requestedItems = [
+      {
+        name: "Pre-Acquisition Questionnaire (PAQ)",
+        description: "Provide a completed PAQ for Moustache Health Monitor.",
+        status: "Requested",
+        action: "Provide PAQ",
+        href: "/prototypes/ur_prototypes/ver_3/supplier/respond-to-assurance-request/provide-paq"
+      }
+    ] %}
+
+    <ul class="request-action-list">
+
+      {% for item in requestedItems %}
+
+      <li class="request-action-item">
+
+        <div class="request-action-header">
+
+          <h3 class="nhsuk-heading-s">
+            {{ item.name }}
+          </h3>
+
+          <span class="request-status">{% if data.worthingtonPaqResponded == 'true' %}Response sent{% else %}Status: {{ item.status }}{% endif %}</span>
+
+        </div>
+
+        {% if data.worthingtonPaqResponded == 'true' %}
+        <p>Your simulated response has been recorded for this assessment. No file was stored or transferred.</p>
+        {% else %}
+        <p>{{ item.description }}</p>
+
+        <p>
+          <a href="{{ item.href }}">
+            {{ item.action }}
+            <span class="nhsuk-u-visually-hidden">
+              for {{ item.name }}
+            </span>
+          </a>
+        </p>
+        {% endif %}
+
+      </li>
+
+      {% endfor %}
+
+    </ul>
+
+    <!-- OTHER ASSURANCE EVIDENCE -->
+
+    <h2>
+      Evidence already included in this assessment
+    </h2>
+
+    <p>
+      This NHS organisation already has the following evidence for this assessment.
+    </p>
+
+    <div class="nhsuk-table-responsive">
+
+      <table class="nhsuk-table">
+
+        <thead>
+          <tr>
+            <th scope="col">Evidence</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {% if cyberEssentialsAccepted %}
+
+          <tr>
+            <td>Cyber Essentials</td>
+            <td>
+              <span
+                class="assessment-status assessment-status--accepted">
+                Accepted
+              </span>
+            </td>
+          </tr>
+
+          {% endif %}
+
+          {% if publicLiabilityAvailable %}
+
+          <tr>
+            <td>Public liability insurance</td>
+            <td>
+              <span
+                class="assessment-status assessment-status--available">
+                Available for review
+              </span>
+            </td>
+          </tr>
+
+          {% endif %}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+      This acceptance applies only to this assessment.
+    </p>
+
+    <!-- ASSURANCE ACTIVITY -->
+
+    <h2>Assurance activity</h2>
+
+    <ol class="assurance-timeline">
+
+      <!-- Most recent first -->
+      {% if data.worthingtonPaqResponded == 'true' %}
+      <li class="assurance-timeline__item"><span class="assurance-timeline__marker" aria-hidden="true"></span><p class="assurance-timeline__description">You submitted a simulated PAQ response for product version {{ data.worthingtonPaqResponse.productVersion }}. No file was stored or transferred.</p></li>
+      {% endif %}
+
+      <li class="assurance-timeline__item">
+
+        <span
+          class="assurance-timeline__marker"
+          aria-hidden="true">
+        </span>
+
+        <p class="assurance-timeline__date">
+          25 November 2026
+        </p>
+
+        <p class="assurance-timeline__description">
+          The NHS organisation requested a completed
+          Pre-Acquisition Questionnaire (PAQ).
+        </p>
+
+      </li>
+
+      {% if cyberEssentialsAccepted %}
+
+      <li class="assurance-timeline__item">
+
+        <span
+          class="assurance-timeline__marker"
+          aria-hidden="true">
+        </span>
+
+        <p class="assurance-timeline__date">
+          24 November 2026
+        </p>
+
+        <p class="assurance-timeline__description">
+          The NHS organisation reviewed and accepted
+          Cyber Essentials for this assessment.
+        </p>
+
+      </li>
+
+      {% endif %}
+
+    </ol>
+
+  </div>
+</div>
+
+{% endblock %}

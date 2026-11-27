@@ -1,0 +1,223 @@
+
+{% extends "prototypes/ur_prototypes/ver_3/supplier/layout.html" %}
+
+{% block pageTitle %}
+  Organisation information - Manage health technology assurance
+{% endblock %}
+
+{% block content %}
+<style>
+  @media (min-width: 48.0625em) {
+    .assurance-table { table-layout: fixed; width: 100%; }
+    .assurance-table th:nth-child(1) { width: 50%; }
+    .assurance-table th:nth-child(2) { width: 30%; }
+    .assurance-table th:nth-child(3) { width: 20%; }
+  }
+</style>
+<div class="nhsuk-back-link nhsuk-u-margin-bottom-6">
+  <a class="nhsuk-back-link__link" href="/prototypes/ur_prototypes/ver_3/supplier/start">
+    Back to dashboard
+  </a>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Organisation information</h1>
+{% if messages.publicLiabilityAdded %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success nhsuk-u-margin-bottom-6" role="alert" aria-labelledby="insurance-notification-title" data-module="nhsuk-notification-banner">
+  <div class="nhsuk-notification-banner__header">
+    <h2 class="nhsuk-notification-banner__title" id="insurance-notification-title">Success</h2>
+  </div>
+  <div class="nhsuk-notification-banner__content">
+    <h3 class="nhsuk-notification-banner__heading">Public liability insurance added</h3>
+    <p class="nhsuk-u-margin-bottom-0">Your evidence has been added to your organisation's assurance information.</p>
+  </div>
+</div>
+{% endif %}
+{% if messages.iso9001Added %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success nhsuk-u-margin-bottom-6" role="alert" aria-labelledby="iso-notification-title" data-module="nhsuk-notification-banner">
+  <div class="nhsuk-notification-banner__header"><h2 class="nhsuk-notification-banner__title" id="iso-notification-title">Success</h2></div>
+  <div class="nhsuk-notification-banner__content">
+    <h3 class="nhsuk-notification-banner__heading">ISO 9001 certificate added</h3>
+    <p class="nhsuk-u-margin-bottom-0">Your evidence has been added to your organisation's assurance information.</p>
+  </div>
+</div>
+{% endif %}
+{% if messages.organisationEvidenceAdded %}
+<div class="nhsuk-notification-banner nhsuk-notification-banner--success nhsuk-u-margin-bottom-6" role="alert" aria-labelledby="org-evidence-success" data-module="nhsuk-notification-banner"><div class="nhsuk-notification-banner__header"><h2 class="nhsuk-notification-banner__title" id="org-evidence-success">Success</h2></div><div class="nhsuk-notification-banner__content"><h3 class="nhsuk-notification-banner__heading">Organisation assurance evidence added</h3><p class="nhsuk-u-margin-bottom-0">Your evidence has been added to your organisation's assurance information.</p></div></div>
+{% endif %}
+    <p class="nhsuk-lede-text">
+      Manage evidence that applies to your organisation.
+      You can make it available to NHS organisations
+      without providing it again for each product.
+    </p>
+
+    <h2>Company details</h2>
+
+    <p>We got these details from Companies House.</p>
+
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Registered company name
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Moustache Health Ltd
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Company number
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          12345678
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Registered address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          10 Example Street, London
+        </dd>
+      </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Company status
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Active
+        </dd>
+      </div>
+    </dl>
+
+
+
+<p class="nhsuk-u-margin-bottom-6">
+  <a href="#">
+    Change incorrect company details
+  </a>
+</p>
+
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h2>Company assurance evidence</h2>
+
+    <p>
+      We found some of your assurance information in public sources. 
+      You can add other evidence and choose how to share it with NHS organisations.
+    </p>
+
+    <h3 class="nhsuk-u-margin-bottom-3" id="governance-heading">Information governance and cyber security</h3>
+    <table class="nhsuk-table nhsuk-table--responsive nhsuk-u-margin-bottom-4 assurance-table" role="table" aria-labelledby="governance-heading">
+      <thead class="nhsuk-table__head" role="rowgroup"><tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Evidence</th>
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Source or status</th>
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Action</th>
+      </tr></thead>
+      <tbody class="nhsuk-table__body" role="rowgroup">
+      <tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>Cyber Essentials</span></th>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span>IASME</span></td>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/cyber-essentials">View details<span class="nhsuk-u-visually-hidden"> for Cyber Essentials</span></a></span></td>
+      </tr>
+      <tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>DSPT</span></th>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span>DSPT portal</span></td>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/dspt">View details<span class="nhsuk-u-visually-hidden"> for DSPT</span></a></span></td>
+      </tr>
+      {% set category = 'Information governance and cyber security' %}
+      {% for record in data.organisationEvidenceRecords %}{% if record.category == category %}
+<tr class="nhsuk-table__row" role="row"><th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>{{ record.name }}</span></th><td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span><strong class="nhsuk-tag nhsuk-tag--green">Added</strong></span></td><td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-evidence-details/{{ record.id }}">View details<span class="nhsuk-u-visually-hidden"> for {{ record.name }}</span></a></span></td></tr>
+{% endif %}{% endfor %}
+      </tbody>
+    </table>
+
+    <h3 class="nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-8" id="insurance-heading">Insurance</h3>
+    <table class="nhsuk-table nhsuk-table--responsive nhsuk-u-margin-bottom-4 assurance-table" role="table" aria-labelledby="insurance-heading">
+      <thead class="nhsuk-table__head" role="rowgroup"><tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Evidence</th>
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Source or status</th>
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Action</th>
+      </tr></thead>
+      <tbody class="nhsuk-table__body" role="rowgroup">
+      {% if data.publicLiabilityAdded == "true" %}
+      <tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>Public liability insurance</span></th>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span><strong class="nhsuk-tag nhsuk-tag--green">Added</strong></span></td>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/public-liability-insurance-details">View details<span class="nhsuk-u-visually-hidden"> for Public liability insurance</span></a></span></td>
+      </tr>
+      {% else %}
+      <tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>Public liability insurance</span></th>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span>Not added</span></td>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-public-liability-insurance">Add<span class="nhsuk-u-visually-hidden"> for Public liability insurance</span></a></span></td>
+      </tr>
+      {% endif %}
+      {% set category = 'Insurance' %}
+      {% for record in data.organisationEvidenceRecords %}{% if record.category == category %}
+<tr class="nhsuk-table__row" role="row"><th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>{{ record.name }}</span></th><td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span><strong class="nhsuk-tag nhsuk-tag--green">Added</strong></span></td><td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-evidence-details/{{ record.id }}">View details<span class="nhsuk-u-visually-hidden"> for {{ record.name }}</span></a></span></td></tr>
+{% endif %}{% endfor %}
+      </tbody>
+    </table>
+
+    <h3 class="nhsuk-u-margin-bottom-3  nhsuk-u-margin-top-8" id="quality-heading">Quality assurance</h3>
+    <table class="nhsuk-table nhsuk-table--responsive nhsuk-u-margin-bottom-4 assurance-table" role="table" aria-labelledby="quality-heading">
+      <thead class="nhsuk-table__head" role="rowgroup"><tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Evidence</th>
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Source or status</th>
+        <th class="nhsuk-table__header" scope="col" role="columnheader">Action</th>
+      </tr></thead>
+      <tbody class="nhsuk-table__body" role="rowgroup">
+      {% if data.iso9001Added == "true" %}
+      <tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>ISO 9001</span></th>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span><strong class="nhsuk-tag nhsuk-tag--green">Added</strong></span></td>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-details">View details<span class="nhsuk-u-visually-hidden"> for ISO 9001</span></a></span></td>
+      </tr>
+      {% else %}
+      <tr class="nhsuk-table__row" role="row">
+        <th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>ISO 9001</span></th>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span>Not found</span></td>
+        <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/iso9001-manual-upload">Add<span class="nhsuk-u-visually-hidden"> for ISO 9001</span></a></span></td>
+      </tr>
+      {% endif %}
+      </tbody>
+    </table>
+
+{% for category in ['Governance', 'Financial assurance', 'Sustainability', 'Other organisation assurance evidence'] %}
+  {% set hasRecords = false %}{% for record in data.organisationEvidenceRecords %}{% if record.category == category %}{% set hasRecords = true %}{% endif %}{% endfor %}
+  {% if hasRecords %}
+  <h3 class="nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-8">{{ category }}</h3>
+  <table class="nhsuk-table nhsuk-table--responsive nhsuk-u-margin-bottom-4 assurance-table" role="table">
+    <caption class="nhsuk-u-visually-hidden">{{ category }} evidence</caption>
+    <thead class="nhsuk-table__head" role="rowgroup"><tr class="nhsuk-table__row" role="row"><th class="nhsuk-table__header" scope="col" role="columnheader">Evidence</th><th class="nhsuk-table__header" scope="col" role="columnheader">Source or status</th><th class="nhsuk-table__header" scope="col" role="columnheader">Action</th></tr></thead>
+    <tbody class="nhsuk-table__body" role="rowgroup">{% for record in data.organisationEvidenceRecords %}{% if record.category == category %}
+<tr class="nhsuk-table__row" role="row"><th class="nhsuk-table__header" scope="row" role="rowheader"><span class="nhsuk-table__heading" aria-hidden="true">Evidence</span><span>{{ record.name }}</span></th><td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Source or status</span><span><strong class="nhsuk-tag nhsuk-tag--green">Added</strong></span></td><td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table__heading" aria-hidden="true">Action</span><span><a href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/organisation-evidence-details/{{ record.id }}">View details<span class="nhsuk-u-visually-hidden"> for {{ record.name }}</span></a></span></td></tr>
+{% endif %}{% endfor %}</tbody>
+  </table>
+  {% endif %}
+{% endfor %}
+
+
+
+<a
+  href="/prototypes/ur_prototypes/ver_3/supplier/manage-assurance-information/organisation/add-assurance-evidence"
+  class="nhsuk-button"
+  role="button">
+  Add assurance evidence
+</a>
+
+
+  </div>
+</div>
+
+{% endblock %}

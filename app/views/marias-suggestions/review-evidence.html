@@ -1,0 +1,29 @@
+{% extends "marias-suggestions/layout.html" %}
+{% set pageName = document.name %}
+{% block content %}
+<p><a href="/marias-suggestions/available-evidence">Back to assurance evidence</a></p>
+<h1 class="nhsuk-u-margin-bottom-2">{{ document.name }}</h1>
+<p class="nhsuk-body-s">Moustache health monitor App, version 1.2.3</p>
+<p><strong class="nhsuk-tag nhsuk-tag--grey">{% if exploration.decisions[document.id] == 'accepted' %}Accepted{% elif exploration.decisions[document.id] == 'not-accepted' %}Not accepted{% elif exploration.decisions[document.id] == 'later' %}Leave for later{% else %}Needs review{% endif %}</strong> <strong class="nhsuk-tag nhsuk-tag--grey">{{ exploration.reviewers[document.id] or 'Unassigned' }}</strong></p>
+<h2>Document details</h2>
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Category</dt><dd class="nhsuk-summary-list__value">{{ document.category }}</dd></div>
+  {% if document.template %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Template</dt><dd class="nhsuk-summary-list__value">{{ document.template }}</dd></div>{% endif %}
+  {% if document.expires %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Expiry date</dt><dd class="nhsuk-summary-list__value">{{ document.expires }}</dd></div>{% endif %}
+  {% if document.updated %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Last updated</dt><dd class="nhsuk-summary-list__value">{{ document.updated }}</dd></div>{% endif %}
+  <div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Assigned reviewer</dt><dd class="nhsuk-summary-list__value">{{ exploration.reviewers[document.id] or 'Unassigned' }}</dd></div>
+  {% if document.acceptedBy %}<div class="nhsuk-summary-list__row"><dt class="nhsuk-summary-list__key">Last accepted by other NHS organisations</dt><dd class="nhsuk-summary-list__value">{{ document.acceptedBy }}<p class="nhsuk-body-s nhsuk-u-margin-bottom-0">Acceptance by another organisation does not mean your Trust has accepted this evidence.</p></dd></div>{% endif %}
+</dl>
+<h2>Review decision</h2>
+<p>Accept this evidence if it meets your organisation's assurance requirements for this assessment.</p>
+<p>Acceptance applies only to this assessment and does not mean the product is approved overall.</p>
+<form action="/marias-suggestions/review-evidence" method="post"><input type="hidden" name="_document" value="{{ document.id }}"><button class="nhsuk-button" type="submit" name="_decision" value="accepted">Accept evidence</button></form>
+<form action="/marias-suggestions/review-evidence" method="post"><input type="hidden" name="_document" value="{{ document.id }}"><div class="nhsuk-form-group"><fieldset class="nhsuk-fieldset"><legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">Or save another decision</legend><div class="nhsuk-radios nhsuk-radios--small">
+{% for option in [['not-accepted','Not accepted'],['later','Leave for later']] %}<div class="nhsuk-radios__item"><input class="nhsuk-radios__input" type="radio" id="decision-{{ option[0] }}" name="_decision" value="{{ option[0] }}" {% if exploration.decisions[document.id] == option[0] %}checked{% endif %} required><label class="nhsuk-label nhsuk-radios__label" for="decision-{{ option[0] }}">{{ option[1] }}</label></div>{% endfor %}
+</div></fieldset></div><button class="nhsuk-button nhsuk-button--secondary" type="submit">Save decision</button></form>
+<h2>Other actions</h2>
+<hr><p><a href="/marias-suggestions/review-evidence/{{ document.id }}/assign">Assign or reassign reviewer</a><br>Ask a colleague to review this evidence.</p>
+<hr><p><a href="/marias-suggestions/review-evidence/{{ document.id }}/clarification">Request clarification</a><br>Ask the supplier to clarify information or provide an updated document.</p>
+{% if exploration.clarifications[document.id] %}<p class="nhsuk-body-s">Clarification draft saved: {{ exploration.clarifications[document.id] }}</p>{% endif %}
+<hr><p><a href="/marias-suggestions/request-evidence">Request additional evidence</a><br>Ask for information that is not covered by the existing evidence.</p><hr>
+{% endblock %}
